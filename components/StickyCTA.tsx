@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react";
-import { nav, business, findUs } from "@/content/tr";
+import { nav, business } from "@/content/tr";
 import { primaryAction } from "@/lib/schema";
 
 /**
@@ -31,22 +32,30 @@ export function StickyCTA() {
           className="fixed inset-x-0 bottom-0 z-50 border-t border-bone/10 bg-charcoal/95 backdrop-blur-md lg:hidden"
           style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
         >
-          <div className="flex gap-2.5 px-4 py-3">
+          {/* Üç aksiyon: ara, menü, yol tarifi. Yerel müşterinin telefonda
+              yapmak isteyeceği her şey tek başparmak mesafesinde. */}
+          <div className="flex gap-2 px-3 py-3">
             <a
               href={action.href}
               {...(action.label === "order" && {
                 target: "_blank",
                 rel: "noopener noreferrer",
               })}
-              className="inline-flex min-h-[52px] flex-1 items-center justify-center rounded-full bg-red px-5 font-sans text-base font-semibold text-bone"
+              className="inline-flex min-h-[52px] flex-1 items-center justify-center rounded-full bg-red px-3 font-sans text-[0.95rem] font-semibold text-bone"
             >
-              {action.label === "order" ? nav.cta.order : findUs.callCta}
+              {action.label === "order" ? nav.cta.order : nav.cta.call}
             </a>
+            <Link
+              href="/menu"
+              className="inline-flex min-h-[52px] flex-1 items-center justify-center rounded-full border border-brass/60 px-3 font-sans text-[0.95rem] font-semibold text-brass"
+            >
+              {nav.links[0].label}
+            </Link>
             <a
               href={business.maps.directionsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-[52px] flex-1 items-center justify-center rounded-full border border-bone/25 px-5 font-sans text-base font-medium text-bone"
+              className="inline-flex min-h-[52px] flex-1 items-center justify-center rounded-full border border-bone/25 px-3 font-sans text-[0.95rem] font-medium text-bone"
             >
               {nav.cta.directions}
             </a>

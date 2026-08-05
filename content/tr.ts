@@ -157,8 +157,9 @@ export const nav = {
   brandHome: "Kokology ana sayfa",
   openMenu: "Menüyü aç",
   closeMenu: "Menüyü kapat",
+  /** "Menü" ilk sırada: gelen ziyaretçinin ilk sorusu bu. */
   links: [
-    { href: "#menu", label: "Izgara" },
+    { href: "/menu", label: "Menü" },
     { href: "#mekan", label: "Mekân" },
     { href: "#miras", label: "Miras" },
     { href: "#kultur", label: "Kültür" },
@@ -169,6 +170,7 @@ export const nav = {
     order: "Sipariş",
     call: "Ara",
     directions: "Yol Tarifi",
+    menu: "Menüyü Gör",
   },
   scrollHint: "Aşağı kaydır",
 };
@@ -179,6 +181,11 @@ export const hero = {
   /**
    * H1 — marka + kategori + konum. Sayfanın tek H1'i ve SEO'nun en önemli
    * satırı. Kategori "kokoreççi": mekânın birincil kimliği bu.
+   *
+   * Hero görselinde duvara el yazmasıyla "KOKOLOGY" boyanmış olduğu için
+   * marka adı Anton ile ikinci kez BÜYÜK yazılmıyor — aynı kelime iki farklı
+   * karakterle iki kez görünürdü. Marka adı H1'in içinde daha küçük duruyor,
+   * görsel ağırlığı duvar resmi taşıyor.
    */
   h1: {
     brand: "Kokology",
@@ -187,9 +194,16 @@ export const hero = {
   witty: "Sokağın en eski lezzeti. En yeni hali.",
   eyebrow: "Cadde Ataevler · Nilüfer / Bursa",
   image: {
-    src: "/images/mekan/kokology-kokorec-bursa-nilufer-cadde-ataevler-dis-cephe.jpg",
-    alt: "Kokology'nin Cadde Ataevler'deki cam cepheli dükkânı ve aydınlatmalı tabelası",
+    src: "/images/mekan/kokology-leonardo-duvar-resmi-bursa-kokorecci.jpg",
+    alt: "Kokology Bursa Ataevler'de ocağın yanındaki elle boyanmış Leonardo da Vinci duvar resmi ve KOKOLOGY yazısı",
   },
+
+  /** Güven satırı — karar veren bilgiler tek bakışta (CRO) */
+  trust: [
+    { icon: "star", text: "5,0 Google puanı" },
+    { icon: "pin", text: "Ataevler / Nilüfer" },
+    { icon: "parking", text: "Ücretsiz otopark" },
+  ],
 };
 
 /* ========================================================================== */

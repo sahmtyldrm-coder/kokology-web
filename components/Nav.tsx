@@ -1,10 +1,39 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, useScroll, useMotionValueEvent, useReducedMotion } from "motion/react";
 import { nav, business } from "@/content/tr";
-import { primaryAction } from "@/lib/schema";
 import { Wordmark } from "@/components/Wordmark";
+
+/**
+ * Bağlantı türünü hedefe göre seçer: sayfa içi çapalar (#) normal <a> ile
+ * çalışmalı, rota geçişleri ise next/link ile ön yüklenip anında açılmalı.
+ */
+function NavLink({
+  href,
+  label,
+  onNavigate,
+  className = "font-sans text-sm font-medium text-bone/70 transition-colors hover:text-brass",
+}: {
+  href: string;
+  label: string;
+  onNavigate?: () => void;
+  className?: string;
+}) {
+  if (href.startsWith("#")) {
+    return (
+      <a href={href} onClick={onNavigate} className={className}>
+        {label}
+      </a>
+    );
+  }
+  return (
+    <Link href={href} onClick={onNavigate} className={className}>
+      {label}
+    </Link>
+  );
+}
 
 /**
  * Kalıcı minimal nav.
@@ -15,7 +44,6 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const reduced = useReducedMotion();
-  const action = primaryAction();
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (y) => setScrolled(y > 80));
@@ -58,24 +86,19 @@ export function Nav() {
           {/* Masaüstü bağlantıları */}
           <nav className="hidden items-center gap-8 lg:flex">
             {nav.links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="font-sans text-sm font-medium text-bone/70 transition-colors hover:text-brass"
-              >
-                {link.label}
-              </a>
+              <NavLink key={link.href} href={link.href} label={link.label} />
             ))}
-            <a
-              href={action.href}
-              {...(action.label === "order" && {
-                target: "_blank",
-                rel: "noopener noreferrer",
-              })}
-              className="inline-flex min-h-[44px] items-center rounded-full bg-red px-6 font-sans text-sm font-semibold text-bone transition-colors hover:bg-brass hover:text-charcoal"
+            {/*
+              Nav'daki eylem "Menüyü Gör": hero'da zaten kırmızı "Ara" var,
+              ikisi de kırmızı olsa aynı ekranda iki ateşleme aksiyonu görünür
+              ve kırmızının anlamı dağılırdı.
+            */}
+            <Link
+              href="/menu"
+              className="inline-flex min-h-[44px] items-center rounded-full border border-brass/60 px-6 font-sans text-sm font-semibold text-brass transition-colors hover:bg-brass hover:text-charcoal"
             >
-              {action.label === "order" ? nav.cta.order : nav.cta.call}
-            </a>
+              {nav.cta.menu}
+            </Link>
           </nav>
 
           {/* Mobil menü düğmesi — 44px dokunmatik hedef */}
@@ -113,14 +136,13 @@ export function Nav() {
         >
           <nav className="flex flex-col gap-1">
             {nav.links.map((link) => (
-              <a
+              <NavLink
                 key={link.href}
                 href={link.href}
-                onClick={() => setOpen(false)}
+                label={link.label}
+                onNavigate={() => setOpen(false)}
                 className="font-display py-3 text-4xl text-bone transition-colors hover:text-brass"
-              >
-                {link.label}
-              </a>
+              />
             ))}
           </nav>
 
