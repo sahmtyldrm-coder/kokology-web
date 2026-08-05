@@ -1,26 +1,153 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ==========================================================================
+   KOKOLOGY — Marka tasarım sistemi
+   Tailwind v4 CSS-first config. Tokenlar burada tanımlanır, tailwind.config.ts
+   dosyasına gerek yoktur. `--color-charcoal` → `bg-charcoal` / `text-charcoal`.
+   ========================================================================== */
+
+@theme {
+  /* Renk paleti — kullanım oranları: charcoal %60, green %20, red %8,
+     brass %6, bone %4. Kırmızı dekorasyon değildir; yalnızca tek bir
+     ateşleme aksiyonunu (Sipariş / Ara) işaretler. */
+  --color-charcoal: #141210;
+  --color-green: #22402e;
+  --color-red: #c0272d;
+  --color-brass: #c89b3c;
+  --color-bone: #efe7d6;
+  --color-brick: #8a4030;
+  --color-walnut: #5a3a24;
+
+  /* Zeminden bir tık açık yüzeyler — kart, panel, ayraç */
+  --color-soot: #1c1917;
+  --color-ash: #2a2523;
+
+  /* Dört ses. next/font değişkenleri layout.tsx'te bağlanır. */
+  --font-display: var(--font-anton), "Arial Narrow", "Haettenschweiler",
+    sans-serif;
+  --font-serif: var(--font-fraunces), "Iowan Old Style", Georgia, serif;
+  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+  --font-hand: var(--font-caveat), ui-rounded, cursive;
+
+  /* Display ölçeği — dev wordmark ve bölüm başlıkları */
+  /* Satır yükseklikleri Türkçe'ye göre ayarlı: Ş, Ç, ğ altına inen
+     işaretler taşıyor. Çok satırlı Anton başlıklarda 0.84 gibi sıkı bir
+     leading sedilleri bir sonraki satıra bindirir ve kırpar. */
+  --text-mega: clamp(3.5rem, 15vw, 13rem);
+  --text-mega--line-height: 0.9;
+  --text-mega--letter-spacing: -0.02em;
+
+  --text-jumbo: clamp(2.5rem, 8vw, 6rem);
+  --text-jumbo--line-height: 0.98;
+  --text-jumbo--letter-spacing: -0.01em;
+
+  --ease-ember: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* --------------------------------------------------------------------------
+   Temel
+   -------------------------------------------------------------------------- */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Sabit üst nav ve mobil alt bar için kaydırma payı */
+    scroll-padding-top: 5rem;
+    background-color: var(--color-charcoal);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-charcoal);
+    color: var(--color-bone);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Anton yalnızca 400 ağırlığında gelir; tarayıcı sahte bold üretmesin.
+     Alttaki ince pay, son satırdaki Ş/Ç sedillerinin kutu dışında
+     kalıp kırpılmasını engeller. */
+  .font-display {
+    font-weight: 400;
+    text-transform: uppercase;
+    padding-bottom: 0.07em;
+  }
+
+  /* Klavye odağı her zaman görünür — pirinç, WCAG kontrastı geçer. */
+  :focus-visible {
+    outline: 2px solid var(--color-brass);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-red);
+    color: var(--color-bone);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* --------------------------------------------------------------------------
+   Doku ve ışık — sıcak karanlık, tek kaynaklı ışık, film grain
+   -------------------------------------------------------------------------- */
+
+@utility grain {
+  position: relative;
+  isolation: isolate;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0.16;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  }
+}
+
+/* Görselin alt kenarını zemine karıştırır — sahne ışığı hissi */
+@utility fade-to-charcoal {
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 55%,
+    transparent 100%
+  );
+}
+
+/* Ateş/kor parıltısı — hero ve ürün görselleri altında */
+@utility ember-glow {
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 100%,
+    color-mix(in oklab, var(--color-brick) 45%, transparent) 0%,
+    transparent 70%
+  );
+}
+
+/* İnce pirinç ayraç */
+@utility rule-brass {
+  border-color: color-mix(in oklab, var(--color-brass) 35%, transparent);
+}
+
+/* --------------------------------------------------------------------------
+   Erişilebilirlik: hareket azaltma
+   Animasyonlar kapandığında site tam işlevsel kalır — Framer Motion
+   varyantları da useReducedMotion ile kontrol edilir (lib/motion.ts).
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
