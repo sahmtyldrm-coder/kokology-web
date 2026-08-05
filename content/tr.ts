@@ -20,7 +20,8 @@ export const business = {
    * Profil başlığı sadeleştirilirse burayı da güncelle.
    */
   googleName: "Kokology Ataevler | Kokoreç & Street Food",
-  legalName: "Kokology", // TODO: faturadaki resmi ticari unvan
+  /** Resmi ticari unvan — işletmeden teyitli */
+  legalName: "Kokology",
   tagline: "Street Grill Culture",
   secondaryTagline: "Old Turkish Delicious",
 
