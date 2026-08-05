@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Link from "next/link";
 import { menu } from "@/content/tr";
 
 /**
@@ -10,16 +10,23 @@ import { menu } from "@/content/tr";
  */
 export function MenuSections({
   headingLevel = "h3",
-  showImages = true,
   columns = 2,
   className = "",
+  only,
+  linkToCategory = false,
 }: {
   headingLevel?: "h2" | "h3";
-  showImages?: boolean;
   columns?: 1 | 2;
   className?: string;
+  /** Tek kategori göster — kategori sayfalarında kullanılır */
+  only?: string;
+  /** Başlıkları /menu/[kategori] sayfalarına bağla */
+  linkToCategory?: boolean;
 }) {
   const Heading = headingLevel;
+  const sections = only
+    ? menu.sections.filter((s) => s.id === only)
+    : menu.sections;
 
   return (
     <div
@@ -27,34 +34,31 @@ export function MenuSections({
         columns === 2 ? "md:grid-cols-2" : ""
       } ${className}`}
     >
-      {menu.sections.map((section) => (
+      {sections.map((section) => (
         <section key={section.id} id={`menu-${section.id}`} className="scroll-mt-24">
-          <div className="flex items-center gap-4">
-            {showImages &&
-              (section.image ? (
-                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full bg-soot">
-                  <Image
-                    src={section.image}
-                    alt={section.alt}
-                    fill
-                    sizes="56px"
-                    quality={70}
-                    className="object-cover"
-                  />
-                </div>
-              ) : (
-                /* Fotoğrafsız kategoride de aynı yer ayrılır ki sütunlar
-                   arasında başlık hizası kaymasın. */
-                <div
-                  aria-hidden
-                  className="rule-brass h-14 w-14 shrink-0 rounded-full border border-dashed"
-                />
-              ))}
-
+          <div className="flex items-baseline gap-4">
             <Heading className="font-display text-2xl text-brass sm:text-3xl">
-              {section.name}
+              {linkToCategory ? (
+                <Link
+                  href={`/menu/${section.id}`}
+                  className="transition-colors hover:text-bone"
+                >
+                  {section.name}
+                </Link>
+              ) : (
+                section.name
+              )}
             </Heading>
-            <span aria-hidden className="rule-brass mt-1 h-px flex-1 border-t" />
+            <span aria-hidden className="rule-brass h-px flex-1 border-t" />
+            {linkToCategory && (
+              <Link
+                href={`/menu/${section.id}`}
+                className="shrink-0 font-sans text-xs text-bone/45 transition-colors hover:text-brass"
+                aria-label={`${section.name} kategorisinin sayfasına git`}
+              >
+                detay →
+              </Link>
+            )}
           </div>
 
           <dl className="mt-5">
@@ -65,6 +69,12 @@ export function MenuSections({
               >
                 <dt className="font-sans text-base text-bone">
                   {item.name}
+                  {"signature" in item && item.signature && (
+                    /* İmza ürünü: menüde göz bunu ilk yakalasın */
+                    <span className="ml-2 inline-flex items-center gap-1 rounded-full border border-brass/50 bg-brass/10 px-2 py-0.5 align-middle font-sans text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-brass">
+                      İmza
+                    </span>
+                  )}
                   {item.note && (
                     <span className="ml-2 font-sans text-sm text-bone/45">
                       {item.note}

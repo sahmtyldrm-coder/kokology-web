@@ -1,4 +1,5 @@
 import { business, menu, culture, seo, faq } from "@/content/tr";
+import { kategoriBul } from "@/content/kategoriler";
 import { openingHoursSpecification } from "@/lib/hours";
 
 const site = business.siteUrl;
@@ -90,6 +91,127 @@ function reviewSchema() {
 }
 
 /* -------------------------------------------------------------------------- */
+
+/** Basit iç sayfa: kırıntı yolu + sayfa kaydı. İşletmeye @id ile bağlanır. */
+export function sayfaSchema({
+  path,
+  name,
+  description,
+  breadcrumb,
+}: {
+  path: string;
+  name: string;
+  description: string;
+  breadcrumb: string;
+}) {
+  const url = `${site}${path}`;
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: business.name, item: site },
+          { "@type": "ListItem", position: 2, name: breadcrumb, item: url },
+        ],
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${url}#webpage`,
+        url,
+        name,
+        description,
+        inLanguage: "tr-TR",
+        isPartOf: { "@id": `${site}/#website` },
+        about: { "@id": `${site}/#restaurant` },
+      },
+    ],
+  };
+}
+
+/**
+ * /menu/[kategori] — kırıntı yolu + yalnızca o kategorinin menü bölümü +
+ * kategoriye özel sorular.
+ *
+ * Tüm menü burada tekrarlanmaz: sayfada yalnızca bir kategorinin fiyatları
+ * var, tamamını işaretlemek sayfada olmayan içeriği beyan etmek olurdu.
+ */
+export function kategoriSchema(slug: string) {
+  const bulunan = kategoriBul(slug);
+  if (!bulunan) return { "@context": "https://schema.org", "@graph": [] };
+  const { kategori, section } = bulunan;
+  const url = `${site}/menu/${slug}`;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: business.name, item: site },
+          { "@type": "ListItem", position: 2, name: "Menü", item: `${site}/menu` },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: kategori.eyebrow,
+            item: url,
+          },
+        ],
+      },
+      {
+        "@type": "Menu",
+        "@id": `${url}#menu`,
+        name: `Kokology ${kategori.eyebrow}`,
+        inLanguage: "tr-TR",
+        hasMenuSection: [
+          {
+            "@type": "MenuSection",
+            name: section.name,
+            image: `${site}${kategori.image}`,
+            hasMenuItem: section.items.map((item) => ({
+              "@type": "MenuItem",
+              name: item.name,
+              ...(item.note && { description: item.note }),
+              ...(item.price !== null && {
+                offers: {
+                  "@type": "Offer",
+                  price: item.price,
+                  priceCurrency: menu.currency,
+                  availability: "https://schema.org/InStock",
+                },
+              }),
+            })),
+          },
+        ],
+      },
+      ...(kategori.faq.length > 0
+        ? [
+            {
+              "@type": "FAQPage",
+              "@id": `${url}#sss`,
+              inLanguage: "tr-TR",
+              mainEntity: kategori.faq.map((f) => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a },
+              })),
+            },
+          ]
+        : []),
+      {
+        "@type": "WebPage",
+        "@id": `${url}#webpage`,
+        url,
+        name: kategori.title,
+        description: kategori.description,
+        inLanguage: "tr-TR",
+        isPartOf: { "@id": `${site}/#website` },
+        about: { "@id": `${site}/#restaurant` },
+        primaryImageOfPage: `${site}${kategori.image}`,
+      },
+    ],
+  };
+}
 
 /**
  * /menu sayfası — kırıntı yolu + menünün kendisi.

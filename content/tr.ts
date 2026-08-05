@@ -182,14 +182,18 @@ export const nav = {
   brandHome: "Kokology ana sayfa",
   openMenu: "Menüyü aç",
   closeMenu: "Menüyü kapat",
-  /** "Menü" ilk sırada: gelen ziyaretçinin ilk sorusu bu. */
+  /**
+   * "Menü" ilk sırada: gelen ziyaretçinin ilk sorusu bu.
+   * Rota bağlantıları (/) ile sayfa içi çapalar (#) karışık olabilir;
+   * Nav bileşeni hangisinin next/link, hangisinin <a> olacağını kendi seçer.
+   */
   links: [
     { href: "/menu", label: "Menü" },
+    { href: "/hakkimizda", label: "Hakkımızda" },
     { href: "#mekan", label: "Mekân" },
-    { href: "#miras", label: "Miras" },
     { href: "#kultur", label: "Kültür" },
     { href: "#sss", label: "S.S.S." },
-    { href: "#bul-bizi", label: "Bul Bizi" },
+    { href: "/bul-bizi", label: "Bul Bizi" },
   ],
   cta: {
     order: "Sipariş",
@@ -325,7 +329,13 @@ export const menu = {
         { name: "Üç Çeyrek Kokoreç", price: 550 as number | null, note: "" },
         { name: "Tam Kokoreç", price: 700 as number | null, note: "" },
         { name: "Porsiyon Kokoreç", price: 700 as number | null, note: "" },
-        { name: "Special Atom", price: 1200 as number | null, note: "Uykuluklu" },
+        {
+          name: "Special Atom",
+          price: 1200 as number | null,
+          note: "Uykuluklu",
+          /** Markanın imza ürünü — menüde ayrıca işaretlenir */
+          signature: true,
+        },
       ],
     },
     {

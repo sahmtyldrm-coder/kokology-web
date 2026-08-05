@@ -37,8 +37,10 @@
   --text-mega--line-height: 0.9;
   --text-mega--letter-spacing: -0.02em;
 
+  /* Çok satırlı Türkçe başlıklarda Ğ/Ş/İ aksanları üst satırın altına
+     giren işaretlerle çakışıyordu; 1.05 ikisine de nefes bırakıyor. */
   --text-jumbo: clamp(2.5rem, 8vw, 6rem);
-  --text-jumbo--line-height: 0.98;
+  --text-jumbo--line-height: 1.05;
   --text-jumbo--letter-spacing: -0.01em;
 
   --ease-ember: cubic-bezier(0.16, 1, 0.3, 1);

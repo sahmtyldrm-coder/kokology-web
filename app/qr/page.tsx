@@ -74,7 +74,6 @@ export default function QrMenuPage() {
         {/* Tek sütun, görselsiz: masada hız her şeyden önemli */}
         <MenuSections
           headingLevel="h2"
-          showImages={false}
           columns={1}
           className="mt-10"
         />

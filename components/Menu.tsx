@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { menu, a11y } from "@/content/tr";
-import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
+import { Reveal, RevealGroup, RevealItem, WipeText } from "@/components/Reveal";
 import { MenuSections } from "@/components/MenuSections";
 
 /**
@@ -23,7 +23,7 @@ export function Menu() {
             {menu.eyebrow}
           </p>
           <div className="mt-4 flex flex-wrap items-start justify-between gap-6">
-            <h2 className="font-display text-jumbo text-bone">{menu.heading}</h2>
+            <WipeText className="font-display text-jumbo text-bone">{menu.heading}</WipeText>
             <Link
               href="/menu"
               className="inline-flex min-h-[48px] items-center gap-2 rounded-full border border-bone/25 px-6 font-sans text-sm font-medium text-bone/90 transition-colors hover:border-brass hover:text-brass"
@@ -44,7 +44,7 @@ export function Menu() {
           aria-label={a11y.menuLabel}
         >
           {menu.featured.map((item) => (
-            <RevealItem as="li" key={item.id} className="group">
+            <RevealItem as="li" key={item.id} className="group" scale>
               <article>
                 <a href={`#menu-${item.id}`} className="block">
                   <div className="grain relative aspect-[4/5] overflow-hidden rounded-sm bg-soot">

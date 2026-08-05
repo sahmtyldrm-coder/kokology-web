@@ -4,13 +4,18 @@ import { useEffect, useState } from "react";
 import { findUs, business, nav } from "@/content/tr";
 import { getOpenState, todayIndex, formatTime, type OpenState } from "@/lib/hours";
 import { primaryAction } from "@/lib/schema";
-import { Reveal } from "@/components/Reveal";
+import { Reveal, WipeText } from "@/components/Reveal";
 
 /**
  * Bölüm 7 — Kapı. Sitenin ticari olarak en önemli ekranı.
  * Mobilde tek başparmakla: ara, yol tarifi al, saatleri gör.
  */
-export function FindUs() {
+export function FindUs({
+  /** /bul-bizi sayfasında başlık H1 olarak sayfanın kendisinde duruyor */
+  showHeading = true,
+}: {
+  showHeading?: boolean;
+} = {}) {
   const action = primaryAction();
 
   /**
@@ -39,12 +44,16 @@ export function FindUs() {
     >
       <div className="mx-auto w-full max-w-[1400px] px-5 sm:px-8 lg:px-12">
         <Reveal>
-          <p className="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brass">
-            {findUs.eyebrow}
-          </p>
-          <h2 className="font-display mt-4 text-jumbo text-bone">
-            {findUs.heading}
-          </h2>
+          {showHeading && (
+            <>
+              <p className="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brass">
+                {findUs.eyebrow}
+              </p>
+              <WipeText className="font-display mt-4 text-jumbo text-bone">
+                {findUs.heading}
+              </WipeText>
+            </>
+          )}
           <p className="mt-5 max-w-[46ch] font-serif text-lg leading-relaxed text-bone/70 italic">
             {findUs.lead}
           </p>

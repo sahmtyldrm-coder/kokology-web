@@ -1,5 +1,5 @@
 import { culture, business } from "@/content/tr";
-import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
+import { Reveal, RevealGroup, RevealItem, WipeText } from "@/components/Reveal";
 
 /**
  * Bölüm 6 — Kültür / Ses duvarı.
@@ -23,9 +23,9 @@ export function Culture() {
             {culture.eyebrow}
           </p>
           <div className="mt-4 flex flex-wrap items-center justify-between gap-x-8 gap-y-4">
-            <h2 className="font-display text-jumbo text-bone">
+            <WipeText className="font-display text-jumbo text-bone">
               {culture.heading}
-            </h2>
+            </WipeText>
 
             {/* Puanın kaynağı açıkça yazılır — sayı havada kalmasın */}
             {hasReviews && (

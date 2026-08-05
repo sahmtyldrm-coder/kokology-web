@@ -1,5 +1,5 @@
 import { faq } from "@/content/tr";
-import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
+import { Reveal, RevealGroup, RevealItem, WipeText } from "@/components/Reveal";
 
 /**
  * Sık sorulanlar.
@@ -19,9 +19,9 @@ export function Faq() {
             <p className="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brass">
               {faq.eyebrow}
             </p>
-            <h2 className="mt-4 font-display text-jumbo text-bone">
+            <WipeText className="mt-4 font-display text-jumbo text-bone">
               {faq.heading}
-            </h2>
+            </WipeText>
           </Reveal>
 
           <RevealGroup as="ul" stagger={0.05} className="lg:pt-3">

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { space, a11y } from "@/content/tr";
-import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
+import { Reveal, RevealGroup, RevealItem, WipeText } from "@/components/Reveal";
 
 /**
  * İçerikteki `span` değerini grid yerleşimine çevirir.
@@ -33,9 +33,9 @@ export function Space() {
               <p className="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brass">
                 {space.eyebrow}
               </p>
-              <h2 className="mt-4 max-w-[22ch] font-display text-jumbo text-bone">
+              <WipeText className="mt-4 max-w-[22ch] font-display text-jumbo text-bone">
                 {space.heading}
-              </h2>
+              </WipeText>
             </div>
             {/* Vitrin etiketi — mekânın kendi dilinden bir alıntı */}
             <span className="rule-brass rounded-full border px-4 py-2 font-sans text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-brass">
@@ -57,6 +57,7 @@ export function Space() {
             <RevealItem
               as="li"
               key={shot.src}
+              scale
               className={`group relative overflow-hidden rounded-sm bg-soot ${
                 SPAN_CLASS[shot.span] ?? SPAN_CLASS.normal
               }`}
