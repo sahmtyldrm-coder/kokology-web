@@ -175,12 +175,21 @@ export function siteSchema() {
         priceRange: business.priceRange,
         servesCuisine: [...business.servesCuisine],
         currenciesAccepted: "TRY",
+        paymentAccepted: [
+          "Nakit",
+          "Kredi Kartı",
+          "Banka Kartı",
+          ...business.payment.mealCards,
+        ].join(", "),
         amenityFeature: business.amenities.map((name) => ({
           "@type": "LocationFeatureSpecification",
           name,
           value: true,
         })),
-        acceptsReservations: false,
+        // Normal ziyarette rezervasyon gerekmiyor; yalnızca grup ve topluluk
+        // etkinlikleri için telefonla alınıyor.
+        acceptsReservations:
+          "Grup ve topluluk etkinlikleri için telefonla rezervasyon alınır",
         hasMenu: { "@id": `${site}/#menu` },
         ...(sameAs().length > 0 && { sameAs: sameAs() }),
         ...reviewSchema(),

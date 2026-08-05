@@ -28,7 +28,8 @@ export function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "16%"]);
+  // Anahtar görsel tamamlanmış bir kompozisyon; fazla parallax kadrajı bozuyor.
+  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "9%"]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "38%"]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
@@ -49,24 +50,31 @@ export function Hero() {
           fetchPriority="high"
           sizes="100vw"
           quality={82}
-          /* Dar ekranda kadraj daralınca duvar resmi kayıyor; odağı Leonardo'nun
-             yüzüne sabitliyoruz. Geniş ekranda merkez kadraj zaten doğru. */
-          className="scale-105 object-cover object-[46%_center] sm:object-center"
+          /* Dar ekranda kadraj daralınca Leonardo kayıyor; odağı ona
+             sabitliyoruz. Geniş ekranda merkez kadraj zaten doğru. */
+          /* Görsel 16:9; 16:10 ekranlarda yatayda kırpılıyor. Kadraj sağa
+             kaydırılır ki wordmark'ın son harfi kesilmesin — soldaki boş
+             manzara alanını kaybetmek zararsız. */
+          className="scale-105 object-cover object-[40%_center] sm:object-[58%_center]"
         />
       </motion.div>
 
-      {/* Sıcaklık ve derinlik: soldan sağa açılan koyu perde, metnin arkası en koyu */}
+      {/*
+        Perdeleme dengesi: sol taraf metnin okunması için koyulaşır ama
+        Leonardo'nun yüzünü ve elindeki ekmeği yutmayacak kadar hafif —
+        iştahı taşıyan unsur o. Asıl karartma alttan gelir, metin oraya oturur.
+      */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-gradient-to-r from-charcoal via-charcoal/75 to-charcoal/25"
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-charcoal/85 via-charcoal/35 to-transparent"
       />
       <div
         aria-hidden
-        className="absolute inset-x-0 top-0 -z-10 h-32 bg-gradient-to-b from-charcoal to-transparent"
+        className="absolute inset-x-0 top-0 -z-10 h-28 bg-gradient-to-b from-charcoal/90 to-transparent"
       />
       <div
         aria-hidden
-        className="absolute inset-x-0 bottom-0 -z-10 h-2/3 bg-gradient-to-t from-charcoal via-charcoal/80 to-transparent"
+        className="absolute inset-x-0 bottom-0 -z-10 h-3/5 bg-gradient-to-t from-charcoal via-charcoal/85 to-transparent"
       />
       <div aria-hidden className="ember-glow absolute inset-x-0 bottom-0 -z-10 h-1/3" />
 

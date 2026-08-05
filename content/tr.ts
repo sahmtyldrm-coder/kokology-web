@@ -68,10 +68,8 @@ export const business = {
    * Haftanın günleri: 0 = Pazar ... 6 = Cumartesi
    * "Şu an açık" rozeti ve schema.org openingHoursSpecification bundan üretilir.
    *
-   * Kapanış 02:00 Google İşletme Profilinden teyitli — gece yarısını aşan
-   * vardiya olarak hesaplanır (bkz. lib/hours.ts).
-   * TODO: AÇILIŞ SAATLERİ HÂLÂ TAHMİN. Gün gün doğrusunu gir; yanlış açılış
-   * saati "şu an açık" rozetini yanlış gösterir.
+   * Her gün 11.00 – 02.00, işletmeden teyitli. Kapanış gece yarısını aştığı
+   * için ertesi güne taşan vardiya olarak hesaplanır (bkz. lib/hours.ts).
    */
   hours: [
     { day: 1, label: "Pazartesi", opens: "11:00", closes: "02:00" },
@@ -106,14 +104,41 @@ export const business = {
   },
 
   /**
-   * Sipariş platformları henüz aktif değil. Hepsi boş olduğu sürece kırmızı
-   * CTA "Ara" olarak kalır; ilk link girildiği anda tüm butonlar otomatik
-   * "Sipariş"e döner (bkz. lib/schema.ts → primaryAction).
+   * Sipariş platformları — işletme hepsinde aktif.
+   *
+   * TODO: Her platformdaki İŞLETME SAYFASININ linkini gir. Link girildiği anda
+   * kırmızı CTA otomatik "Ara"dan "Sipariş"e döner (lib/schema.ts →
+   * primaryAction) ve butonlar o adrese gider. Linkler boşken CTA "Ara"
+   * kalır — olmayan bir yere götüren buton koymamak için.
    */
   ordering: {
     yemeksepeti: "",
     getir: "",
+    uberEats: "",
+    migrosYemek: "",
     trendyolYemek: "",
+  },
+
+  /** Sipariş alınan platformların görünen adları — S.S.S. metninde kullanılır */
+  orderingPlatforms: [
+    "Yemeksepeti",
+    "Getir Yemek",
+    "Uber Eats",
+    "Migros Yemek",
+    "Trendyol Yemek",
+  ],
+
+  /** Ödeme — işletmeden teyitli */
+  payment: {
+    cards: "Tüm kredi ve banka kartları",
+    mealCards: [
+      "Sodexo",
+      "Multinet",
+      "Ticket",
+      "Setcard",
+      "Metropol",
+      "Edenred",
+    ],
   },
 
   /**
@@ -182,10 +207,10 @@ export const hero = {
    * H1 — marka + kategori + konum. Sayfanın tek H1'i ve SEO'nun en önemli
    * satırı. Kategori "kokoreççi": mekânın birincil kimliği bu.
    *
-   * Hero görselinde duvara el yazmasıyla "KOKOLOGY" boyanmış olduğu için
-   * marka adı Anton ile ikinci kez BÜYÜK yazılmıyor — aynı kelime iki farklı
-   * karakterle iki kez görünürdü. Marka adı H1'in içinde daha küçük duruyor,
-   * görsel ağırlığı duvar resmi taşıyor.
+   * Hero görselinde marka wordmark'ı zaten büyük ve el yazmasıyla yer aldığı
+   * için marka adı Anton ile ikinci kez BÜYÜK yazılmıyor — aynı kelime iki
+   * farklı karakterle iki kez görünürdü. Marka adı H1 içinde daha küçük
+   * duruyor, görsel ağırlığı anahtar görsel taşıyor.
    */
   h1: {
     brand: "Kokology",
@@ -194,8 +219,8 @@ export const hero = {
   witty: "Sokağın en eski lezzeti. En yeni hali.",
   eyebrow: "Cadde Ataevler · Nilüfer / Bursa",
   image: {
-    src: "/images/mekan/kokology-leonardo-duvar-resmi-bursa-kokorecci.jpg",
-    alt: "Kokology Bursa Ataevler'de ocağın yanındaki elle boyanmış Leonardo da Vinci duvar resmi ve KOKOLOGY yazısı",
+    src: "/images/mekan/kokology-bursa-nilufer-kokorec-leonardo-da-vinci-marka-gorseli.jpg",
+    alt: "Kokology marka görseli: Leonardo da Vinci elinde kokoreç ekmek arası tutuyor, önündeki masada şişte pişmiş kokoreç — Bursa Nilüfer Ataevler kokoreççisi",
   },
 
   /** Güven satırı — karar veren bilgiler tek bakışta (CRO) */
@@ -544,10 +569,7 @@ export const findUs = {
  * KURAL: Buraya yalnızca DOĞRULANMIŞ bilgi yazılır. Yapay zekâlar bu cevapları
  * birebir alıntılıyor; tahmin yazmak yanlış bilginin yayılması demek.
  *
- * TODO — teyit edilince eklenecek sorular:
- *   · "Paket servis / eve teslimat var mı?"
- *   · "Rezervasyon alıyor musunuz?"
- *   · "Kredi kartı geçiyor mu?"
+ * Cevaplar 6 Ağustos 2026'da işletmeden birebir teyit edildi.
  */
 export const faq = {
   eyebrow: "Merak edilenler",
@@ -583,7 +605,23 @@ export const faq = {
     },
     {
       q: "Kokology'ye nasıl sipariş verilir?",
-      a: "Şu an telefonla: 0531 715 11 95. Online sipariş platformları yakında devreye giriyor.",
+      a: "Online yemek platformlarından sipariş edebilirsiniz: Yemeksepeti, Getir Yemek, Uber Eats, Migros Yemek ve Trendyol Yemek. Doğrudan 0531 715 11 95 numarasını arayarak da paket sipariş verebilirsiniz.",
+    },
+    {
+      q: "Paket servis var mı?",
+      a: "Var. Online yemek platformlarından ya da bizi arayarak paket sipariş verebilirsiniz. Gelip ayaküstü alıp gitmek de mümkün.",
+    },
+    {
+      q: "Pişmiş şiş kokoreç satıyor musunuz?",
+      a: "Evet. Şişte pişmiş kokoreci dilim dilim ya da kilo hesabıyla satıyoruz. Eve götürüp kendi sofranızda tüketmek isteyenler için ideal.",
+    },
+    {
+      q: "Hangi ödeme yöntemleri geçerli?",
+      a: "Nakit, tüm kredi ve banka kartları geçerli. Yemek kartlarından Sodexo, Multinet, Ticket, Setcard, Metropol ve Edenred kullanabilirsiniz.",
+    },
+    {
+      q: "Rezervasyon gerekiyor mu?",
+      a: "Normal ziyaretlerde gerekmez, gelip oturabilirsiniz. Kalabalık grup ve topluluk etkinlikleri için önceden aramanızı tavsiye ederiz: 0531 715 11 95.",
     },
   ],
 };
