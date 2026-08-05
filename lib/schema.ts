@@ -1,4 +1,4 @@
-import { business, menu, culture, seo, faq } from "@/content/tr";
+import { business, menu, culture, seo, faq, hero } from "@/content/tr";
 import { kategoriBul } from "@/content/kategoriler";
 import { openingHoursSpecification } from "@/lib/hours";
 
@@ -274,7 +274,10 @@ export function siteSchema() {
         description: seo.description,
         url: site,
         telephone: business.phone.e164,
+        // Google bu listeden zengin sonuçta görsel seçiyor: marka görseli,
+        // dış cephe, iç mekân ve ürün — dördü farklı soruya cevap veriyor.
         image: [
+          `${site}${hero.image.src}`,
           `${site}/images/mekan/kokology-kokorec-bursa-nilufer-cadde-ataevler-dis-cephe.jpg`,
           `${site}/images/mekan/kokology-sedir-oturma-alani-kokorecci-nilufer.jpg`,
           `${site}/images/urun/kokology-kokorec-ekmek-arasi-bursa-nilufer-06.jpg`,

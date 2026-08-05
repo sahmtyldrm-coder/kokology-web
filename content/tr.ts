@@ -277,12 +277,12 @@ export const menu = {
   printed: [
     {
       src: "/images/menu/kokology-menu-on-bursa-nilufer.jpg",
-      alt: "Kokology basılı menüsünün ön yüzü — kokoreç, köfte, sucuk, midye ve pilav fiyatları",
+      alt: "Kokology basılı menüsünün ön yüzü — Bursa Nilüfer Ataevler şubesinin kokoreç, köfte, sucuk, midye ve pilav fiyatları",
       label: "Ön yüz — yemekler",
     },
     {
       src: "/images/menu/kokology-menu-arka-icecekler.jpg",
-      alt: "Kokology basılı menüsünün arka yüzü — içecek fiyatları",
+      alt: "Kokology basılı menüsünün arka yüzü — Bursa Nilüfer Ataevler şubesinin içecek fiyatları",
       label: "Arka yüz — içecekler",
     },
   ],
@@ -297,7 +297,7 @@ export const menu = {
       description:
         "Odun ateşinde döndürülür, kekik ve pul biberle sıcak ekmeğin arasına girer. Çeyrekten tama.",
       image: "/images/urun/kokology-kokorec-ekmek-arasi-bursa-nilufer-06.jpg",
-      alt: "Kokology kokoreç ekmek arası, yanında turşu ve şalgam",
+      alt: "Kokology kokoreç ekmek arası, yanında turşu ve şalgam — Bursa Nilüfer Ataevler",
     },
     {
       id: "kofte",
@@ -305,7 +305,7 @@ export const menu = {
       description:
         "Elde yoğrulur, mangalda pişer. Ekmek arası ya da pilav ve közlemeyle porsiyon.",
       image: "/images/urun/kokology-kofte-ekmek-arasi-bursa-nilufer-02.jpg",
-      alt: "Kokology köfte ekmek arası, közlenmiş biber ile",
+      alt: "Kokology köfte ekmek arası, közlenmiş biber ile — Bursa Nilüfer Ataevler",
     },
     {
       id: "pilav",
@@ -313,7 +313,7 @@ export const menu = {
       description:
         "Tereyağlı pilav; tavuklu, bonfileli ya da üstüne kokoreçli. Öğle arasının kestirme yolu.",
       image: "/images/urun/kokology-tavuklu-pilav-bursa-nilufer-01.jpg",
-      alt: "Kokology tavuklu pilav porsiyonu",
+      alt: "Kokology tavuklu pilav porsiyonu — Bursa Nilüfer Ataevler",
     },
   ],
 
@@ -323,7 +323,7 @@ export const menu = {
       id: "kokorec",
       name: "Kokoreç",
       image: "/images/urun/kokology-kokorec-porsiyon-bursa-nilufer-06.jpg",
-      alt: "Kokology kokoreç porsiyon tabağı",
+      alt: "Kokology kokoreç porsiyon tabağı, doğranmış kokoreç — Bursa Nilüfer Ataevler",
       items: [
         { name: "Çeyrek Kokoreç", price: 200 as number | null, note: "" },
         { name: "Yarım Kokoreç", price: 350 as number | null, note: "" },
@@ -343,7 +343,7 @@ export const menu = {
       id: "kofte",
       name: "Köfte",
       image: "/images/urun/kokology-kofte-porsiyon-bursa-nilufer-03.jpg",
-      alt: "Kokology köfte porsiyon tabağı, pilav ve közleme ile",
+      alt: "Kokology köfte porsiyon tabağı, pilav ve közleme ile — Bursa Nilüfer Ataevler",
       items: [
         { name: "Çeyrek Köfte", price: 180 as number | null, note: "" },
         { name: "Yarım Köfte", price: 300 as number | null, note: "" },
@@ -354,7 +354,7 @@ export const menu = {
       id: "sucuk",
       name: "Sucuk",
       image: "/images/urun/kokology-sucuk-ekmek-bursa-nilufer-04.jpg",
-      alt: "Kokology sucuk ekmek, kızarmış ekmek arasında",
+      alt: "Kokology sucuk ekmek, kızarmış ekmek arasında kalın kesim sucuk — Bursa Nilüfer Ataevler",
       items: [
         { name: "Çeyrek Sucuk", price: 200 as number | null, note: "" },
         { name: "Yarım Sucuk", price: 350 as number | null, note: "" },
@@ -364,7 +364,7 @@ export const menu = {
       id: "midye",
       name: "Midye",
       image: "/images/urun/kokology-midye-dolma-bursa-nilufer-04.jpg",
-      alt: "Kokology midye dolma tabağı, limon dilimleri ile",
+      alt: "Kokology midye dolma tabağı, limon dilimleri ile — Bursa Nilüfer Ataevler",
       items: [
         { name: "Adet", price: 20 as number | null, note: "" },
         { name: "10 Adet", price: 200 as number | null, note: "" },
@@ -375,7 +375,7 @@ export const menu = {
       id: "pilav",
       name: "Pilav",
       image: "/images/urun/kokology-pilav-ustu-kokorec-bursa-nilufer-05.jpg",
-      alt: "Kokology pilav üstü kokoreç porsiyonu",
+      alt: "Kokology pilav üstü kokoreç porsiyonu — Bursa Nilüfer Ataevler",
       items: [
         { name: "Tavuklu Pilav", price: 200 as number | null, note: "" },
         { name: "Sporcu Pilav", price: 300 as number | null, note: "300 gr ızgara bonfile" },
@@ -413,37 +413,37 @@ export const space = {
   gallery: [
     {
       src: "/images/mekan/kokology-sedir-oturma-alani-kokorecci-nilufer.jpg",
-      alt: "Kokology iç mekânında yeşil kapitone sedirler ve duvardaki Old Master duvar resmi",
+      alt: "Kokology iç mekânında yeşil kapitone sedirler ve duvardaki Old Master resmi — Bursa Nilüfer Ataevler",
       span: "wide",
     },
     {
       src: "/images/mekan/kokology-kokorec-ocagi-mangal-bursa-nilufer.jpg",
-      alt: "Kokology'de kokoreç ocağı ve mangal",
+      alt: "Kokology'de açık kokoreç ocağı ve mangal — Bursa Nilüfer Ataevler",
       span: "tall",
     },
     {
       src: "/images/mekan/kokology-pencere-kenari-oturma-bursa-kokorec.jpg",
-      alt: "Kokology'de pencere kenarı oturma alanı",
+      alt: "Kokology'de pencere kenarı oturma alanı — Bursa Nilüfer Ataevler",
       span: "normal",
     },
     {
       src: "/images/mekan/kokology-kokorec-pisirme-acik-mutfak-bursa.jpg",
-      alt: "Kokology açık mutfağında kokoreç pişirme anı",
+      alt: "Kokology açık mutfağında kokoreç pişirme anı — Bursa Nilüfer Ataevler",
       span: "normal",
     },
     {
       src: "/images/mekan/kokology-ic-mekan-duvar-resmi-bursa-kokorecci.jpg",
-      alt: "Kokology iç mekânında duvar resmi ve oturma düzeni",
+      alt: "Kokology iç mekânında duvar resmi ve oturma düzeni — Bursa Nilüfer Ataevler",
       span: "tall",
     },
     {
       src: "/images/mekan/kokology-masa-sandalye-oturma-alani-bursa.jpg",
-      alt: "Kokology'de ahşap masalar ve thonet sandalyeler",
+      alt: "Kokology'de ahşap masalar ve thonet sandalyeler — Bursa Nilüfer Ataevler",
       span: "normal",
     },
     {
       src: "/images/mekan/kokology-restoran-ic-mekan-bursa-ataevler.jpg",
-      alt: "Kokology restoran iç mekânı geniş açı",
+      alt: "Kokology restoran iç mekânı geniş açı — Bursa Nilüfer Ataevler",
       span: "wide",
     },
     {
@@ -463,7 +463,7 @@ export const heritage = {
   pullquote: "İyi yemek. İyi keyif. İyi insanlar.",
   image: {
     src: "/images/mekan/kokology-ic-tasarim-duvar-resmi-bursa-kokorec.jpg",
-    alt: "Kokology duvarındaki Old Master tarzı sofra resmi",
+    alt: "Kokology duvarındaki Old Master tarzı sofra resmi — Bursa Nilüfer Ataevler",
   },
 };
 

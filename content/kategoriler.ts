@@ -183,8 +183,10 @@ export const kategoriler: Kategori[] = [
     ],
     local:
       "Bursa'da ayran denince akla gelen isimler bellidir; biz Özerihisar ve Sütaş ile gidiyoruz. Uludağ gazoz da yerel refleksin karşılığı — şehrin kendi markası.",
-    image: "/images/urun/kokology-sucuk-ekmek-bursa-nilufer-06.jpg",
-    alt: "Kokology masasında ayran, şalgam ve gazoz — Bursa Nilüfer Ataevler",
+    /* Tek bir stok fotoğraf yerine, sekiz içeceğin markanın koyu zeminine
+       oturtulmuş dizilimi — kategori sayfasının kendi görseli. */
+    image: "/images/icecek/kokology-icecekler-ayran-salgam-gazoz-bursa-nilufer.jpg",
+    alt: "Kokology'de satılan içecekler: Özerhisar ve Sütaş ayran, acılı şalgam, Uludağ gazoz ve maden suyu, Coca-Cola — Bursa Nilüfer Ataevler",
     faq: [
       {
         q: "Kokorecin yanına ne içilir?",
