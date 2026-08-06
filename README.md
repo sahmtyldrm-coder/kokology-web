@@ -38,14 +38,41 @@ npm start
 | `/menu` | Menü ve fiyatların kendi başlığı/açıklamasıyla ayrı sayfası. "bursa kokoreç fiyatları" gibi sorgular için ikinci giriş kapısı | Evet |
 | `/qr` | Masadan okutulan QR menü. Görselsiz, tek sütun, kategori sekmeli | Hayır — içerik `/menu` ile aynı olduğu için `noindex` + canonical `/menu` |
 
+Yol tablosuna `/menu/[kategori]` de girer: `kokorec`, `kofte`, `sucuk`,
+`midye`, `pilav`, `icecekler`. Her biri ayrı arama hedefi, ayrı yapısal veri.
+Ayrıca `/hakkimizda` ve `/bul-bizi`.
+
 ### QR kodu
 
 ```bash
 npm run qr     # public/qr-menu.svg (baskı) + public/qr-menu.png üretir
 ```
 
-Kod alan adını içeriyor. **`business.siteUrl` gerçek alan adıyla güncellenmeden
-basılan QR yanlış adrese gider** — alan adı netleşince komutu tekrar çalıştır.
+Kodun gittiği adres `business.siteUrl` + `business.qr.hedefYol` birleşimidir.
+**Hedef yol ayrı tutuluyor ki kampanyada kodu yeniden bastırmadan yönlendirme
+değiştirilebilsin** — bayram menüsü için `/menu/kokorec`, duyuru için `/`.
+Faz D'de bu alan admin panelinden düzenlenecek.
+
+> **`business.siteUrl` gerçek alan adıyla güncellenmeden basılan QR yanlış
+> adrese gider.** Script bunu tespit edip uyarıyor; alan adı netleşince komutu
+> tekrar çalıştır, masa kartlarını ondan sonra bastır.
+
+### Görsel standardı
+
+Sitedeki her görsel şu kurallara uyar:
+
+- **Dosya adı** küçük harf, tireli, Türkçe anahtar kelimeli, konum içerir
+- **Alt metin** ne göründüğünü + nerede olduğunu söyler (Bursa / Nilüfer / Ataevler)
+- **Sunum formatı** `next/image` üzerinden AVIF/WebP; kaynaklar sıkıştırılmış JPEG/PNG
+
+Denetim script'i `scripts/` altında değil, geliştirme sırasında kullanıldı;
+yeni görsel eklerken aynı kurallara uyulması yeterli.
+
+**İçecek görselleri hakkında:** üreticilerin e-ticaret çekimleri. Beyaz zemin
+köşelerden taşırma yöntemiyle kaldırıldı (eşik tabanlı silme cam şişeleri
+deler). Gerçek şişe pikselleri 106–367px arasında — satır içi küçük görsel ve
+dizilim olarak sorunsuz, tek tek büyük kullanım için uygun değiller. Telifleri
+işletmeye ait değil.
 
 ## Ölçümleme
 

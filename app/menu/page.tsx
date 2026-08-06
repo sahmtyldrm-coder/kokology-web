@@ -6,6 +6,7 @@ import { ScrollProgress } from "@/components/ScrollProgress";
 import { StickyCTA } from "@/components/StickyCTA";
 import { Footer } from "@/components/Footer";
 import { MenuSections } from "@/components/MenuSections";
+import { MenuKategoriGrid } from "@/components/MenuKategoriGrid";
 import { Reveal } from "@/components/Reveal";
 import { menu, a11y, business } from "@/content/tr";
 import { menuPage } from "@/content/menu-page";
@@ -62,10 +63,31 @@ export default function MenuPage() {
           </div>
         </section>
 
+        {/* Görselli menü — kategori kartları */}
         <section className="bg-charcoal px-5 py-16 sm:px-8 md:py-20 lg:px-12">
           <div className="mx-auto w-full max-w-[1400px]">
+            <Reveal className="mb-10 block">
+              <h2 className="font-display text-3xl text-bone sm:text-4xl">
+                {menuPage.gridHeading}
+              </h2>
+              <p className="mt-3 max-w-[56ch] font-sans text-base text-bone/60">
+                {menuPage.gridLead}
+              </p>
+            </Reveal>
+            <MenuKategoriGrid />
+          </div>
+        </section>
+
+        {/* Tam fiyat listesi */}
+        <section className="border-t border-bone/10 bg-charcoal px-5 py-16 sm:px-8 md:py-20 lg:px-12">
+          <div className="mx-auto w-full max-w-[1400px]">
+            <Reveal className="mb-10 block">
+              <h2 className="font-display text-3xl text-bone sm:text-4xl">
+                {menuPage.listHeading}
+              </h2>
+            </Reveal>
             <Reveal className="block">
-              <MenuSections headingLevel="h2" />
+              <MenuSections headingLevel="h3" linkToCategory />
               <p className="mt-10 font-sans text-sm text-bone/40">
                 {menu.priceNote}
               </p>

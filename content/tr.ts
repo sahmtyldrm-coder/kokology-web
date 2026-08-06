@@ -147,6 +147,26 @@ export const business = {
    * JSON-LD'deki tüm mutlak adresler buradan türüyor — yayından önce şart.
    */
   siteUrl: "https://kokology.com.tr",
+
+  /**
+   * QR MENÜ HEDEFİ
+   *
+   * Masadaki karta basılan kod bu adrese gider. Ayrı tutulmasının sebebi
+   * ticari: kampanya döneminde kodu yeniden bastırmadan hedefi
+   * değiştirebilmek. Bayram menüsü için `/menu/kokorec`, duyuru için `/`
+   * yapılabilir; masadaki kartlar aynı kalır.
+   *
+   * Faz D'de admin panelinden düzenlenecek alan budur; o zaman değer
+   * veritabanından okunur, buradaki varsayılan olarak kalır.
+   *
+   * Değiştirdikten sonra `npm run qr` çalıştır.
+   */
+  qr: {
+    /** siteUrl'e eklenen yol, baştaki eğik çizgi dahil */
+    hedefYol: "/qr",
+    /** Baskıda kodun altına yazılan kısa açıklama */
+    baskiEtiketi: "Menü için okut",
+  },
 } as const;
 
 /* ========================================================================== */
@@ -388,15 +408,15 @@ export const menu = {
       image: "",
       alt: "",
       items: [
-        { name: "Özerihisar Ayran", price: 80 as number | null, note: "" },
-        { name: "Sütaş Ayran", price: 50 as number | null, note: "" },
+        { name: "Özerihisar Ayran", price: 80 as number | null, note: "", image: "/images/icecek/ozerihisar-ayran-kokology-bursa-nilufer.png", alt: "Özerhisar ayran şişesi — Kokology Bursa Nilüfer Ataevler" },
+        { name: "Sütaş Ayran", price: 50 as number | null, note: "", image: "/images/icecek/sutas-ayran-kokology-bursa-nilufer.png", alt: "Sütaş ayran şişesi — Kokology Bursa Nilüfer Ataevler" },
         { name: "Turşu Suyu", price: 60 as number | null, note: "" },
-        { name: "Şalgam", price: 100 as number | null, note: "" },
-        { name: "Coca Cola", price: 100 as number | null, note: "" },
-        { name: "Uludağ Premium Su", price: 30 as number | null, note: "" },
-        { name: "Uludağ Gazoz", price: 90 as number | null, note: "" },
-        { name: "Uludağ Portakallı", price: 90 as number | null, note: "" },
-        { name: "Uludağ Maden Suyu", price: 40 as number | null, note: "" },
+        { name: "Şalgam", price: 100 as number | null, note: "", image: "/images/icecek/salgam-suyu-acili-kokology-bursa-nilufer.png", alt: "Acılı şalgam suyu şişesi — Kokology Bursa Nilüfer Ataevler" },
+        { name: "Coca Cola", price: 100 as number | null, note: "", image: "/images/icecek/coca-cola-kutu-kokology-bursa-nilufer.png", alt: "Coca-Cola kutu — Kokology Bursa Nilüfer Ataevler" },
+        { name: "Uludağ Premium Su", price: 30 as number | null, note: "", image: "/images/icecek/uludag-premium-su-kokology-bursa-nilufer.png", alt: "Uludağ Premium Su şişesi — Kokology Bursa Nilüfer Ataevler" },
+        { name: "Uludağ Gazoz", price: 90 as number | null, note: "", image: "/images/icecek/uludag-efsane-gazoz-kokology-bursa-nilufer.png", alt: "Uludağ Efsane Gazoz şişesi — Kokology Bursa Nilüfer Ataevler" },
+        { name: "Uludağ Portakallı", price: 90 as number | null, note: "", image: "/images/icecek/uludag-portakalli-gazoz-kokology-bursa-nilufer.png", alt: "Uludağ portakallı gazoz şişesi — Kokology Bursa Nilüfer Ataevler" },
+        { name: "Uludağ Maden Suyu", price: 40 as number | null, note: "", image: "/images/icecek/uludag-maden-suyu-kokology-bursa-nilufer.png", alt: "Uludağ maden suyu şişesi — Kokology Bursa Nilüfer Ataevler" },
         { name: "Uludağ Minarelli Su", price: 80 as number | null, note: "" },
       ],
     },

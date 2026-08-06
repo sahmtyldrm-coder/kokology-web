@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { menu } from "@/content/tr";
 
@@ -67,6 +68,21 @@ export function MenuSections({
                 key={item.name}
                 className="flex items-baseline gap-3 border-b border-bone/8 py-3 last:border-b-0"
               >
+                {/* Satır görseli yalnızca gerçekten fotoğrafı olan kalemlerde
+                    çıkar (şu an içecekler). Porsiyon varyantlarının —
+                    çeyrek/yarım/tam — ayrı fotoğrafı yok ve olması da anlamsız:
+                    aynı ürünün farklı boyu. */}
+                {"image" in item && item.image && (
+                  <span className="relative h-11 w-9 shrink-0 self-center">
+                    <Image
+                      src={item.image}
+                      alt={"alt" in item && item.alt ? item.alt : item.name}
+                      fill
+                      sizes="36px"
+                      className="object-contain object-bottom"
+                    />
+                  </span>
+                )}
                 <dt className="font-sans text-base text-bone">
                   {item.name}
                   {"signature" in item && item.signature && (

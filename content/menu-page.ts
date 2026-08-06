@@ -18,6 +18,12 @@ export const menuPage = {
   h1: "Kokology menü ve fiyatları",
   lead: `Ataevler'deki ocağımızdan çıkan her şey ve güncel fiyatları. Kokoreç çeyrekten tama, köfte ekmek arası ya da porsiyon. Fiyatlar ${business.address.town} şubemiz içindir.`,
 
+  gridHeading: "Neler var?",
+  gridLead:
+    "Altı kategori. Her birinin kendi sayfasında hikâyesi, tam fiyat listesi ve o ürüne özel sorular var.",
+
+  listHeading: "Tam fiyat listesi",
+
   printedHeading: "Basılı menü",
   printedLead:
     "Masadaki menünün kendisi. Old Master illüstrasyonları markanın kendi tasarımı.",
