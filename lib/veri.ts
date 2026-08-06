@@ -1,6 +1,12 @@
 import { createClient } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
-import { business as varsayilanIsletme, menu as varsayilanMenu } from "@/content/tr";
+import {
+  business as varsayilanIsletme,
+  menu as varsayilanMenu,
+  faq as varsayilanFaq,
+  culture as varsayilanCulture,
+} from "@/content/tr";
+import { yazilar as varsayilanBlog, type Blok } from "@/content/blog";
 
 /**
  * VERİ KATMANI — sitenin içeriği nereden okuduğu.
@@ -24,6 +30,9 @@ export const ETIKET = {
   menu: "menu",
   saatler: "saatler",
   ayarlar: "ayarlar",
+  sss: "sss",
+  yorumlar: "yorumlar",
+  blog: "blog",
 } as const;
 
 /** Okuma için oturumsuz istemci — sunucuda derleme sırasında da çalışır. */
@@ -165,3 +174,132 @@ async function ayarlarOku(): Promise<Ayarlar> {
 export const ayarlarGetir = unstable_cache(ayarlarOku, ["ayarlar"], {
   tags: [ETIKET.ayarlar],
 });
+
+/* -------------------------------------------------------------------------- */
+
+export type SoruCevap = { q: string; a: string };
+
+async function sssOku(): Promise<SoruCevap[]> {
+  const db = okumaIstemcisi();
+  if (!db) return [...varsayilanFaq.items];
+
+  const { data, error } = await db
+    .from("sss")
+    .select("soru, cevap")
+    .eq("yayinda", true)
+    .order("sira");
+
+  if (error || !data || data.length === 0) return [...varsayilanFaq.items];
+  return data.map((s) => ({ q: s.soru, a: s.cevap }));
+}
+
+export const sssGetir = unstable_cache(sssOku, ["sss"], { tags: [ETIKET.sss] });
+
+/* -------------------------------------------------------------------------- */
+
+export type Yorum = {
+  author: string;
+  rating: number;
+  body: string;
+  date: string;
+};
+
+async function yorumlarOku(): Promise<Yorum[]> {
+  const db = okumaIstemcisi();
+  if (!db) return [...varsayilanCulture.reviews];
+
+  const { data, error } = await db
+    .from("yorumlar")
+    .select("yazan, puan, metin, tarih")
+    .eq("yayinda", true)
+    .order("sira");
+
+  if (error || !data || data.length === 0) return [...varsayilanCulture.reviews];
+  return data.map((y) => ({
+    author: y.yazan,
+    rating: y.puan,
+    body: y.metin,
+    date: y.tarih,
+  }));
+}
+
+export const yorumlarGetir = unstable_cache(yorumlarOku, ["yorumlar"], {
+  tags: [ETIKET.yorumlar],
+});
+
+/* -------------------------------------------------------------------------- */
+
+export type BlogYazi = {
+  slug: string;
+  baslik: string;
+  seoBaslik: string;
+  aciklama: string;
+  ozet: string;
+  etiket: string;
+  gorsel: string;
+  gorselAlt: string;
+  bloklar: Blok[];
+  ilgili: { href: string; label: string }[];
+  okumaDakika: number;
+  tarih: string;
+  guncelleme: string | null;
+};
+
+/** Dosyalardaki yazıları veri katmanının şekline çevirir. */
+function varsayilanYazilar(): BlogYazi[] {
+  return varsayilanBlog.map((y) => ({
+    slug: y.slug,
+    baslik: y.h1,
+    seoBaslik: y.title,
+    aciklama: y.description,
+    ozet: y.ozet,
+    etiket: y.etiket,
+    gorsel: y.image,
+    gorselAlt: y.alt,
+    bloklar: y.bloklar,
+    ilgili: [...y.ilgili],
+    okumaDakika: y.okumaDakika,
+    tarih: y.tarih,
+    guncelleme: y.guncelleme ?? null,
+  }));
+}
+
+async function yazilarOku(): Promise<BlogYazi[]> {
+  const db = okumaIstemcisi();
+  if (!db) return varsayilanYazilar();
+
+  const { data, error } = await db
+    .from("blog_yazilar")
+    .select(
+      "slug, baslik, seo_baslik, aciklama, ozet, etiket, gorsel, gorsel_alt, bloklar, ilgili, okuma_dakika, yayin_tarihi, guncellendi",
+    )
+    .eq("durum", "yayinda")
+    .order("yayin_tarihi", { ascending: false });
+
+  if (error || !data || data.length === 0) return varsayilanYazilar();
+
+  return data.map((y) => ({
+    slug: y.slug,
+    baslik: y.baslik,
+    seoBaslik: y.seo_baslik || y.baslik,
+    aciklama: y.aciklama,
+    ozet: y.ozet,
+    etiket: y.etiket,
+    gorsel: y.gorsel,
+    gorselAlt: y.gorsel_alt,
+    bloklar: (y.bloklar ?? []) as Blok[],
+    ilgili: (y.ilgili ?? []) as { href: string; label: string }[],
+    okumaDakika: y.okuma_dakika,
+    tarih: String(y.yayin_tarihi ?? "").slice(0, 10),
+    guncelleme: y.guncellendi ? String(y.guncellendi).slice(0, 10) : null,
+  }));
+}
+
+export const yazilarGetir = unstable_cache(yazilarOku, ["blog"], {
+  tags: [ETIKET.blog],
+});
+
+export async function yaziGetir(slug: string): Promise<BlogYazi | null> {
+  const hepsi = await yazilarGetir();
+  return hepsi.find((y) => y.slug === slug) ?? null;
+}

@@ -1,6 +1,6 @@
-import { business, menu, faq, culture } from "@/content/tr";
+import { business, culture } from "@/content/tr";
 import { kategoriler } from "@/content/kategoriler";
-import { yazilar } from "@/content/blog";
+import { yazilarGetir, sssGetir, menuGetir } from "@/lib/veri";
 
 /**
  * /llms.txt — yapay zekâ araçları için sade metin özeti.
@@ -19,7 +19,12 @@ import { yazilar } from "@/content/blog";
 
 export const dynamic = "force-static";
 
-function satirlar(): string[] {
+async function satirlar(): Promise<string[]> {
+  const [menuBolumleri, sorular, yazilar] = await Promise.all([
+    menuGetir(),
+    sssGetir(),
+    yazilarGetir(),
+  ]);
   const s: string[] = [];
   const url = (p = "") => `${business.siteUrl}${p}`;
 
@@ -57,12 +62,12 @@ function satirlar(): string[] {
 
   s.push("## Menü ve fiyatlar");
   s.push("");
-  for (const bolum of menu.sections) {
-    s.push(`### ${bolum.name}`);
+  for (const bolum of menuBolumleri) {
+    s.push(`### ${bolum.ad}`);
     for (const kalem of bolum.items) {
-      const not = kalem.note ? ` (${kalem.note})` : "";
-      const fiyat = kalem.price !== null ? ` — ${kalem.price} TL` : "";
-      s.push(`- ${kalem.name}${not}${fiyat}`);
+      const not = kalem.not ? ` (${kalem.not})` : "";
+      const fiyat = kalem.fiyat !== null ? ` — ${kalem.fiyat} TL` : "";
+      s.push(`- ${kalem.ad}${not}${fiyat}`);
     }
     s.push("");
   }
@@ -71,7 +76,7 @@ function satirlar(): string[] {
 
   s.push("## Sık sorulan sorular");
   s.push("");
-  for (const soru of faq.items) {
+  for (const soru of sorular) {
     s.push(`### ${soru.q}`);
     s.push(soru.a);
     s.push("");
@@ -91,7 +96,7 @@ function satirlar(): string[] {
   s.push("## Blog yazıları");
   s.push("");
   for (const y of yazilar) {
-    s.push(`- [${y.h1}](${url(`/blog/${y.slug}`)}): ${y.ozet}`);
+    s.push(`- [${y.baslik}](${url(`/blog/${y.slug}`)}): ${y.ozet}`);
   }
   s.push("");
 
@@ -110,8 +115,8 @@ function satirlar(): string[] {
   return s;
 }
 
-export function GET() {
-  return new Response(satirlar().join("\n"), {
+export async function GET() {
+  return new Response((await satirlar()).join("\n"), {
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
       "Cache-Control": "public, max-age=3600",

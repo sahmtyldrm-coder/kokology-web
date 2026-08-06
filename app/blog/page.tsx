@@ -8,7 +8,8 @@ import { Footer } from "@/components/Footer";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { a11y, business } from "@/content/tr";
-import { yazilar, blogSayfa } from "@/content/blog";
+import { blogSayfa } from "@/content/blog";
+import { yazilarGetir } from "@/lib/veri";
 import { blogListeSchema, jsonLdString } from "@/lib/schema";
 
 export const metadata: Metadata = {
@@ -24,8 +25,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage() {
-  const sirali = [...yazilar].sort((a, b) => b.tarih.localeCompare(a.tarih));
+export default async function BlogPage() {
+  // Yazılar veritabanından; erişilemezse content/blog.ts'e düşer.
+  const sirali = await yazilarGetir();
 
   return (
     <>
@@ -73,8 +75,8 @@ export default function BlogPage() {
                       <Link href={`/blog/${yazi.slug}`} className="block">
                         <div className="grain relative aspect-[16/10] overflow-hidden rounded-sm bg-soot">
                           <Image
-                            src={yazi.image}
-                            alt={yazi.alt}
+                            src={yazi.gorsel}
+                            alt={yazi.gorselAlt}
                             fill
                             sizes="(min-width: 1024px) 31vw, (min-width: 640px) 46vw, 92vw"
                             quality={78}
@@ -94,7 +96,7 @@ export default function BlogPage() {
                         </div>
 
                         <h2 className="mt-3 font-display text-xl text-bone transition-colors group-hover:text-brass sm:text-2xl">
-                          {yazi.h1}
+                          {yazi.baslik}
                         </h2>
                       </Link>
                       <p className="mt-2.5 font-sans text-base leading-relaxed text-bone/60">
@@ -114,7 +116,7 @@ export default function BlogPage() {
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: jsonLdString(blogListeSchema()) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdString(await blogListeSchema()) }}
       />
     </>
   );

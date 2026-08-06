@@ -1,6 +1,7 @@
-import { business, menu, culture, seo, faq, hero } from "@/content/tr";
+import { business, menu, culture, seo, hero } from "@/content/tr";
 import { kategoriBul } from "@/content/kategoriler";
-import { yazilar, yaziBul, blogSayfa } from "@/content/blog";
+import { blogSayfa } from "@/content/blog";
+import { menuGetir, sssGetir, yorumlarGetir, yazilarGetir, yaziGetir } from "@/lib/veri";
 import { openingHoursSpecification } from "@/lib/hours";
 
 const site = business.siteUrl;
@@ -31,24 +32,25 @@ export function primaryAction(): { href: string; label: "order" | "call" } {
 /* -------------------------------------------------------------------------- */
 
 /** Basılı menüdeki her kategori bir MenuSection, her porsiyon bir MenuItem. */
-function menuSchema() {
+async function menuSchema() {
+  const bolumler = await menuGetir();
   return {
     "@type": "Menu",
     "@id": `${site}/#menu`,
     name: "Kokology Menü",
     inLanguage: "tr-TR",
-    hasMenuSection: menu.sections.map((section) => ({
+    hasMenuSection: bolumler.map((section) => ({
       "@type": "MenuSection",
-      name: section.name,
-      ...(section.image && { image: `${site}${section.image}` }),
+      name: section.ad,
+      ...(section.gorsel && { image: `${site}${section.gorsel}` }),
       hasMenuItem: section.items.map((item) => ({
         "@type": "MenuItem",
-        name: item.name,
-        ...(item.note && { description: item.note }),
-        ...(item.price !== null && {
+        name: item.ad,
+        ...(item.not && { description: item.not }),
+        ...(item.fiyat !== null && {
           offers: {
             "@type": "Offer",
-            price: item.price,
+            price: item.fiyat,
             priceCurrency: menu.currency,
             availability: "https://schema.org/InStock",
           },
@@ -65,8 +67,9 @@ function menuSchema() {
  * Google İşletme Profilinin tamamından (5,0 / 20 yorum) alınır — altı yorumu
  * "20 yorum" diye sunmak yanlış beyan olurdu.
  */
-function reviewSchema() {
-  if (culture.reviews.length === 0) return {};
+async function reviewSchema() {
+  const yorumlar = await yorumlarGetir();
+  if (yorumlar.length === 0) return {};
 
   return {
     aggregateRating: {
@@ -76,7 +79,7 @@ function reviewSchema() {
       bestRating: 5,
       worstRating: 1,
     },
-    review: culture.reviews.map((r) => ({
+    review: yorumlar.map((r) => ({
       "@type": "Review",
       author: { "@type": "Person", name: r.author },
       datePublished: r.date,
@@ -94,7 +97,8 @@ function reviewSchema() {
 /* -------------------------------------------------------------------------- */
 
 /** /blog — yazı listesi. */
-export function blogListeSchema() {
+export async function blogListeSchema() {
+  const yazilar = await yazilarGetir();
   const url = `${site}/blog`;
   return {
     "@context": "https://schema.org",
@@ -116,11 +120,11 @@ export function blogListeSchema() {
         publisher: { "@id": `${site}/#restaurant` },
         blogPost: yazilar.map((y) => ({
           "@type": "BlogPosting",
-          headline: y.h1,
+          headline: y.baslik,
           description: y.ozet,
           datePublished: y.tarih,
           url: `${url}/${y.slug}`,
-          image: `${site}${y.image}`,
+          image: `${site}${y.gorsel}`,
         })),
       },
     ],
@@ -134,8 +138,8 @@ export function blogListeSchema() {
  * tekrar etmek dosyayı gereksiz şişirir. Arama motorları da yapay zekâ araçları
  * da gövdeyi HTML'den okuyor.
  */
-export function yaziSchema(slug: string) {
-  const yazi = yaziBul(slug);
+export async function yaziSchema(slug: string) {
+  const yazi = await yaziGetir(slug);
   if (!yazi) return { "@context": "https://schema.org", "@graph": [] };
   const url = `${site}/blog/${slug}`;
 
@@ -147,19 +151,19 @@ export function yaziSchema(slug: string) {
         itemListElement: [
           { "@type": "ListItem", position: 1, name: business.name, item: site },
           { "@type": "ListItem", position: 2, name: "Blog", item: `${site}/blog` },
-          { "@type": "ListItem", position: 3, name: yazi.h1, item: url },
+          { "@type": "ListItem", position: 3, name: yazi.baslik, item: url },
         ],
       },
       {
         "@type": "BlogPosting",
         "@id": `${url}#article`,
-        headline: yazi.h1,
-        name: yazi.title,
-        description: yazi.description,
+        headline: yazi.baslik,
+        name: yazi.seoBaslik,
+        description: yazi.aciklama,
         inLanguage: "tr-TR",
         datePublished: yazi.tarih,
         dateModified: yazi.guncelleme ?? yazi.tarih,
-        image: `${site}${yazi.image}`,
+        image: `${site}${yazi.gorsel}`,
         mainEntityOfPage: { "@type": "WebPage", "@id": url },
         author: { "@id": `${site}/#restaurant` },
         publisher: { "@id": `${site}/#restaurant` },
@@ -301,7 +305,7 @@ export function kategoriSchema(slug: string) {
  * /menu sayfası — kırıntı yolu + menünün kendisi.
  * Restaurant kaydına `@id` ile bağlanır, tekrar tanımlanmaz.
  */
-export function menuPageSchema() {
+export async function menuPageSchema() {
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -322,7 +326,7 @@ export function menuPageSchema() {
           },
         ],
       },
-      menuSchema(),
+      await menuSchema(),
       {
         "@type": "WebPage",
         "@id": `${site}/menu#webpage`,
@@ -343,7 +347,7 @@ export function menuPageSchema() {
  * sayfalarda bulunuyor. Bulunmadığı sayfada yapısal veri olarak duyurmak
  * yanlış beyandır; Google da sayfada karşılığı olmayan işaretlemeyi eler.
  */
-export function siteSchema() {
+export async function siteSchema() {
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -401,7 +405,7 @@ export function siteSchema() {
           "Grup ve topluluk etkinlikleri için telefonla rezervasyon alınır",
         hasMenu: { "@id": `${site}/#menu` },
         ...(sameAs().length > 0 && { sameAs: sameAs() }),
-        ...reviewSchema(),
+        ...(await reviewSchema()),
       },
       {
         "@type": "WebSite",
@@ -416,18 +420,19 @@ export function siteSchema() {
 }
 
 /** Ana sayfa — menü ve sık sorulanlar burada yayınlanır. */
-export function homeSchema() {
+export async function homeSchema() {
+  const sorular = await sssGetir();
   return {
     "@context": "https://schema.org",
     "@graph": [
-      menuSchema(),
+      await menuSchema(),
       {
         // Sık sorulanlar: hem Google'ın zengin sonuçları hem de yapay zekâ
         // araçlarının doğrudan alıntıladığı kaynak.
         "@type": "FAQPage",
         "@id": `${site}/#sss`,
         inLanguage: "tr-TR",
-        mainEntity: faq.items.map((item) => ({
+        mainEntity: sorular.map((item) => ({
           "@type": "Question",
           name: item.q,
           acceptedAnswer: { "@type": "Answer", text: item.a },

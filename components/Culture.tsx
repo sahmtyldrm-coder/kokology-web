@@ -1,4 +1,5 @@
 import { culture, business } from "@/content/tr";
+import { yorumlarGetir } from "@/lib/veri";
 import { Reveal, RevealGroup, RevealItem, WipeText } from "@/components/Reveal";
 
 /**
@@ -9,8 +10,9 @@ import { Reveal, RevealGroup, RevealItem, WipeText } from "@/components/Reveal";
  * eksiksiz durur. Yorumlar girildiğinde blok kendiliğinden görünür ve
  * lib/schema.ts aynı veriden Review/AggregateRating üretir.
  */
-export function Culture() {
-  const hasReviews = culture.reviews.length > 0;
+export async function Culture() {
+  const yorumlar = await yorumlarGetir();
+  const hasReviews = yorumlar.length > 0;
 
   return (
     <section
@@ -75,7 +77,7 @@ export function Culture() {
             as="ul"
             className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
           >
-            {culture.reviews.map((review) => (
+            {yorumlar.map((review) => (
               <RevealItem
                 as="li"
                 key={`${review.author}-${review.date}`}

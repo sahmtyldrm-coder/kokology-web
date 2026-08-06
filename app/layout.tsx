@@ -99,7 +99,7 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="tr"
@@ -117,7 +117,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: jsonLdString(siteSchema()) }}
+          dangerouslySetInnerHTML={{ __html: jsonLdString(await siteSchema()) }}
         />
 
         {/* Çerezsiz, kimliksiz kendi ölçümümüz — çerez onayı beklemeden çalışır */}

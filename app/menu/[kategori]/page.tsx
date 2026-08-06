@@ -222,7 +222,7 @@ export default async function KategoriPage({
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: jsonLdString(kategoriSchema(k.slug)) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdString(await kategoriSchema(k.slug)) }}
       />
     </>
   );

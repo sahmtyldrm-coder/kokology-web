@@ -1,9 +1,11 @@
 import type { MetadataRoute } from "next";
 import { business } from "@/content/tr";
 import { kategoriSluglari } from "@/content/kategoriler";
-import { yazilar } from "@/content/blog";
+import { yazilarGetir } from "@/lib/veri";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  // Taslak yazılar sitemap'e girmez: yazilarGetir yalnızca yayındakileri döner.
+  const yazilar = await yazilarGetir();
   const now = new Date();
   const url = (path = "") => `${business.siteUrl}${path}`;
 

@@ -1,4 +1,5 @@
 import { faq } from "@/content/tr";
+import { sssGetir } from "@/lib/veri";
 import { Reveal, RevealGroup, RevealItem, WipeText } from "@/components/Reveal";
 
 /**
@@ -7,7 +8,9 @@ import { Reveal, RevealGroup, RevealItem, WipeText } from "@/components/Reveal";
  * Cevaplar `<details>` içinde ama HTML'de her zaman mevcut — arama motorları
  * ve yapay zekâ araçları kapalı akordeonu da okur. JavaScript gerekmez.
  */
-export function Faq() {
+export async function Faq() {
+  // Sorular veritabanından; erişilemezse content/tr.ts'e düşer.
+  const sorular = await sssGetir();
   return (
     <section
       id="sss"
@@ -25,7 +28,7 @@ export function Faq() {
           </Reveal>
 
           <RevealGroup as="ul" stagger={0.05} className="lg:pt-3">
-            {faq.items.map((item) => (
+            {sorular.map((item) => (
               <RevealItem as="li" key={item.q}>
                 <details className="group border-b border-bone/10">
                   <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-5 font-sans text-lg font-medium text-bone transition-colors hover:text-brass [&::-webkit-details-marker]:hidden">

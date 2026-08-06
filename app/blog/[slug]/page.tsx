@@ -10,7 +10,8 @@ import { Reveal } from "@/components/Reveal";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { BlogBloklari } from "@/components/BlogBloklari";
 import { a11y, business } from "@/content/tr";
-import { yazilar, yaziBul, yaziSluglari } from "@/content/blog";
+import { yaziSluglari } from "@/content/blog";
+import { yazilarGetir, yaziGetir } from "@/lib/veri";
 import { yaziSchema, jsonLdString } from "@/lib/schema";
 
 export function generateStaticParams() {
@@ -21,31 +22,33 @@ export async function generateMetadata({
   params,
 }: PageProps<"/blog/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const yazi = yaziBul(slug);
+  const yazi = await yaziGetir(slug);
   if (!yazi) return {};
 
   return {
-    title: yazi.title,
-    description: yazi.description,
+    title: yazi.seoBaslik,
+    description: yazi.aciklama,
     alternates: { canonical: `/blog/${yazi.slug}` },
     openGraph: {
       type: "article",
       locale: "tr_TR",
       url: `${business.siteUrl}/blog/${yazi.slug}`,
-      title: yazi.title,
-      description: yazi.description,
+      title: yazi.seoBaslik,
+      description: yazi.aciklama,
       publishedTime: yazi.tarih,
-      images: [{ url: yazi.image, alt: yazi.alt }],
+      images: [{ url: yazi.gorsel, alt: yazi.gorselAlt }],
     },
   };
 }
 
 export default async function YaziPage({ params }: PageProps<"/blog/[slug]">) {
   const { slug } = await params;
-  const yazi = yaziBul(slug);
+  const yazi = await yaziGetir(slug);
   if (!yazi) notFound();
 
-  const digerleri = yazilar.filter((y) => y.slug !== yazi.slug).slice(0, 3);
+  const digerleri = (await yazilarGetir())
+    .filter((y) => y.slug !== yazi.slug)
+    .slice(0, 3);
   const tarih = new Date(yazi.tarih).toLocaleDateString("tr-TR", {
     day: "numeric",
     month: "long",
@@ -80,7 +83,7 @@ export default async function YaziPage({ params }: PageProps<"/blog/[slug]">) {
                 </div>
 
                 <h1 className="mt-5 max-w-[22ch] font-display text-jumbo text-bone">
-                  {yazi.h1}
+                  {yazi.baslik}
                 </h1>
                 <p className="mt-6 max-w-[60ch] font-serif text-lg leading-relaxed text-bone/70 italic">
                   {yazi.ozet}
@@ -94,8 +97,8 @@ export default async function YaziPage({ params }: PageProps<"/blog/[slug]">) {
               <Reveal className="block">
                 <div className="grain relative aspect-[16/9] overflow-hidden rounded-sm bg-soot">
                   <Image
-                    src={yazi.image}
-                    alt={yazi.alt}
+                    src={yazi.gorsel}
+                    alt={yazi.gorselAlt}
                     fill
                     priority
                     sizes="(min-width: 1400px) 1400px, 100vw"
@@ -147,8 +150,8 @@ export default async function YaziPage({ params }: PageProps<"/blog/[slug]">) {
                       <Link href={`/blog/${d.slug}`} className="group block">
                         <div className="relative aspect-[16/10] overflow-hidden rounded-sm bg-soot">
                           <Image
-                            src={d.image}
-                            alt={d.alt}
+                            src={d.gorsel}
+                            alt={d.gorselAlt}
                             fill
                             sizes="(min-width: 640px) 31vw, 92vw"
                             quality={75}
@@ -156,7 +159,7 @@ export default async function YaziPage({ params }: PageProps<"/blog/[slug]">) {
                           />
                         </div>
                         <h3 className="mt-3 font-sans text-base font-semibold text-bone transition-colors group-hover:text-brass">
-                          {d.h1}
+                          {d.baslik}
                         </h3>
                       </Link>
                     </li>
@@ -173,7 +176,7 @@ export default async function YaziPage({ params }: PageProps<"/blog/[slug]">) {
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: jsonLdString(yaziSchema(yazi.slug)) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdString(await yaziSchema(yazi.slug)) }}
       />
     </>
   );

@@ -17,7 +17,7 @@ import { homeSchema, jsonLdString } from "@/lib/schema";
  * Tek scroll — "scroll = yürüyüş".
  * Sokaktan kapıya, ateşe, kültüre, masaya: bölüm sırası bu yolculuğu izler.
  */
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <ScrollProgress />
@@ -39,7 +39,7 @@ export default function Home() {
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: jsonLdString(homeSchema()) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdString(await homeSchema()) }}
       />
     </>
   );

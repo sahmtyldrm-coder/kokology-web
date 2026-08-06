@@ -22,6 +22,9 @@ const BOLUMLER = [
   { href: "/yonetim/menu", label: "Menü ve fiyatlar" },
   { href: "/yonetim/saatler", label: "Çalışma saatleri" },
   { href: "/yonetim/iletisim", label: "İletişim ve linkler" },
+  { href: "/yonetim/sss", label: "S.S.S." },
+  { href: "/yonetim/yorumlar", label: "Yorumlar" },
+  { href: "/yonetim/blog", label: "Blog" },
   { href: "/yonetim/istatistik", label: "İstatistik" },
 ];
 

@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function MenuPage() {
+export default async function MenuPage() {
   return (
     <>
       <ScrollProgress />
@@ -150,7 +150,7 @@ export default function MenuPage() {
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: jsonLdString(menuPageSchema()) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdString(await menuPageSchema()) }}
       />
     </>
   );
