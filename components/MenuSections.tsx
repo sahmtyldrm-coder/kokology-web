@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { menu } from "@/content/tr";
+import { menuGetir } from "@/lib/veri";
 
 /**
  * Basılı menünün tam dökümü — kategori başlıkları ve noktalı fiyat satırları.
@@ -9,7 +9,7 @@ import { menu } from "@/content/tr";
  * Başlık seviyesi dışarıdan verilir; her sayfada H1→H2→H3 hiyerarşisi
  * bozulmasın diye.
  */
-export function MenuSections({
+export async function MenuSections({
   headingLevel = "h3",
   columns = 2,
   className = "",
@@ -25,9 +25,10 @@ export function MenuSections({
   linkToCategory?: boolean;
 }) {
   const Heading = headingLevel;
-  const sections = only
-    ? menu.sections.filter((s) => s.id === only)
-    : menu.sections;
+  // Menü artık veritabanından geliyor; erişilemezse lib/veri.ts
+  // content/tr.ts'e düşüyor ve site kesintisiz çalışmaya devam ediyor.
+  const tum = await menuGetir();
+  const sections = only ? tum.filter((s) => s.id === only) : tum;
 
   return (
     <div
@@ -44,10 +45,10 @@ export function MenuSections({
                   href={`/menu/${section.id}`}
                   className="transition-colors hover:text-bone"
                 >
-                  {section.name}
+                  {section.ad}
                 </Link>
               ) : (
-                section.name
+                section.ad
               )}
             </Heading>
             <span aria-hidden className="rule-brass h-px flex-1 border-t" />
@@ -55,7 +56,7 @@ export function MenuSections({
               <Link
                 href={`/menu/${section.id}`}
                 className="shrink-0 font-sans text-xs text-bone/45 transition-colors hover:text-brass"
-                aria-label={`${section.name} kategorisinin sayfasına git`}
+                aria-label={`${section.ad} kategorisinin sayfasına git`}
               >
                 detay →
               </Link>
@@ -65,18 +66,18 @@ export function MenuSections({
           <dl className="mt-5">
             {section.items.map((item) => (
               <div
-                key={item.name}
+                key={item.ad}
                 className="flex items-baseline gap-3 border-b border-bone/8 py-3 last:border-b-0"
               >
                 {/* Satır görseli yalnızca gerçekten fotoğrafı olan kalemlerde
                     çıkar (şu an içecekler). Porsiyon varyantlarının —
                     çeyrek/yarım/tam — ayrı fotoğrafı yok ve olması da anlamsız:
                     aynı ürünün farklı boyu. */}
-                {"image" in item && item.image && (
+                {item.gorsel && (
                   <span className="relative h-11 w-9 shrink-0 self-center">
                     <Image
-                      src={item.image}
-                      alt={"alt" in item && item.alt ? item.alt : item.name}
+                      src={item.gorsel}
+                      alt={item.alt ?? item.ad}
                       fill
                       sizes="36px"
                       className="object-contain object-bottom"
@@ -84,16 +85,16 @@ export function MenuSections({
                   </span>
                 )}
                 <dt className="font-sans text-base text-bone">
-                  {item.name}
-                  {"signature" in item && item.signature && (
+                  {item.ad}
+                  {item.imza && (
                     /* İmza ürünü: menüde göz bunu ilk yakalasın */
                     <span className="ml-2 inline-flex items-center gap-1 rounded-full border border-brass/50 bg-brass/10 px-2 py-0.5 align-middle font-sans text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-brass">
                       İmza
                     </span>
                   )}
-                  {item.note && (
+                  {item.not && (
                     <span className="ml-2 font-sans text-sm text-bone/45">
-                      {item.note}
+                      {item.not}
                     </span>
                   )}
                 </dt>
@@ -102,9 +103,9 @@ export function MenuSections({
                   aria-hidden
                   className="mb-1 min-w-6 flex-1 border-b border-dotted border-bone/20"
                 />
-                {item.price !== null && (
+                {item.fiyat !== null && (
                   <dd className="shrink-0 font-sans text-base font-semibold tabular-nums text-bone">
-                    {item.price}
+                    {item.fiyat}
                     <span className="ml-0.5 text-brass">₺</span>
                   </dd>
                 )}
