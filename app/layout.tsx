@@ -3,6 +3,7 @@ import { Anton, Fraunces, Hanken_Grotesk, Caveat } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { business, seo, a11y, hero } from "@/content/tr";
 import { siteSchema, jsonLdString } from "@/lib/schema";
+import { Olcum } from "@/components/Olcum";
 import "./globals.css";
 
 /**
@@ -118,6 +119,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: jsonLdString(siteSchema()) }}
         />
+
+        {/* Çerezsiz, kimliksiz kendi ölçümümüz — çerez onayı beklemeden çalışır */}
+        <Olcum />
 
         {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
       </body>

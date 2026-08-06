@@ -22,6 +22,7 @@ const BOLUMLER = [
   { href: "/yonetim/menu", label: "Menü ve fiyatlar" },
   { href: "/yonetim/saatler", label: "Çalışma saatleri" },
   { href: "/yonetim/iletisim", label: "İletişim ve linkler" },
+  { href: "/yonetim/istatistik", label: "İstatistik" },
 ];
 
 export default async function YonetimLayout({

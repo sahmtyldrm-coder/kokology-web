@@ -111,6 +111,7 @@ export function Hero() {
               target: "_blank",
               rel: "noopener noreferrer",
             })}
+            data-olcum="ara"
             className="group inline-flex min-h-[52px] items-center gap-2.5 rounded-full bg-red px-8 font-sans text-base font-semibold text-bone transition-all duration-300 hover:bg-brass hover:text-charcoal hover:shadow-[0_0_28px_-4px_var(--color-brass)]"
           >
             {action.label === "order" ? nav.cta.order : nav.cta.call}
@@ -123,6 +124,7 @@ export function Hero() {
           </a>
 
           <Link
+            data-olcum="menu"
             href="/menu"
             className="inline-flex min-h-[52px] items-center rounded-full border border-brass/60 px-7 font-sans text-base font-medium text-brass transition-colors duration-200 hover:border-brass hover:bg-brass hover:text-charcoal"
           >
@@ -130,6 +132,7 @@ export function Hero() {
           </Link>
 
           <a
+            data-olcum="yol_tarifi"
             href="#bul-bizi"
             className="inline-flex min-h-[52px] items-center rounded-full border border-bone/25 px-7 font-sans text-base font-medium text-bone/90 transition-colors duration-200 hover:border-brass hover:text-brass"
           >

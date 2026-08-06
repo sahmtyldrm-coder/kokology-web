@@ -41,13 +41,15 @@ export function StickyCTA() {
                 target: "_blank",
                 rel: "noopener noreferrer",
               })}
-              className="inline-flex min-h-[52px] flex-1 items-center justify-center rounded-full bg-red px-3 font-sans text-[0.95rem] font-semibold text-bone"
+              data-olcum="ara"
+            className="inline-flex min-h-[52px] flex-1 items-center justify-center rounded-full bg-red px-3 font-sans text-[0.95rem] font-semibold text-bone"
             >
               {action.label === "order" ? nav.cta.order : nav.cta.call}
             </a>
             <Link
               href="/menu"
-              className="inline-flex min-h-[52px] flex-1 items-center justify-center rounded-full border border-brass/60 px-3 font-sans text-[0.95rem] font-semibold text-brass"
+              data-olcum="menu"
+            className="inline-flex min-h-[52px] flex-1 items-center justify-center rounded-full border border-brass/60 px-3 font-sans text-[0.95rem] font-semibold text-brass"
             >
               {nav.links[0].label}
             </Link>
@@ -55,7 +57,8 @@ export function StickyCTA() {
               href={business.maps.directionsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-[52px] flex-1 items-center justify-center rounded-full border border-bone/25 px-3 font-sans text-[0.95rem] font-medium text-bone"
+              data-olcum="yol_tarifi"
+            className="inline-flex min-h-[52px] flex-1 items-center justify-center rounded-full border border-bone/25 px-3 font-sans text-[0.95rem] font-medium text-bone"
             >
               {nav.cta.directions}
             </a>
