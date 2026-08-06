@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { business } from "@/content/tr";
+import { isletmeGetir } from "@/lib/veri";
 
 /**
  * Yapay zekâ tarayıcıları bilerek açık bırakıldı.
@@ -21,13 +21,14 @@ const YAPAY_ZEKA_TARAYICILARI = [
   "Applebot-Extended",
 ];
 
-export default function robots(): MetadataRoute.Robots {
+export default async function robots(): Promise<MetadataRoute.Robots> {
+  const { siteUrl } = await isletmeGetir();
   return {
     rules: [
       { userAgent: "*", allow: "/" },
       { userAgent: YAPAY_ZEKA_TARAYICILARI, allow: "/" },
     ],
-    sitemap: `${business.siteUrl}/sitemap.xml`,
-    host: business.siteUrl,
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   };
 }

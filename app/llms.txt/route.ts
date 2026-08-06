@@ -1,6 +1,6 @@
-import { business, culture } from "@/content/tr";
+import { culture } from "@/content/tr";
 import { kategoriler } from "@/content/kategoriler";
-import { yazilarGetir, sssGetir, menuGetir } from "@/lib/veri";
+import { yazilarGetir, sssGetir, menuGetir, isletmeGetir, saatlerGetir } from "@/lib/veri";
 
 /**
  * /llms.txt — yapay zekâ araçları için sade metin özeti.
@@ -20,13 +20,15 @@ import { yazilarGetir, sssGetir, menuGetir } from "@/lib/veri";
 export const dynamic = "force-static";
 
 async function satirlar(): Promise<string[]> {
-  const [menuBolumleri, sorular, yazilar] = await Promise.all([
+  const [menuBolumleri, sorular, yazilar, business, saatler] = await Promise.all([
     menuGetir(),
     sssGetir(),
     yazilarGetir(),
+    isletmeGetir(),
+    saatlerGetir(),
   ]);
   const s: string[] = [];
-  const url = (p = "") => `${business.siteUrl}${p}`;
+  const url = (p = "") => `${business.siteUrl.replace(/\/$/, "")}${p}`;
 
   s.push(`# ${business.name}`);
   s.push("");
@@ -46,7 +48,12 @@ async function satirlar(): Promise<string[]> {
   s.push(`- Yer imi: ${business.address.landmark} içinde`);
   s.push(`- Koordinat: ${business.geo.latitude}, ${business.geo.longitude}`);
   s.push(`- Telefon: ${business.phone.display}`);
-  s.push(`- Çalışma saatleri: Her gün 11.00 – 02.00`);
+  // Saatler panelden değiştirilebiliyor; sabit yazmak zamanla yanlış olurdu.
+  for (const g of saatler) {
+    s.push(
+      `- ${g.label}: ${g.kapali ? "Kapalı" : `${g.opens.replace(":", ".")} – ${g.closes.replace(":", ".")}`}`,
+    );
+  }
   s.push(`- Fiyat aralığı: ${business.priceRange}`);
   s.push(`- Olanaklar: ${business.amenities.join(", ")}`);
   s.push(

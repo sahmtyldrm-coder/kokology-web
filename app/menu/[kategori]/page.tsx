@@ -11,7 +11,8 @@ import { Reveal } from "@/components/Reveal";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { menu, a11y, business, nav } from "@/content/tr";
 import { kategoriler, kategoriBul, kategoriSluglari } from "@/content/kategoriler";
-import { kategoriSchema, jsonLdString, primaryAction } from "@/lib/schema";
+import { kategoriSchema, jsonLdString } from "@/lib/schema";
+import { isletmeGetir, anaAksiyon } from "@/lib/veri";
 
 export function generateStaticParams() {
   return kategoriSluglari.map((kategori) => ({ kategori }));
@@ -48,7 +49,7 @@ export default async function KategoriPage({
   if (!bulunan) notFound();
 
   const { kategori: k } = bulunan;
-  const action = primaryAction();
+  const action = anaAksiyon(await isletmeGetir());
   const digerleri = kategoriler.filter((x) => x.slug !== k.slug);
 
   return (

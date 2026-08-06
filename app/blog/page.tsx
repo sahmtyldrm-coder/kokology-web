@@ -8,22 +8,26 @@ import { Footer } from "@/components/Footer";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { a11y, business } from "@/content/tr";
+import { isletmeGetir } from "@/lib/veri";
 import { blogSayfa } from "@/content/blog";
 import { yazilarGetir } from "@/lib/veri";
 import { blogListeSchema, jsonLdString } from "@/lib/schema";
 
-export const metadata: Metadata = {
-  title: blogSayfa.title,
-  description: blogSayfa.description,
-  alternates: { canonical: "/blog" },
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  const isletme = await isletmeGetir();
+  return {
+    title: blogSayfa.title,
+    description: blogSayfa.description,
+    alternates: { canonical: "/blog" },
+    openGraph: {
     type: "website",
     locale: "tr_TR",
-    url: `${business.siteUrl}/blog`,
+    url: `${isletme.siteUrl}/blog`,
     title: blogSayfa.title,
     description: blogSayfa.description,
   },
-};
+  };
+}
 
 export default async function BlogPage() {
   // Yazılar veritabanından; erişilemezse content/blog.ts'e düşer.

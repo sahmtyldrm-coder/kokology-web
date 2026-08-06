@@ -4,8 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { hero, nav, business, findUs } from "@/content/tr";
-import { primaryAction } from "@/lib/schema";
+import { hero, nav, findUs } from "@/content/tr";
+import { useIsletme } from "@/components/IsletmeSaglayici";
+import { anaAksiyon, type Saat } from "@/lib/veri";
 import { getOpenState, formatTime, type OpenState } from "@/lib/hours";
 
 /**
@@ -21,7 +22,8 @@ import { getOpenState, formatTime, type OpenState } from "@/lib/hours";
 export function Hero() {
   const reduced = useReducedMotion();
   const ref = useRef<HTMLElement>(null);
-  const action = primaryAction();
+  const { isletme, saatler } = useIsletme();
+  const action = anaAksiyon(isletme);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -143,7 +145,7 @@ export function Hero() {
         {/* Güven satırı — karar veren bilgiler tek bakışta */}
         <ul className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 font-sans text-sm text-bone/65">
           <li>
-            <OpenStatus />
+            <OpenStatus saatler={saatler} />
           </li>
           {hero.trust.map((item) => (
             <li key={item.text} className="flex items-center gap-2">
@@ -155,7 +157,7 @@ export function Hero() {
       </motion.div>
 
       <span className="sr-only">
-        {business.address.full} · {business.phone.display}
+        {isletme.address.full} · {isletme.phone.display}
       </span>
     </section>
   );
@@ -168,15 +170,15 @@ export function Hero() {
  * hero'da göstermek karar süresini kısaltır. Durum istemcide hesaplanır;
  * statik HTML'e gömülse saatler sonra yanlış olurdu.
  */
-function OpenStatus() {
+function OpenStatus({ saatler }: { saatler: Saat[] }) {
   const [state, setState] = useState<OpenState | null>(null);
 
   useEffect(() => {
-    const tick = () => setState(getOpenState());
+    const tick = () => setState(getOpenState(saatler));
     tick();
     const id = setInterval(tick, 60_000);
     return () => clearInterval(id);
-  }, []);
+  }, [saatler]);
 
   if (!state) return <span className="inline-block h-5" aria-hidden />;
 

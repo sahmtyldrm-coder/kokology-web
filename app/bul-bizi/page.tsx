@@ -7,23 +7,27 @@ import { FindUs } from "@/components/FindUs";
 import { Reveal } from "@/components/Reveal";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { a11y, business } from "@/content/tr";
+import { isletmeGetir } from "@/lib/veri";
 import { bulBiziSayfa } from "@/content/sayfalar";
 import { sayfaSchema, jsonLdString } from "@/lib/schema";
 
-export const metadata: Metadata = {
-  title: bulBiziSayfa.title,
-  description: bulBiziSayfa.description,
-  alternates: { canonical: "/bul-bizi" },
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  const isletme = await isletmeGetir();
+  return {
+    title: bulBiziSayfa.title,
+    description: bulBiziSayfa.description,
+    alternates: { canonical: "/bul-bizi" },
+    openGraph: {
     type: "website",
     locale: "tr_TR",
-    url: `${business.siteUrl}/bul-bizi`,
+    url: `${isletme.siteUrl}/bul-bizi`,
     title: bulBiziSayfa.title,
     description: bulBiziSayfa.description,
   },
-};
+  };
+}
 
-export default function BulBiziPage() {
+export default async function BulBiziPage() {
   return (
     <>
       <ScrollProgress />
@@ -78,7 +82,7 @@ export default function BulBiziPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: jsonLdString(
-            sayfaSchema({
+            await sayfaSchema({
               path: "/bul-bizi",
               name: bulBiziSayfa.title,
               description: bulBiziSayfa.description,

@@ -1,13 +1,13 @@
 import type { MetadataRoute } from "next";
-import { business } from "@/content/tr";
 import { kategoriSluglari } from "@/content/kategoriler";
-import { yazilarGetir } from "@/lib/veri";
+import { yazilarGetir, isletmeGetir } from "@/lib/veri";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Taslak yazılar sitemap'e girmez: yazilarGetir yalnızca yayındakileri döner.
-  const yazilar = await yazilarGetir();
+  const [yazilar, isletme] = await Promise.all([yazilarGetir(), isletmeGetir()]);
+  const siteUrl = isletme.siteUrl.replace(/\/$/, "");
   const now = new Date();
-  const url = (path = "") => `${business.siteUrl}${path}`;
+  const url = (path = "") => `${siteUrl}${path}`;
 
   // /qr sitemap'te yok: içeriği /menu ile aynı, noindex ve canonical'ı /menu.
   return [

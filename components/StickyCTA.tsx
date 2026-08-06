@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react";
-import { nav, business } from "@/content/tr";
-import { primaryAction } from "@/lib/schema";
+import { nav } from "@/content/tr";
+import { useIsletme } from "@/components/IsletmeSaglayici";
+import { anaAksiyon } from "@/lib/veri";
 
 /**
  * Mobil alt sabit bar.
@@ -14,7 +15,8 @@ import { primaryAction } from "@/lib/schema";
  */
 export function StickyCTA() {
   const [visible, setVisible] = useState(false);
-  const action = primaryAction();
+  const { isletme } = useIsletme();
+  const action = anaAksiyon(isletme);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (y) => {
@@ -54,7 +56,7 @@ export function StickyCTA() {
               {nav.links[0].label}
             </Link>
             <a
-              href={business.maps.directionsUrl}
+              href={isletme.maps.directionsUrl}
               target="_blank"
               rel="noopener noreferrer"
               data-olcum="yol_tarifi"

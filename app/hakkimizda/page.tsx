@@ -8,23 +8,27 @@ import { Footer } from "@/components/Footer";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { a11y, business } from "@/content/tr";
+import { isletmeGetir } from "@/lib/veri";
 import { hakkimizda } from "@/content/sayfalar";
 import { sayfaSchema, jsonLdString } from "@/lib/schema";
 
-export const metadata: Metadata = {
-  title: hakkimizda.title,
-  description: hakkimizda.description,
-  alternates: { canonical: "/hakkimizda" },
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  const isletme = await isletmeGetir();
+  return {
+    title: hakkimizda.title,
+    description: hakkimizda.description,
+    alternates: { canonical: "/hakkimizda" },
+    openGraph: {
     type: "article",
     locale: "tr_TR",
-    url: `${business.siteUrl}/hakkimizda`,
+    url: `${isletme.siteUrl}/hakkimizda`,
     title: hakkimizda.title,
     description: hakkimizda.description,
   },
-};
+  };
+}
 
-export default function HakkimizdaPage() {
+export default async function HakkimizdaPage() {
   return (
     <>
       <ScrollProgress />
@@ -124,7 +128,7 @@ export default function HakkimizdaPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: jsonLdString(
-            sayfaSchema({
+            await sayfaSchema({
               path: "/hakkimizda",
               name: hakkimizda.title,
               description: hakkimizda.description,

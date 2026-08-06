@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, useScroll, useMotionValueEvent, useReducedMotion } from "motion/react";
-import { nav, business } from "@/content/tr";
+import { nav } from "@/content/tr";
+import { useIsletme } from "@/components/IsletmeSaglayici";
 import { Wordmark } from "@/components/Wordmark";
 
 /**
@@ -41,6 +42,7 @@ function NavLink({
  * Mobilde tam ekran katman; Escape ile kapanır, arkadaki sayfa kilitlenir.
  */
 export function Nav() {
+  const { isletme } = useIsletme();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const reduced = useReducedMotion();
@@ -147,10 +149,10 @@ export function Nav() {
           </nav>
 
           <a
-            href={`tel:${business.phone.e164}`}
+            href={`tel:${isletme.phone.e164}`}
             className="mt-10 font-sans text-lg text-bone/60 transition-colors hover:text-brass"
           >
-            {business.phone.display}
+            {isletme.phone.display}
           </a>
         </motion.div>
       )}

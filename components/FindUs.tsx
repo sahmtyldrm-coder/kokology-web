@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { findUs, business, nav } from "@/content/tr";
+import { findUs, nav } from "@/content/tr";
 import { getOpenState, todayIndex, formatTime, type OpenState } from "@/lib/hours";
-import { primaryAction } from "@/lib/schema";
+import { useIsletme } from "@/components/IsletmeSaglayici";
+import { anaAksiyon } from "@/lib/veri";
 import { Reveal, WipeText } from "@/components/Reveal";
 
 /**
@@ -16,7 +17,8 @@ export function FindUs({
 }: {
   showHeading?: boolean;
 } = {}) {
-  const action = primaryAction();
+  const { isletme, saatler } = useIsletme();
+  const action = anaAksiyon(isletme);
 
   /**
    * Açık/kapalı durumu sunucuda hesaplanmaz: sayfa statik üretildiği için
@@ -28,14 +30,14 @@ export function FindUs({
 
   useEffect(() => {
     const tick = () => {
-      setState(getOpenState());
+      setState(getOpenState(saatler));
       setToday(todayIndex());
     };
     tick();
     // Sekme uzun süre açık kalırsa rozet bayatlamasın
     const id = setInterval(tick, 60_000);
     return () => clearInterval(id);
-  }, []);
+  }, [saatler]);
 
   return (
     <section
@@ -69,13 +71,13 @@ export function FindUs({
                   {findUs.addressLabel}
                 </h3>
                 <address className="mt-3 font-sans text-xl leading-relaxed text-bone not-italic sm:text-2xl">
-                  {business.address.street}
+                  {isletme.address.street}
                   <br />
-                  {business.address.district}, {business.address.postalCode}{" "}
-                  {business.address.town} / {business.address.city}
+                  {isletme.address.district}, {isletme.address.postalCode}{" "}
+                  {isletme.address.town} / {isletme.address.city}
                 </address>
                 <p className="mt-2 font-sans text-base text-bone/50">
-                  {business.address.landmark} içinde
+                  {isletme.address.landmark} içinde
                 </p>
               </div>
 
@@ -85,10 +87,10 @@ export function FindUs({
                   {findUs.phoneLabel}
                 </h3>
                 <a
-                  href={`tel:${business.phone.e164}`}
+                  href={`tel:${isletme.phone.e164}`}
                   className="mt-3 inline-block font-sans text-xl text-bone underline decoration-brass/50 decoration-1 underline-offset-[6px] transition-colors hover:text-brass sm:text-2xl"
                 >
-                  {business.phone.display}
+                  {isletme.phone.display}
                 </a>
               </div>
 
@@ -102,7 +104,7 @@ export function FindUs({
                 </div>
 
                 <dl className="mt-4 divide-y divide-bone/10 border-y border-bone/10">
-                  {business.hours.map((h) => {
+                  {saatler.map((h) => {
                     const isToday = today === h.day;
                     return (
                       <div
@@ -130,7 +132,7 @@ export function FindUs({
 
               {/* Mekân olanakları — Google İşletme Profilindekilerle aynı */}
               <ul className="flex flex-wrap gap-2">
-                {business.amenities.map((amenity) => (
+                {isletme.amenities.map((amenity) => (
                   <li
                     key={amenity}
                     className="rounded-full border border-bone/20 px-3.5 py-1.5 font-sans text-sm text-bone/70"
@@ -143,13 +145,13 @@ export function FindUs({
               {/* Aksiyonlar — mobilde tam genişlik, dokunmatik hedef 56px */}
               <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a
-                  href={`tel:${business.phone.e164}`}
+                  href={`tel:${isletme.phone.e164}`}
                   className="inline-flex min-h-[56px] flex-1 items-center justify-center gap-2 rounded-full bg-red px-8 font-sans text-base font-semibold text-bone transition-colors duration-200 hover:bg-brass hover:text-charcoal sm:flex-initial"
                 >
                   {findUs.callCta}
                 </a>
                 <a
-                  href={business.maps.directionsUrl}
+                  href={isletme.maps.directionsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex min-h-[56px] flex-1 items-center justify-center gap-2 rounded-full border border-bone/25 px-8 font-sans text-base font-medium text-bone transition-colors duration-200 hover:border-brass hover:text-brass sm:flex-initial"
@@ -174,7 +176,7 @@ export function FindUs({
           <Reveal className="order-1 lg:order-2" direction="right">
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-bone/15 lg:aspect-[4/3.4]">
               <iframe
-                src={business.maps.embedUrl}
+                src={isletme.maps.embedUrl}
                 title={findUs.mapTitle}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -185,7 +187,7 @@ export function FindUs({
               />
             </div>
             <p className="mt-3 font-sans text-sm text-bone/45">
-              {business.address.full}
+              {isletme.address.full}
             </p>
           </Reveal>
         </div>

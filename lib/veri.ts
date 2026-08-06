@@ -303,3 +303,123 @@ export async function yaziGetir(slug: string): Promise<BlogYazi | null> {
   const hepsi = await yazilarGetir();
   return hepsi.find((y) => y.slug === slug) ?? null;
 }
+
+/* -------------------------------------------------------------------------- */
+
+/**
+ * İŞLETME BİLGİLERİ — telefon, adres, linkler, alan adı.
+ *
+ * Panelin `site_ayarlar` tablosuna yazdığı değerler, `content/tr.ts` içindeki
+ * varsayılanların ÜZERİNE biner. Böylece:
+ *   · panelde doldurulmamış bir alan varsayılanıyla çalışmaya devam eder,
+ *   · veritabanı erişilemezse site tamamen dosyalardan okur ve çalışır,
+ *   · panelde girilen telefon/adres/alan adı gerçekten siteye yansır.
+ *
+ * Alan adı ayrıca önemli: canonical adresler, Open Graph, sitemap, JSON-LD ve
+ * QR kodu buradan türüyor. Tek yerde değişmesi gerekiyordu.
+ */
+export type Isletme = {
+  name: string;
+  googleName: string;
+  legalName: string;
+  siteUrl: string;
+  phone: { display: string; e164: string };
+  address: {
+    street: string;
+    district: string;
+    town: string;
+    city: string;
+    postalCode: string;
+    country: string;
+    landmark: string;
+    full: string;
+  };
+  geo: { latitude: number; longitude: number };
+  maps: { directionsUrl: string; placeUrl: string; embedUrl: string };
+  social: Record<string, string>;
+  ordering: Record<string, string>;
+  payment: { cards: string; mealCards: string[] };
+  qr: { hedefYol: string; baskiEtiketi: string };
+  amenities: string[];
+  priceRange: string;
+  servesCuisine: string[];
+  orderingPlatforms: string[];
+};
+
+/** Nesneleri birleştirir; panelde boş bırakılan alan varsayılanı ezmez. */
+function birlestir<T extends Record<string, unknown>>(
+  varsayilan: T,
+  gelen: unknown,
+): T {
+  if (!gelen || typeof gelen !== "object") return varsayilan;
+  const sonuc = { ...varsayilan } as Record<string, unknown>;
+  for (const [k, v] of Object.entries(gelen as Record<string, unknown>)) {
+    if (v === null || v === undefined) continue;
+    if (typeof v === "string" && v.trim() === "") continue;
+    sonuc[k] = v;
+  }
+  return sonuc as T;
+}
+
+async function isletmeOku(): Promise<Isletme> {
+  const b = varsayilanIsletme;
+  const temel: Isletme = {
+    name: b.name,
+    googleName: b.googleName,
+    legalName: b.legalName,
+    siteUrl: b.siteUrl,
+    phone: { ...b.phone },
+    address: { ...b.address },
+    geo: { ...b.geo },
+    maps: { ...b.maps },
+    social: { ...b.social },
+    ordering: { ...b.ordering },
+    payment: { cards: b.payment.cards, mealCards: [...b.payment.mealCards] },
+    qr: { ...b.qr },
+    amenities: [...b.amenities],
+    priceRange: b.priceRange,
+    servesCuisine: [...b.servesCuisine],
+    orderingPlatforms: [...b.orderingPlatforms],
+  };
+
+  const ayarlar = await ayarlarGetir();
+  if (Object.keys(ayarlar).length === 0) return temel;
+
+  const site = birlestir(
+    { siteUrl: temel.siteUrl, googleName: temel.googleName, legalName: temel.legalName },
+    ayarlar.site,
+  );
+  const adres = birlestir(temel.address, ayarlar.adres);
+
+  return {
+    ...temel,
+    ...site,
+    phone: birlestir(temel.phone, ayarlar.telefon),
+    address: {
+      ...adres,
+      // Tek satır gösterim her zaman parçalardan üretilir; elle güncellenen
+      // ikinci bir alan zamanla diğerinden ayrışırdı.
+      full: `${adres.street}, ${adres.district}, ${adres.postalCode} ${adres.town} / ${adres.city}`,
+    },
+    geo: birlestir(temel.geo, ayarlar.geo),
+    social: birlestir(temel.social, ayarlar.sosyal),
+    ordering: birlestir(temel.ordering, ayarlar.siparis),
+    payment: birlestir(temel.payment, ayarlar.odeme),
+    qr: birlestir(temel.qr, ayarlar.qr),
+  };
+}
+
+export const isletmeGetir = unstable_cache(isletmeOku, ["isletme"], {
+  tags: [ETIKET.ayarlar],
+});
+
+/** Kırmızı CTA'nın hedefi: sipariş linki varsa oraya, yoksa telefona. */
+export function anaAksiyon(isletme: Isletme): {
+  href: string;
+  label: "order" | "call";
+} {
+  const order = Object.values(isletme.ordering).find((v) => v && v.trim());
+  return order
+    ? { href: order, label: "order" }
+    : { href: `tel:${isletme.phone.e164}`, label: "call" };
+}

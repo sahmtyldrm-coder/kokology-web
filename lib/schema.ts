@@ -1,10 +1,25 @@
 import { business, menu, culture, seo, hero } from "@/content/tr";
 import { kategoriBul } from "@/content/kategoriler";
 import { blogSayfa } from "@/content/blog";
-import { menuGetir, sssGetir, yorumlarGetir, yazilarGetir, yaziGetir } from "@/lib/veri";
+import {
+  menuGetir,
+  sssGetir,
+  yorumlarGetir,
+  yazilarGetir,
+  yaziGetir,
+  isletmeGetir,
+  saatlerGetir,
+} from "@/lib/veri";
 import { openingHoursSpecification } from "@/lib/hours";
 
-const site = business.siteUrl;
+/**
+ * Adres, artık panelden değiştirilebildiği için her şemada okunuyor.
+ * `siteUrl` canonical, Open Graph, sitemap ve JSON-LD'nin tamamını besliyor —
+ * alan adı değiştiğinde hepsi birlikte güncellenmeli.
+ */
+async function adres() {
+  return (await isletmeGetir()).siteUrl.replace(/\/$/, "");
+}
 
 /**
  * JSON-LD'yi <script> içine gömerken XSS'e karşı `<` karakterini kaçırırız.
@@ -14,25 +29,15 @@ export function jsonLdString(data: unknown): string {
   return JSON.stringify(data).replace(/</g, "\\u003c");
 }
 
-function sameAs(): string[] {
-  return Object.values(business.social).filter(Boolean);
-}
-
-/** Kırmızı CTA'nın hedefi: sipariş linki varsa oraya, yoksa telefona. */
-export function primaryAction(): { href: string; label: "order" | "call" } {
-  const order =
-    business.ordering.yemeksepeti ||
-    business.ordering.getir ||
-    business.ordering.trendyolYemek;
-  return order
-    ? { href: order, label: "order" }
-    : { href: `tel:${business.phone.e164}`, label: "call" };
+function sameAs(isletme: { social: Record<string, string> }): string[] {
+  return Object.values(isletme.social).filter(Boolean);
 }
 
 /* -------------------------------------------------------------------------- */
 
 /** Basılı menüdeki her kategori bir MenuSection, her porsiyon bir MenuItem. */
 async function menuSchema() {
+  const site = await adres();
   const bolumler = await menuGetir();
   return {
     "@type": "Menu",
@@ -98,6 +103,7 @@ async function reviewSchema() {
 
 /** /blog — yazı listesi. */
 export async function blogListeSchema() {
+  const site = await adres();
   const yazilar = await yazilarGetir();
   const url = `${site}/blog`;
   return {
@@ -139,6 +145,7 @@ export async function blogListeSchema() {
  * da gövdeyi HTML'den okuyor.
  */
 export async function yaziSchema(slug: string) {
+  const site = await adres();
   const yazi = await yaziGetir(slug);
   if (!yazi) return { "@context": "https://schema.org", "@graph": [] };
   const url = `${site}/blog/${slug}`;
@@ -181,7 +188,7 @@ export async function yaziSchema(slug: string) {
 }
 
 /** Basit iç sayfa: kırıntı yolu + sayfa kaydı. İşletmeye @id ile bağlanır. */
-export function sayfaSchema({
+export async function sayfaSchema({
   path,
   name,
   description,
@@ -192,6 +199,7 @@ export function sayfaSchema({
   description: string;
   breadcrumb: string;
 }) {
+  const site = await adres();
   const url = `${site}${path}`;
   return {
     "@context": "https://schema.org",
@@ -224,7 +232,8 @@ export function sayfaSchema({
  * Tüm menü burada tekrarlanmaz: sayfada yalnızca bir kategorinin fiyatları
  * var, tamamını işaretlemek sayfada olmayan içeriği beyan etmek olurdu.
  */
-export function kategoriSchema(slug: string) {
+export async function kategoriSchema(slug: string) {
+  const site = await adres();
   const bulunan = kategoriBul(slug);
   if (!bulunan) return { "@context": "https://schema.org", "@graph": [] };
   const { kategori, section } = bulunan;
@@ -306,6 +315,7 @@ export function kategoriSchema(slug: string) {
  * Restaurant kaydına `@id` ile bağlanır, tekrar tanımlanmaz.
  */
 export async function menuPageSchema() {
+  const site = await adres();
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -348,6 +358,9 @@ export async function menuPageSchema() {
  * yanlış beyandır; Google da sayfada karşılığı olmayan işaretlemeyi eler.
  */
 export async function siteSchema() {
+  const site = await adres();
+  const isletme = await isletmeGetir();
+  const saatler = await saatlerGetir();
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -355,13 +368,13 @@ export async function siteSchema() {
         "@type": "Restaurant",
         "@id": `${site}/#restaurant`,
         // Google İşletme Profilindeki adla birebir aynı olmalı (NAP tutarlılığı)
-        name: business.googleName,
-        alternateName: business.name,
-        legalName: business.legalName,
+        name: isletme.googleName,
+        alternateName: isletme.name,
+        legalName: isletme.legalName,
         slogan: business.tagline,
         description: seo.description,
         url: site,
-        telephone: business.phone.e164,
+        telephone: isletme.phone.e164,
         // Google bu listeden zengin sonuçta görsel seçiyor: marka görseli,
         // dış cephe, iç mekân ve ürün — dördü farklı soruya cevap veriyor.
         image: [
@@ -372,29 +385,29 @@ export async function siteSchema() {
         ],
         address: {
           "@type": "PostalAddress",
-          streetAddress: business.address.street,
-          addressLocality: business.address.town,
-          addressRegion: business.address.city,
-          postalCode: business.address.postalCode,
-          addressCountry: business.address.country,
+          streetAddress: isletme.address.street,
+          addressLocality: isletme.address.town,
+          addressRegion: isletme.address.city,
+          postalCode: isletme.address.postalCode,
+          addressCountry: isletme.address.country,
         },
         geo: {
           "@type": "GeoCoordinates",
-          latitude: business.geo.latitude,
-          longitude: business.geo.longitude,
+          latitude: isletme.geo.latitude,
+          longitude: isletme.geo.longitude,
         },
-        hasMap: business.maps.placeUrl,
-        openingHoursSpecification: openingHoursSpecification(),
-        priceRange: business.priceRange,
-        servesCuisine: [...business.servesCuisine],
+        hasMap: isletme.maps.placeUrl,
+        openingHoursSpecification: openingHoursSpecification(saatler),
+        priceRange: isletme.priceRange,
+        servesCuisine: [...isletme.servesCuisine],
         currenciesAccepted: "TRY",
         paymentAccepted: [
           "Nakit",
           "Kredi Kartı",
           "Banka Kartı",
-          ...business.payment.mealCards,
+          ...isletme.payment.mealCards,
         ].join(", "),
-        amenityFeature: business.amenities.map((name) => ({
+        amenityFeature: isletme.amenities.map((name) => ({
           "@type": "LocationFeatureSpecification",
           name,
           value: true,
@@ -404,14 +417,14 @@ export async function siteSchema() {
         acceptsReservations:
           "Grup ve topluluk etkinlikleri için telefonla rezervasyon alınır",
         hasMenu: { "@id": `${site}/#menu` },
-        ...(sameAs().length > 0 && { sameAs: sameAs() }),
+        ...(sameAs(isletme).length > 0 && { sameAs: sameAs(isletme) }),
         ...(await reviewSchema()),
       },
       {
         "@type": "WebSite",
         "@id": `${site}/#website`,
         url: site,
-        name: business.name,
+        name: isletme.name,
         inLanguage: "tr-TR",
         publisher: { "@id": `${site}/#restaurant` },
       },
@@ -421,6 +434,7 @@ export async function siteSchema() {
 
 /** Ana sayfa — menü ve sık sorulanlar burada yayınlanır. */
 export async function homeSchema() {
+  const site = await adres();
   const sorular = await sssGetir();
   return {
     "@context": "https://schema.org",

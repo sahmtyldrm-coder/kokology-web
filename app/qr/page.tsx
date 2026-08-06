@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { MenuSections } from "@/components/MenuSections";
-import { menu, business, findUs } from "@/content/tr";
+import { menu, findUs } from "@/content/tr";
 import { menuPage } from "@/content/menu-page";
-import { primaryAction } from "@/lib/schema";
+import { isletmeGetir, anaAksiyon } from "@/lib/veri";
 
 /**
  * QR MENÜ — masadan okutulan sürüm.
@@ -24,8 +24,9 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 };
 
-export default function QrMenuPage() {
-  const action = primaryAction();
+export default async function QrMenuPage() {
+  const isletme = await isletmeGetir();
+  const action = anaAksiyon(isletme);
 
   return (
     <main className="flex-1 bg-charcoal pb-20">
@@ -43,7 +44,7 @@ export default function QrMenuPage() {
             style={{ height: 34 }}
           />
           <span className="font-display text-xl leading-none tracking-tight text-bone">
-            {business.name}
+            {isletme.name}
           </span>
         </Link>
       </header>

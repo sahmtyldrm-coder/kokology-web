@@ -1,6 +1,26 @@
 import { business } from "@/content/tr";
 
-export type DayHours = (typeof business.hours)[number];
+/**
+ * Saat hesapları artık dışarıdan saat listesi alıyor.
+ *
+ * Sebebi: saatler panelden değiştirilebiliyor ve "şu an açık" rozeti bu
+ * değişikliği görmek zorunda. Dosyadaki liste yalnızca varsayılan olarak
+ * duruyor — veritabanı erişilemezse site yine doğru çalışsın diye.
+ */
+export type DayHours = {
+  day: number;
+  label: string;
+  opens: string;
+  closes: string;
+  kapali?: boolean;
+};
+
+export const VARSAYILAN_SAATLER: DayHours[] = business.hours.map((h) => ({
+  day: h.day,
+  label: h.label,
+  opens: h.opens,
+  closes: h.closes,
+}));
 
 const TIMEZONE = "Europe/Istanbul";
 
@@ -43,8 +63,9 @@ function toMinutes(time: string): number {
   return h * 60 + m;
 }
 
-export function hoursForDay(day: number): DayHours | undefined {
-  return business.hours.find((h) => h.day === day);
+function hoursForDay(saatler: DayHours[], day: number): DayHours | undefined {
+  const g = saatler.find((h) => h.day === day);
+  return g && !g.kapali ? g : undefined;
 }
 
 export type OpenState =
@@ -55,10 +76,10 @@ export type OpenState =
  * Şu anda açık mı? Kapanış saati açılıştan küçükse (ör. 11:00–02:00)
  * ertesi güne taşan vardiya olarak değerlendirilir.
  */
-export function getOpenState(): OpenState {
+export function getOpenState(saatler: DayHours[] = VARSAYILAN_SAATLER): OpenState {
   const { day, minutes } = nowInIstanbul();
 
-  const today = hoursForDay(day);
+  const today = hoursForDay(saatler, day);
   if (today) {
     const opens = toMinutes(today.opens);
     const closes = toMinutes(today.closes);
@@ -74,7 +95,7 @@ export function getOpenState(): OpenState {
   }
 
   // Dünden sarkan vardiya hâlâ sürüyor olabilir
-  const yesterday = hoursForDay((day + 6) % 7);
+  const yesterday = hoursForDay(saatler, (day + 6) % 7);
   if (yesterday) {
     const opens = toMinutes(yesterday.opens);
     const closes = toMinutes(yesterday.closes);
@@ -88,7 +109,7 @@ export function getOpenState(): OpenState {
     return { open: false, opensAt: today.opens };
   }
   for (let i = 1; i <= 7; i++) {
-    const next = hoursForDay((day + i) % 7);
+    const next = hoursForDay(saatler, (day + i) % 7);
     if (next) return { open: false, opensAt: next.opens };
   }
   return { open: false, opensAt: null };
@@ -115,8 +136,8 @@ const SCHEMA_DAYS = [
   "Saturday",
 ];
 
-export function openingHoursSpecification() {
-  return business.hours.map((h) => {
+export function openingHoursSpecification(saatler: DayHours[] = VARSAYILAN_SAATLER) {
+  return saatler.filter((h) => !h.kapali).map((h) => {
     // `business.hours` `as const` olduğu için saatler literal tipe daralıyor;
     // string'e genişletmezsek aşağıdaki kontrol derlenmez.
     const closes: string = h.closes;

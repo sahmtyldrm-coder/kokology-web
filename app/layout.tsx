@@ -4,6 +4,8 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { business, seo, a11y, hero } from "@/content/tr";
 import { siteSchema, jsonLdString } from "@/lib/schema";
 import { Olcum } from "@/components/Olcum";
+import { IsletmeSaglayici } from "@/components/IsletmeSaglayici";
+import { isletmeGetir, saatlerGetir } from "@/lib/veri";
 import "./globals.css";
 
 /**
@@ -46,8 +48,14 @@ const caveat = Caveat({
 
 /* -------------------------------------------------------------------------- */
 
-export const metadata: Metadata = {
-  metadataBase: new URL(business.siteUrl),
+/**
+ * Alan adı panelden değişebildiği için metadata statik olamaz:
+ * metadataBase, canonical ve Open Graph adresleri her istekte okunur.
+ */
+export async function generateMetadata(): Promise<Metadata> {
+  const isletme = await isletmeGetir();
+  return {
+    metadataBase: new URL(isletme.siteUrl),
   title: {
     default: seo.title,
     template: seo.titleTemplate,
@@ -61,7 +69,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "tr_TR",
-    url: business.siteUrl,
+      url: isletme.siteUrl,
     siteName: business.name,
     title: seo.title,
     description: seo.description,
@@ -89,10 +97,11 @@ export const metadata: Metadata = {
     telephone: true,
     address: true,
   },
-  ...(GSC_VERIFICATION && {
-    verification: { google: GSC_VERIFICATION },
-  }),
-};
+    ...(GSC_VERIFICATION && {
+      verification: { google: GSC_VERIFICATION },
+    }),
+  };
+}
 
 export const viewport: Viewport = {
   themeColor: "#141210",
@@ -100,6 +109,9 @@ export const viewport: Viewport = {
 };
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
+  // Tek okuma, tüm istemci bileşenlerine bağlamla dağıtılır.
+  const [isletme, saatler] = await Promise.all([isletmeGetir(), saatlerGetir()]);
+
   return (
     <html
       lang="tr"
@@ -113,7 +125,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           {a11y.skipToContent}
         </a>
 
-        {children}
+        <IsletmeSaglayici deger={{ isletme, saatler }}>{children}</IsletmeSaglayici>
 
         <script
           type="application/ld+json"

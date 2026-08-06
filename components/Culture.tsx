@@ -1,5 +1,5 @@
-import { culture, business } from "@/content/tr";
-import { yorumlarGetir } from "@/lib/veri";
+import { culture } from "@/content/tr";
+import { yorumlarGetir, isletmeGetir } from "@/lib/veri";
 import { Reveal, RevealGroup, RevealItem, WipeText } from "@/components/Reveal";
 
 /**
@@ -11,7 +11,7 @@ import { Reveal, RevealGroup, RevealItem, WipeText } from "@/components/Reveal";
  * lib/schema.ts aynı veriden Review/AggregateRating üretir.
  */
 export async function Culture() {
-  const yorumlar = await yorumlarGetir();
+  const [yorumlar, isletme] = await Promise.all([yorumlarGetir(), isletmeGetir()]);
   const hasReviews = yorumlar.length > 0;
 
   return (
@@ -107,10 +107,10 @@ export async function Culture() {
         )}
 
         {/* Instagram */}
-        {business.social.instagram && (
+        {isletme.social.instagram && (
           <Reveal className="mt-14">
             <a
-              href={business.social.instagram}
+              href={isletme.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex min-h-[56px] items-center gap-4 rounded-full border border-bone/20 px-7 transition-colors hover:border-brass"

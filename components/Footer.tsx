@@ -1,14 +1,16 @@
-import { footer, business, nav, findUs } from "@/content/tr";
+import { footer, nav, findUs } from "@/content/tr";
 import { formatTime } from "@/lib/hours";
+import { isletmeGetir, saatlerGetir } from "@/lib/veri";
 
 /**
  * Bölüm 8 — Çanta.
  * Dev outline wordmark, sosyal, tekrar adres/telefon/saat.
  * Yürüyüşün sonu: çıkarken elinde kalanlar.
  */
-export function Footer() {
+export async function Footer() {
+  const [isletme, saatler] = await Promise.all([isletmeGetir(), saatlerGetir()]);
   const year = new Date().getFullYear();
-  const socials = Object.entries(business.social).filter(([, url]) => url);
+  const socials = Object.entries(isletme.social).filter(([, url]) => url);
 
   return (
     <footer className="relative overflow-hidden border-t border-bone/10 bg-charcoal pt-16">
@@ -26,16 +28,16 @@ export function Footer() {
               {footer.tagline}
             </p>
             <address className="mt-6 font-sans text-base leading-relaxed text-bone/60 not-italic">
-              {business.address.street}
+              {isletme.address.street}
               <br />
-              {business.address.district}, {business.address.postalCode}{" "}
-              {business.address.town} / {business.address.city}
+              {isletme.address.district}, {isletme.address.postalCode}{" "}
+              {isletme.address.town} / {isletme.address.city}
             </address>
             <a
-              href={`tel:${business.phone.e164}`}
+              href={`tel:${isletme.phone.e164}`}
               className="mt-3 inline-block font-sans text-base text-bone transition-colors hover:text-brass"
             >
-              {business.phone.display}
+              {isletme.phone.display}
             </a>
           </div>
 
@@ -45,7 +47,7 @@ export function Footer() {
               {findUs.hoursLabel}
             </h3>
             <dl className="mt-4 space-y-1.5">
-              {business.hours.map((h) => (
+              {saatler.map((h) => (
                 <div
                   key={h.day}
                   className="flex justify-between gap-4 font-sans text-sm text-bone/55"

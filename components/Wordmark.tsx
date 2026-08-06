@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { business } from "@/content/tr";
+import { business } from "@/content/tr";  // yalnızca marka adı — panelden değişmiyor
 
 /**
  * Marka lockup'ı: orijinal rozet + Anton wordmark.

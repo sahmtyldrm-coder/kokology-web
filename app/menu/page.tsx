@@ -9,21 +9,25 @@ import { MenuSections } from "@/components/MenuSections";
 import { MenuKategoriGrid } from "@/components/MenuKategoriGrid";
 import { Reveal } from "@/components/Reveal";
 import { menu, a11y, business } from "@/content/tr";
+import { isletmeGetir } from "@/lib/veri";
 import { menuPage } from "@/content/menu-page";
 import { menuPageSchema, jsonLdString } from "@/lib/schema";
 
-export const metadata: Metadata = {
-  title: menuPage.title,
-  description: menuPage.description,
-  alternates: { canonical: "/menu" },
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  const isletme = await isletmeGetir();
+  return {
+    title: menuPage.title,
+    description: menuPage.description,
+    alternates: { canonical: "/menu" },
+    openGraph: {
     type: "article",
     locale: "tr_TR",
-    url: `${business.siteUrl}/menu`,
+    url: `${isletme.siteUrl}/menu`,
     title: menuPage.title,
     description: menuPage.description,
   },
-};
+  };
+}
 
 export default async function MenuPage() {
   return (
