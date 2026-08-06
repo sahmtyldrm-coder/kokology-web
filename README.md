@@ -132,12 +132,30 @@ CSP eklenebilir.
 
 ## Ölçümleme
 
-`.env.ornek` dosyasını `.env.local` olarak kopyala:
+İki ayrı katman var ve karıştırılmamalı.
 
-- `NEXT_PUBLIC_GA_ID` — Google Analytics 4 ölçüm kimliği
-- `NEXT_PUBLIC_GSC_VERIFICATION` — Search Console doğrulama kodu
+**1. Kendi ölçümümüz — çerezsiz, onaysız çalışır.**
+Sayfa görüntüleme ve ateşleme aksiyonları (ara, yol tarifi, menü, sipariş).
+IP, çerez kimliği ve oturum kimliği saklanmıyor; kişiyi değil olayı sayıyor.
+Bu yüzden çerez onayı beklemeden çalışabiliyor. Sonuçlar
+`/yonetim/istatistik` ekranında.
 
-İkisi de boş bırakılabilir; tanımlı değilse ilgili etiket hiç basılmaz.
+**2. Üçüncü taraf kodları — onay gerektirir.**
+GA4, GTM, Meta Pixel, Google Ads. Kimlikler `/yonetim/iletisim` → Ölçüm
+kodları bölümünden giriliyor, `.env` dosyasından değil. Ziyaretçi onay
+vermeden bu kodlar sayfaya **hiç basılmaz**.
+
+Ortam değişkeni olarak yalnızca `NEXT_PUBLIC_GSC_VERIFICATION` var
+(Search Console doğrulaması — tek seferlik ve çerez gerektirmiyor).
+
+### Yapay zekâ görünürlüğü
+
+Panelde iki ayrı ölçüm gösteriliyor: **yapay zekâdan gelen ziyaretler**
+(referrer chatgpt/perplexity/gemini/claude) ve **yapay zekâ taramaları**
+(GPTBot, PerplexityBot, ClaudeBot… — `proxy.ts` sunucuda yakalıyor).
+
+"Kaç yapay zekâ sorgusunda çıktık" **ölçülemez** — sağlayıcılar sorgu hacmi
+paylaşmıyor. Panel bunu açıkça yazıyor; uydurma sayı gösterilmiyor.
 
 ## Klasör yapısı
 
