@@ -25,6 +25,47 @@ const nextConfig: NextConfig = {
   },
   // Geliştirme rozeti, sosyal paylaşım görselini üretirken kadraja giriyordu.
   devIndicators: false,
+
+  /**
+   * Güvenlik başlıkları.
+   *
+   * İçerik Güvenlik Politikası (CSP) bilerek EKLENMEDİ: sayfada satır içi
+   * JSON-LD ve onay sonrası yüklenen üçüncü taraf pikselleri var; sıkı bir CSP
+   * ikisini de kırardı ve gevşek bir CSP güvenlik sağlamaz, yalnızca güvenlik
+   * varmış hissi verir. Pikseller kesinleştiğinde nonce tabanlı CSP eklenebilir.
+   */
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          // Tarayıcı dosya türünü tahmin etmeye çalışmasın
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          // Dış sitelere tam adres sızmasın
+          {
+            key: "Referrer-Policy",
+            value: "strict-origin-when-cross-origin",
+          },
+          // Kullanılmayan cihaz izinleri kapalı
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=(), payment=()",
+          },
+        ],
+      },
+      {
+        // Yönetim paneli hiçbir yerde çerçeve içine alınamaz —
+        // tıklama hırsızlığına (clickjacking) karşı.
+        source: "/yonetim/:path*",
+        headers: [
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "Referrer-Policy", value: "no-referrer" },
+          // Panel sayfaları hiçbir ara katmanda önbelleğe alınmasın
+          { key: "Cache-Control", value: "private, no-store" },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

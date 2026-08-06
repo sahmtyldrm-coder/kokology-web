@@ -113,6 +113,23 @@ güncellenir.
   tek başına hiçbir şey yazamaz.
 - Yetki iki katmanlı: sunucu eyleminde oturum kontrolü + veritabanında politika.
 
+## Yayına alma
+
+Adım adım rehber: **`YAYIN.md`**. Özet sıra: GitHub (özel depo) → Vercel →
+alan adı → panelden alan adını gir → QR'ı yeniden üret → Search Console →
+Google İşletme Profili.
+
+## Güvenlik başlıkları
+
+`next.config.ts` içinde: `X-Content-Type-Options`, `Referrer-Policy`,
+`Permissions-Policy`; panel için ayrıca `X-Frame-Options: DENY` ve
+`Cache-Control: private, no-store`.
+
+İçerik Güvenlik Politikası (CSP) bilerek eklenmedi — satır içi JSON-LD ve onay
+sonrası yüklenen pikseller sıkı bir CSP ile çakışır, gevşek CSP ise yalnızca
+güvenlik hissi verir. Kullanılacak pikseller kesinleştiğinde nonce tabanlı
+CSP eklenebilir.
+
 ## Ölçümleme
 
 `.env.ornek` dosyasını `.env.local` olarak kopyala:
