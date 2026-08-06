@@ -210,6 +210,7 @@ export const nav = {
    */
   links: [
     { href: "/menu", label: "Menü" },
+    { href: "/blog", label: "Blog" },
     { href: "/hakkimizda", label: "Hakkımızda" },
     { href: "#mekan", label: "Mekân" },
     { href: "#kultur", label: "Kültür" },

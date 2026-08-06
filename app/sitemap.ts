@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { business } from "@/content/tr";
 import { kategoriSluglari } from "@/content/kategoriler";
+import { yazilar } from "@/content/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -20,6 +21,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "weekly" as const,
       priority: 0.8,
+    })),
+    {
+      url: url("/blog"),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    ...yazilar.map((y) => ({
+      url: url(`/blog/${y.slug}`),
+      lastModified: new Date(y.guncelleme ?? y.tarih),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
     })),
     {
       url: url("/hakkimizda"),

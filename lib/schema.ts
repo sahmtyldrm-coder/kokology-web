@@ -1,5 +1,6 @@
 import { business, menu, culture, seo, faq, hero } from "@/content/tr";
 import { kategoriBul } from "@/content/kategoriler";
+import { yazilar, yaziBul, blogSayfa } from "@/content/blog";
 import { openingHoursSpecification } from "@/lib/hours";
 
 const site = business.siteUrl;
@@ -91,6 +92,89 @@ function reviewSchema() {
 }
 
 /* -------------------------------------------------------------------------- */
+
+/** /blog — yazı listesi. */
+export function blogListeSchema() {
+  const url = `${site}/blog`;
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: business.name, item: site },
+          { "@type": "ListItem", position: 2, name: "Blog", item: url },
+        ],
+      },
+      {
+        "@type": "Blog",
+        "@id": `${url}#blog`,
+        url,
+        name: blogSayfa.h1,
+        description: blogSayfa.description,
+        inLanguage: "tr-TR",
+        publisher: { "@id": `${site}/#restaurant` },
+        blogPost: yazilar.map((y) => ({
+          "@type": "BlogPosting",
+          headline: y.h1,
+          description: y.ozet,
+          datePublished: y.tarih,
+          url: `${url}/${y.slug}`,
+          image: `${site}${y.image}`,
+        })),
+      },
+    ],
+  };
+}
+
+/**
+ * /blog/[slug] — tek yazı.
+ *
+ * `articleBody` bilerek yazılmıyor: gövde zaten sayfada okunabilir hâlde ve
+ * tekrar etmek dosyayı gereksiz şişirir. Arama motorları da yapay zekâ araçları
+ * da gövdeyi HTML'den okuyor.
+ */
+export function yaziSchema(slug: string) {
+  const yazi = yaziBul(slug);
+  if (!yazi) return { "@context": "https://schema.org", "@graph": [] };
+  const url = `${site}/blog/${slug}`;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: business.name, item: site },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${site}/blog` },
+          { "@type": "ListItem", position: 3, name: yazi.h1, item: url },
+        ],
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": `${url}#article`,
+        headline: yazi.h1,
+        name: yazi.title,
+        description: yazi.description,
+        inLanguage: "tr-TR",
+        datePublished: yazi.tarih,
+        dateModified: yazi.guncelleme ?? yazi.tarih,
+        image: `${site}${yazi.image}`,
+        mainEntityOfPage: { "@type": "WebPage", "@id": url },
+        author: { "@id": `${site}/#restaurant` },
+        publisher: { "@id": `${site}/#restaurant` },
+        about: { "@id": `${site}/#restaurant` },
+        keywords: [yazi.etiket, "kokoreç", "Bursa", "Nilüfer", "Ataevler"],
+        wordCount: yazi.bloklar
+          .map((b) =>
+            b.tip === "liste" ? b.ogeler.join(" ") : (b as { metin: string }).metin,
+          )
+          .join(" ")
+          .split(/\s+/).length,
+      },
+    ],
+  };
+}
 
 /** Basit iç sayfa: kırıntı yolu + sayfa kaydı. İşletmeye @id ile bağlanır. */
 export function sayfaSchema({
