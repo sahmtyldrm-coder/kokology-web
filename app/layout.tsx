@@ -1,19 +1,22 @@
 import type { Metadata, Viewport } from "next";
 import { Anton, Fraunces, Hanken_Grotesk, Caveat } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import { business, seo, a11y, hero } from "@/content/tr";
 import { siteSchema, jsonLdString } from "@/lib/schema";
 import { Olcum } from "@/components/Olcum";
 import { IsletmeSaglayici } from "@/components/IsletmeSaglayici";
-import { isletmeGetir, saatlerGetir } from "@/lib/veri";
+import { OnayVePikseller } from "@/components/OnayVePikseller";
+import type { TakipKodlari } from "@/components/Pikseller";
+import { isletmeGetir, saatlerGetir, ayarlarGetir } from "@/lib/veri";
 import "./globals.css";
 
 /**
- * Ölçüm kimlikleri ortam değişkeninden gelir; tanımlı değilse ilgili etiket
- * hiç basılmaz — site kimliksiz de sorunsuz çalışır.
- * .env.local içine yazılır, .env.ornek dosyasına bak.
+ * Search Console doğrulaması ortam değişkeninden gelir — tek seferlik ve
+ * çerez gerektirmediği için onay akışının dışında.
+ *
+ * Analytics ve reklam kodları burada DEĞİL: onlar panelden giriliyor ve
+ * yalnızca çerez onayı alındıktan sonra yükleniyor. İki ayrı yoldan GA
+ * yüklenseydi sayfa görüntülemeler iki kez sayılırdı.
  */
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const GSC_VERIFICATION = process.env.NEXT_PUBLIC_GSC_VERIFICATION;
 
 /* --------------------------------------------------------------------------
@@ -110,7 +113,14 @@ export const viewport: Viewport = {
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   // Tek okuma, tüm istemci bileşenlerine bağlamla dağıtılır.
-  const [isletme, saatler] = await Promise.all([isletmeGetir(), saatlerGetir()]);
+  const [isletme, saatler, ayarlar] = await Promise.all([
+    isletmeGetir(),
+    saatlerGetir(),
+    ayarlarGetir(),
+  ]);
+
+  const takip = (ayarlar.takip ?? {}) as TakipKodlari;
+  const takipVar = Object.values(takip).some((v) => v && String(v).trim());
 
   return (
     <html
@@ -135,7 +145,11 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         {/* Çerezsiz, kimliksiz kendi ölçümümüz — çerez onayı beklemeden çalışır */}
         <Olcum />
 
-        {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
+        {/* Onay bandı ve üçüncü taraf kodları. Bant yalnızca izlenecek bir şey
+            varsa çıkar — hiçbir kod tanımlı değilken onay sormak gereksiz.
+            Onay tarayıcıda okunuyor; sunucuda okumak tüm sayfaları
+            dinamikleştirip statik hızı öldürüyordu. */}
+        {takipVar && <OnayVePikseller kodlar={takip} />}
       </body>
     </html>
   );

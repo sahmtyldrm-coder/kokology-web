@@ -686,3 +686,27 @@ export const a11y = {
   galleryLabel: "Mekân fotoğraf galerisi",
   menuLabel: "Menü öne çıkanlar",
 };
+
+/* ========================================================================== */
+
+/**
+ * ÇEREZ ONAYI (KVKK)
+ *
+ * Sitenin kendi ölçümü çerez kullanmıyor ve kimlik saklamıyor — o yüzden onay
+ * beklemeden çalışıyor. Bu bant yalnızca ÜÇÜNCÜ TARAF izleme kodları
+ * (Meta Pixel, Google Ads, GA4, GTM) için: onlar kişisel veri işliyor ve
+ * açık rıza olmadan çalıştırılamaz.
+ *
+ * Onay verilmeden hiçbir üçüncü taraf kodu sayfaya BASILMAZ — "yükle ama
+ * bekle" değil, hiç yüklenmez.
+ */
+export const cerez = {
+  baslik: "Çerezler",
+  metin:
+    "Siteyi geliştirmek ve reklamlarımızın işe yarayıp yaramadığını ölçmek için üçüncü taraf çerezleri kullanmak istiyoruz. Reddedersen site aynı şekilde çalışmaya devam eder.",
+  detay:
+    "Ziyaret sayımızı zaten çerez kullanmadan, kimliğini saklamadan ölçüyoruz. Bu onay yalnızca Google ve Meta'nın reklam ölçüm kodları için.",
+  kabul: "Kabul et",
+  ret: "Reddet",
+  kapat: "Kapat",
+};
