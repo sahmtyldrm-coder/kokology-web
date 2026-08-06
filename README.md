@@ -74,6 +74,45 @@ deler). Gerçek şişe pikselleri 106–367px arasında — satır içi küçük
 dizilim olarak sorunsuz, tek tek büyük kullanım için uygun değiller. Telifleri
 işletmeye ait değil.
 
+## Yönetim paneli — `/yonetim`
+
+Tek kullanıcılı. Giriş Supabase Auth ile; **kayıt formu yok**, kullanıcı
+Supabase panelinden elle eklenir (açık kayıt bırakmak yönetim paneline herkesin
+hesap açabilmesi demekti).
+
+| Ekran | Ne yapar |
+| --- | --- |
+| Özet | Menü/saat/sipariş durumu + yayına engel olan eksikler |
+| Menü ve fiyatlar | Kategori/ürün ekle-sil-düzenle, fiyat, imza rozeti |
+| Çalışma saatleri | Gün gün; gece yarısını aşan vardiya destekli |
+| İletişim ve linkler | Telefon, adres, sipariş, sosyal, alan adı, QR hedefi, ölçüm kodları |
+| S.S.S. | Soru-cevap yönetimi |
+| Yorumlar | Öne çıkan Google yorumları |
+| Blog | Taslak / yayında akışı |
+| Fotoğraflar | Yükle, adres kopyala, sil |
+| QR menü | Kodu gör, SVG/PNG indir |
+| İstatistik | Ziyaret, tıklama, yapay zekâ görünürlüğü |
+
+### Veri akışı
+
+**Veritabanı kaynak, `content/*.ts` geri düşme.** Veritabanı erişilemezse,
+boşsa ya da ortam değişkenleri tanımsızsa site sessizce dosyalardan okumaya
+devam eder — bir restoran sitesinin panel çöktü diye menüsünü gösterememesi
+kabul edilemez.
+
+Panelde kaydettiğinde `updateTag` ile ilgili önbellek anında geçersizleşir;
+sayfalar statik kalır, değişiklik saniyeler içinde yayına girer. Menü, yapısal
+veri, sitemap ve `llms.txt` aynı kaynaktan beslendiği için hepsi birlikte
+güncellenir.
+
+### Güvenlik
+
+- Yalnızca publishable anahtar kullanılıyor; **servis anahtarı hiçbir yerde yok**.
+- Yazma yetkisi Postgres satır seviyesi güvenliğinden (RLS) geliyor: okuma
+  herkese açık, yazma yalnızca giriş yapmışa. Anahtar tarayıcıya sızsa bile
+  tek başına hiçbir şey yazamaz.
+- Yetki iki katmanlı: sunucu eyleminde oturum kontrolü + veritabanında politika.
+
 ## Ölçümleme
 
 `.env.ornek` dosyasını `.env.local` olarak kopyala:

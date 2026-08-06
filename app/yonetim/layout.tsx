@@ -25,6 +25,8 @@ const BOLUMLER = [
   { href: "/yonetim/sss", label: "S.S.S." },
   { href: "/yonetim/yorumlar", label: "Yorumlar" },
   { href: "/yonetim/blog", label: "Blog" },
+  { href: "/yonetim/fotograflar", label: "Fotoğraflar" },
+  { href: "/yonetim/qr", label: "QR menü" },
   { href: "/yonetim/istatistik", label: "İstatistik" },
 ];
 
