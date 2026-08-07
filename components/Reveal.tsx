@@ -13,6 +13,18 @@ const OFFSET: Record<Direction, { x: number; y: number }> = {
 };
 
 /**
+ * Görünürlük eşiği `amount` ile değil, kenar payı (`margin`) ile veriliyor.
+ *
+ * `amount` elementin KENDİ yüksekliğine oranla hesaplanır: 5000px'lik bir
+ * bölümün %25'i 1250px eder ama ekran 800px ise o eşik hiçbir zaman
+ * karşılanamaz ve içerik kalıcı olarak görünmez kalır. Mobilde bölümler
+ * ekrandan çok daha uzun olduğu için bu gerçek bir risk.
+ *
+ * Kenar payı ise piksel cinsinden: element ekranın 120px içine girdiğinde
+ * açılır. Element ne kadar uzun olursa olsun aynı çalışır.
+ */
+
+/**
  * Scroll ile beliren blok. Hareket azaltma açıkken hiçbir dönüşüm uygulanmaz —
  * içerik ilk karede tam opak ve yerindedir, yani site animasyonsuz da eksiksiz.
  */
@@ -53,7 +65,7 @@ export function Reveal({
       variants={variants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.25, margin: "0px 0px -80px 0px" }}
+      viewport={{ once: true, margin: "0px 0px -120px 0px" }}
     >
       {children}
     </Tag>
@@ -87,7 +99,7 @@ export function RevealGroup({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.15, margin: "0px 0px -80px 0px" }}
+      viewport={{ once: true, margin: "0px 0px -120px 0px" }}
       variants={{
         hidden: {},
         visible: { transition: { staggerChildren: stagger } },
@@ -131,7 +143,7 @@ export function WipeText({
       className={className}
       initial={{ clipPath: "inset(0 100% -0.25em 0)", opacity: 0.35 }}
       whileInView={{ clipPath: "inset(0 0% -0.25em 0)", opacity: 1 }}
-      viewport={{ once: true, amount: 0.4, margin: "0px 0px -60px 0px" }}
+      viewport={{ once: true, margin: "0px 0px -100px 0px" }}
       transition={{ duration: 0.85, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}

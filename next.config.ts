@@ -1,6 +1,21 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  /**
+   * Geliştirme sunucusuna yerel ağdan erişim.
+   *
+   * Next.js, başlatıldığı adresten (localhost) farklı bir kaynaktan gelen
+   * istekleri geliştirme modunda güvenlik gereği engelliyor. Telefondan
+   * `http://192.168.x.x:3000` açıldığında HTML geliyor ama istemci paketi
+   * engelleniyor; React devreye girmediği için scroll animasyonlarının
+   * başlangıç durumu (opacity: 0) kalıcı hâle geliyor ve hero ile footer
+   * dışındaki her yer görünmez oluyor.
+   *
+   * YALNIZCA geliştirmeyi etkiler — üretimde böyle bir engelleme yok.
+   * Yerel ağ aralıkları: ev/ofis yönlendiricilerinin kullandığı özel adresler.
+   */
+  allowedDevOrigins: ["192.168.0.*", "192.168.1.*", "10.0.0.*", "172.20.10.*"],
+
   images: {
     // AVIF önce denenir; desteklemeyen tarayıcı WebP'ye düşer. Yerel aramada
     // hız doğrudan sıralamayı etkilediği için LCP görselinde fark yaratır.
