@@ -10,14 +10,22 @@ import { isletmeGetir, saatlerGetir, ayarlarGetir } from "@/lib/veri";
 import "./globals.css";
 
 /**
- * Search Console doğrulaması ortam değişkeninden gelir — tek seferlik ve
- * çerez gerektirmediği için onay akışının dışında.
+ * Search Console doğrulaması önce panelden (İletişim ve linkler → Search
+ * Console doğrulama), yoksa ortam değişkeninden okunur. Panel öncelikli çünkü
+ * doğrulama kodu değiştiğinde yeniden dağıtım beklemek gerekmesin.
+ *
+ * Çerez onayının dışında: tek seferlik bir meta etiketi, kimse izlenmiyor.
  *
  * Analytics ve reklam kodları burada DEĞİL: onlar panelden giriliyor ve
  * yalnızca çerez onayı alındıktan sonra yükleniyor. İki ayrı yoldan GA
  * yüklenseydi sayfa görüntülemeler iki kez sayılırdı.
  */
-const GSC_VERIFICATION = process.env.NEXT_PUBLIC_GSC_VERIFICATION;
+async function gscDogrulama(): Promise<string | undefined> {
+  const ayarlar = await ayarlarGetir();
+  const takip = (ayarlar.takip ?? {}) as Record<string, string>;
+  const panelden = takip.searchConsole?.trim();
+  return panelden || process.env.NEXT_PUBLIC_GSC_VERIFICATION || undefined;
+}
 
 /* --------------------------------------------------------------------------
    Dört ses. Hepsinde `latin-ext` var — Türkçe ş ğ ı İ ç ö ü doğru render eder.
@@ -56,7 +64,7 @@ const caveat = Caveat({
  * metadataBase, canonical ve Open Graph adresleri her istekte okunur.
  */
 export async function generateMetadata(): Promise<Metadata> {
-  const isletme = await isletmeGetir();
+  const [isletme, gsc] = await Promise.all([isletmeGetir(), gscDogrulama()]);
   return {
     metadataBase: new URL(isletme.siteUrl),
   title: {
@@ -100,9 +108,7 @@ export async function generateMetadata(): Promise<Metadata> {
     telephone: true,
     address: true,
   },
-    ...(GSC_VERIFICATION && {
-      verification: { google: GSC_VERIFICATION },
-    }),
+    ...(gsc && { verification: { google: gsc } }),
   };
 }
 
