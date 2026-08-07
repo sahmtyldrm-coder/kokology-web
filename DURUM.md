@@ -1,7 +1,7 @@
 # Kokology web — proje durumu
 
-**Son güncelleme:** 6 Ağustos 2026
-**Dal:** `kokology-faz1` · 17 commit · çalışma ağacı temiz
+**Son güncelleme:** 7 Ağustos 2026
+**Dal:** `main` · 20 commit · GitHub'a gönderildi
 
 > Bu dosya "nerede kaldık" sorusunun tek cevabı. Projeye aradan zaman geçtikten
 > sonra dönüldüğünde önce burası okunmalı.
@@ -12,7 +12,7 @@
 
 ```bash
 cd "~/Desktop/Kokology website proje/kokology-web"
-git checkout kokology-faz1     # ŞART — main'de yalnızca boş Next.js iskeleti var
+git checkout main              # 7 Ağustos'ta main, kokology-faz1 ile aynı noktaya alındı
 npm install
 npm run dev                    # http://localhost:3000
 ```
@@ -61,6 +61,34 @@ seviyesi güvenliğinden (RLS) geliyor.
 `menu_kategoriler` · `menu_urunler` · `calisma_saatleri` · `site_ayarlar` ·
 `sss` · `yorumlar` · `blog_yazilar` · `olaylar`
 Depo kovası: `gorseller`
+
+---
+
+## Yayın altyapısı (7 Ağustos 2026)
+
+| Ne | Nerede |
+| --- | --- |
+| Kod deposu | `git@github.com:sahmtyldrm-coder/kokology-web.git` (özel) |
+| Barındırma | Vercel · hesap `Etki Digital` (Hobby) · proje `kokology-web` |
+| Alan adı | `kokology.com.tr` · kayıt Natro · sahip "vedat zihni kap" |
+| DNS | **Vercel** (`ns1/ns2.vercel-dns.com`) |
+
+GitHub kimlik doğrulaması SSH ile (`~/.ssh/id_ed25519`). Vercel'e `main` dalına
+her gönderim otomatik yayına çıkar.
+
+**Neden DNS Vercel'de:** Natro'da kayıt düzenleme `Profesyonel DNS Servisi`
+adıyla ücretli bir ek hizmet ve kapalıydı; A kaydı girecek ekran yoktu. İsim
+sunucuları Vercel'e verilerek ücretsiz çözüldü. İleride e-posta kurulursa MX
+kayıtları da Vercel tarafına girilecek.
+
+**Neden apex ana adres:** Vercel'in önerdiği "apex → www" yönlendirmesi bilerek
+kapatıldı. Canonical adresler, sitemap, yapısal veri ve **basılacak QR kodu**
+`www`'siz adrese bakıyor; yönlendirme açık kalsa her QR okutmasında gereksiz bir
+sıçrama olurdu. `www.kokology.com.tr` → `kokology.com.tr` 308 kalıcı yönlendirme.
+
+**Vercel ortam değişkenleri:** `NEXT_PUBLIC_SUPABASE_URL`,
+`NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`. Ölçüm kodları (GA4, GTM, Meta, Ads)
+panelden giriliyor, ortam değişkeni gerektirmiyor.
 
 ---
 
