@@ -35,7 +35,11 @@ export default async function YonetimAnasayfa() {
   const siparis = (ayarlar.siparis ?? {}) as Record<string, string>;
   const aktifPlatform = Object.values(siparis).filter(Boolean).length;
   const site = (ayarlar.site ?? {}) as Record<string, string>;
-  const alanAdiHazir = !String(site.siteUrl ?? "").includes("kokology.com.tr");
+  // 7 Ağustos 2026: alan adı alındı ve kokology.com.tr olarak doğrulandı.
+  // Kontrol artık "gerçek bir adres girilmiş mi" sorusuna bakıyor.
+  const alanAdiHazir = /^https:\/\/[a-z0-9.-]+\.[a-z]{2,}/i.test(
+    String(site.siteUrl ?? ""),
+  );
 
   return (
     <>

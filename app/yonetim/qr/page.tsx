@@ -29,7 +29,9 @@ export default async function QrYonetim() {
   const siteUrl = site.siteUrl || business.siteUrl;
   const hedefYol = qr.hedefYol || "/qr";
   const hedef = `${siteUrl.replace(/\/$/, "")}${hedefYol}`;
-  const alanAdiHazir = !siteUrl.includes("kokology.com.tr");
+  // Alan adı alındı (kokology.com.tr). Uyarı artık yalnızca adres hiç
+  // girilmemişse ya da geçersizse çıkar.
+  const alanAdiHazir = /^https:\/\/[a-z0-9.-]+\.[a-z]{2,}/i.test(siteUrl);
 
   // Kod sunucuda üretiliyor: tarayıcıya ek paket indirmeye gerek yok.
   const svg = await QRCode.toString(hedef, { ...SECENEKLER, type: "svg" });
@@ -52,9 +54,9 @@ export default async function QrYonetim() {
       {!alanAdiHazir && (
         <div className="mt-8 rounded-sm border border-red/50 bg-red/10 p-5">
           <p className="font-sans text-sm leading-relaxed text-bone">
-            <strong>Bu kodu bastırma.</strong> Alan adı hâlâ varsayılan
-            (<code className="text-brass">{siteUrl}</code>). Gerçek alan adını
-            girip bu sayfayı yenile, kod kendiliğinden güncellenir.
+            <strong>Bu kodu bastırma.</strong> Site adresi geçersiz
+            (<code className="text-brass">{siteUrl || "boş"}</code>). İletişim
+            ekranından geçerli bir adres girip bu sayfayı yenile.
           </p>
         </div>
       )}

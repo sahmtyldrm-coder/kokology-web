@@ -55,10 +55,9 @@ console.log(`QR üretildi → ${target}`);
 console.log("  public/qr-menu.svg  (baskı)");
 console.log("  public/qr-menu.png  (dijital)");
 
-if (siteUrl.includes("kokology.com.tr")) {
+if (!/^https:\/\/[a-z0-9.-]+\.[a-z]{2,}/i.test(siteUrl)) {
   console.warn(
-    "\nUYARI: siteUrl hâlâ varsayılan alan adı.\n" +
-      "Gerçek alan adı belli olunca content/tr.ts içinde güncelleyip\n" +
-      "`npm run qr` komutunu tekrar çalıştır. Bu hâliyle BASTIRMA.",
+    "\nUYARI: siteUrl geçerli bir adres değil. Bu hâliyle BASTIRMA.\n" +
+      "content/tr.ts içindeki siteUrl'i düzeltip komutu tekrar çalıştır.",
   );
 }
