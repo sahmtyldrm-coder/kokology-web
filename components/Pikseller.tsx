@@ -19,7 +19,14 @@ export type TakipKodlari = {
 };
 
 export function Pikseller({ kodlar }: { kodlar: TakipKodlari }) {
-  const { gtm, ga4, metaPixel, googleAds } = kodlar;
+  // Kimlikler panele elle yapıştırılıyor ve baştaki/sondaki görünmez boşluk
+  // (sekme, satır sonu) çok kolay geliyor. Temizlenmezse script adresi ve
+  // gtag config'i bozulur, kod sessizce hiç çalışmaz.
+  const temiz = (v?: string) => v?.trim() || undefined;
+  const gtm = temiz(kodlar.gtm);
+  const ga4 = temiz(kodlar.ga4);
+  const metaPixel = temiz(kodlar.metaPixel);
+  const googleAds = temiz(kodlar.googleAds);
 
   // GTM varsa diğerlerini onun içinden yönetmek daha doğru; ama panelde ayrı
   // ayrı girilebildiği için burada da bağımsız yükleniyorlar. İkisini birden
