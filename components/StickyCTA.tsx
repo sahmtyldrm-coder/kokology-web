@@ -43,7 +43,7 @@ export function StickyCTA() {
                 target: "_blank",
                 rel: "noopener noreferrer",
               })}
-              data-olcum="ara"
+              data-olcum={action.label === "order" ? "siparis" : "ara"}
             className="inline-flex min-h-[52px] flex-1 items-center justify-center rounded-full bg-red px-3 font-sans text-[0.95rem] font-semibold text-bone"
             >
               {action.label === "order" ? nav.cta.order : nav.cta.call}

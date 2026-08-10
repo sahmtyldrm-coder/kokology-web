@@ -43,7 +43,51 @@ export function Olcum() {
   return null;
 }
 
+/**
+ * Aksiyon tıklamalarının reklam araçlarındaki karşılıkları.
+ *
+ * Sayfa görüntüleme zaten GA4 ve Meta tarafından kendiliğinden sayılıyor;
+ * burada yalnızca "dönüşüm" sayılabilecek tıklamalar iletiliyor. Google Ads
+ * ve Meta kampanyaları bu olaylara göre optimize edilebilsin diye gerekli —
+ * yoksa reklam aracı yalnızca sayfa açıldığını bilir, kimsenin aradığını
+ * ya da sipariş linkine gittiğini bilmez.
+ *
+ * Meta'da standart olay adı varsa o kullanılıyor (Contact, FindLocation);
+ * karşılığı olmayanlar özel olay olarak gidiyor.
+ */
+const REKLAM_OLAYLARI: Record<
+  string,
+  { ga: string; meta: string; metaStandart: boolean }
+> = {
+  ara: { ga: "telefon_tikla", meta: "Contact", metaStandart: true },
+  siparis: { ga: "siparis_tikla", meta: "Lead", metaStandart: true },
+  yol_tarifi: { ga: "yol_tarifi", meta: "FindLocation", metaStandart: true },
+  menu: { ga: "menu_goruntule", meta: "MenuGoruntule", metaStandart: false },
+};
+
+type ReklamPenceresi = Window & {
+  gtag?: (...a: unknown[]) => void;
+  fbq?: (...a: unknown[]) => void;
+};
+
+/**
+ * Reklam araçlarına ilet.
+ *
+ * `gtag` ve `fbq` yalnızca ziyaretçi çerez onayı verdiğinde sayfaya basılıyor.
+ * Yani buradaki varlık kontrolü aynı zamanda rıza kontrolü: onay yoksa
+ * fonksiyonlar tanımsızdır ve hiçbir şey gönderilmez.
+ */
+function reklamaBildir(tip: string) {
+  const olay = REKLAM_OLAYLARI[tip];
+  if (!olay) return;
+  const w = window as ReklamPenceresi;
+  w.gtag?.("event", olay.ga);
+  w.fbq?.(olay.metaStandart ? "track" : "trackCustom", olay.meta);
+}
+
 function gonder(tip: string, yol: string, referrer: string) {
+  if (tip !== "sayfa") reklamaBildir(tip);
+
   const govde = JSON.stringify({ tip, yol, referrer });
 
   // sendBeacon sayfadan ayrılırken bile isteği tamamlar; tıkla-ara gibi
