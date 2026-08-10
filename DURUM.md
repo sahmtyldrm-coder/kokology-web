@@ -1,6 +1,6 @@
 # Kokology web — proje durumu
 
-**Son güncelleme:** 7 Ağustos 2026
+**Son güncelleme:** 10 Ağustos 2026
 **Dal:** `main` · 20 commit · GitHub'a gönderildi
 
 > Bu dosya "nerede kaldık" sorusunun tek cevabı. Projeye aradan zaman geçtikten
@@ -89,6 +89,36 @@ sıçrama olurdu. `www.kokology.com.tr` → `kokology.com.tr` 308 kalıcı yönl
 **Vercel ortam değişkenleri:** `NEXT_PUBLIC_SUPABASE_URL`,
 `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`. Ölçüm kodları (GA4, GTM, Meta, Ads)
 panelden giriliyor, ortam değişkeni gerektirmiyor.
+
+---
+
+## Ölçüm (10 Ağustos 2026)
+
+Hepsi panelden girildi, kod değişikliği gerektirmiyor:
+
+| Araç | Kimlik | Durum |
+| --- | --- | --- |
+| GA4 | `G-VDDGQ12SE2` | Çalışıyor, canlı doğrulandı |
+| Meta Pixel | `1569068558106457` | Çalışıyor, PageView 200 |
+| Google Ads | `AW-18381316425` | Etiket yükleniyor |
+| Search Console | doğrulandı | Sitemap gönderildi |
+
+GA4 mülk kimliği `549298501`, Ads hesabı `792-186-1196`, ikisi bağlı.
+
+**Dönüşüm olayları.** Aksiyon tıklamaları hem kendi ölçümümüze hem GA4/Meta'ya
+gidiyor: `telefon_tikla`/`Contact`, `yol_tarifi`/`FindLocation`,
+`menu_goruntule`/`MenuGoruntule`, `siparis_tikla`/`Lead`. Sonuncusu ancak bir
+sipariş platformu linki girilince oluşur — kırmızı buton o zaman "Sipariş"e
+dönüyor ve ölçüm etiketi de onu takip ediyor.
+
+**KALAN TEK İŞ:** Google Ads → Hedefler → Dönüşümler → Dönüşüm işlemi oluştur →
+İçe aktar → GA4 → üç etkinliği seç. Etkinlikler Ads listesinde 24 saat içinde
+kendiliğinden belirir; erken denenirse liste boş görünür ve elle tanımlamak
+gerekir (uzun yol, gereksiz). Birincil: `telefon_tikla`, `yol_tarifi`.
+İkincil: `menu_goruntule`.
+
+**Google'ın "etiket algılanmadı" uyarısı normaldir:** test aracı çerez onayı
+vermeden bakıyor, site de onaysız hiçbir reklam kodunu basmıyor.
 
 ---
 
