@@ -52,7 +52,14 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    /* `smooth` KASITLI OLARAK yok: Next.js App Router her sayfa geçişinde
+       scroll'u sıfırlıyor ve bunu `smooth` ile birleştirince animasyon,
+       yeni sayfanın içeriği akarken (veri/görsel yüklenirken) hedefini
+       şaşırıp kullanıcıyı sayfanın en altına bırakabiliyor — canlıda
+       tam olarak bu yaşandı. Sayfa içi çapa linkleri (#bul-bizi vb.)
+       bunun yerine anında zıplıyor; bu, yanlış sayfada kalmaktan iyi.
+    */
+    scroll-behavior: auto;
     /* Sabit üst nav ve mobil alt bar için kaydırma payı */
     scroll-padding-top: 5rem;
     background-color: var(--color-charcoal);
