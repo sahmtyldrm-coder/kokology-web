@@ -102,6 +102,7 @@ export const business = {
     instagram: "https://www.instagram.com/kokologybursa",
     tiktok: "",
     youtube: "",
+    googleReview: "https://g.page/r/CduS8QcVytBYEBM/review",
   },
 
   /**

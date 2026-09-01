@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { MenuSections } from "@/components/MenuSections";
-import { menu, findUs } from "@/content/tr";
+import { menu, findUs, culture } from "@/content/tr";
 import { menuPage } from "@/content/menu-page";
-import { isletmeGetir, anaAksiyon } from "@/lib/veri";
+import { isletmeGetir, anaAksiyon, yorumlarGetir } from "@/lib/veri";
 
 /**
  * QR MENÜ — masadan okutulan sürüm.
@@ -27,28 +27,73 @@ export const metadata: Metadata = {
 };
 
 export default async function QrMenuPage() {
-  const isletme = await isletmeGetir();
+  const [isletme, yorumlar] = await Promise.all([isletmeGetir(), yorumlarGetir()]);
   const action = anaAksiyon(isletme);
+  const hasReviews = yorumlar.length > 0;
+  const googleReview = isletme.social.googleReview;
 
   return (
     <main className="flex-1 bg-charcoal pb-20">
-      {/* Başlık — sade, tek satır */}
+      {/* Mekân fotoğrafı + Google puanı — masaya oturan müşteri ilk saniyede
+          "buradayım, gerçek bir yer" hissini alsın. */}
+      <div className="relative h-52 w-full overflow-hidden sm:h-64">
+        <Image
+          src="/images/mekan/kokology-ic-mekan-genis-aci-bursa-nilufer.jpg"
+          alt="Kokology iç mekan — Bursa Nilüfer Ataevler"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/15 to-transparent"
+        />
+      </div>
+
+      {/* Başlık — logo/ad, puan ve Google yorum çağrısı */}
       <header className="border-b border-bone/10 px-5 py-5">
-        <Link href="/" className="inline-flex items-center gap-2.5">
-          <Image
-            src="/logo-kokology.png"
-            alt=""
-            aria-hidden
-            width={40}
-            height={34}
-            priority
-            className="w-auto"
-            style={{ height: 34 }}
-          />
-          <span className="font-display text-xl leading-none tracking-tight text-bone">
-            {isletme.name}
-          </span>
-        </Link>
+        <div className="flex items-center justify-between gap-3">
+          <Link href="/" className="inline-flex items-center gap-2.5">
+            <Image
+              src="/logo-kokology.png"
+              alt=""
+              aria-hidden
+              width={40}
+              height={34}
+              priority
+              className="w-auto"
+              style={{ height: 34 }}
+            />
+            <span className="font-display text-xl leading-none tracking-tight text-bone">
+              {isletme.name}
+            </span>
+          </Link>
+
+          {hasReviews && (
+            <p className="flex shrink-0 items-center gap-1.5">
+              <span className="font-display text-lg text-brass">
+                {culture.rating.value.toLocaleString("tr-TR", {
+                  minimumFractionDigits: 1,
+                })}
+              </span>
+              <span aria-hidden className="text-xs text-brass">
+                {"★★★★★"}
+              </span>
+            </p>
+          )}
+        </div>
+
+        {googleReview && (
+          <a
+            href={googleReview}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-brass/40 bg-brass/10 px-5 font-sans text-sm font-semibold text-brass transition-colors hover:bg-brass/20"
+          >
+            Google&rsquo;da Bizi Yorumla
+          </a>
+        )}
       </header>
 
       {/* Kategori sekmeleri — yatay kaydırılır, sayfa yatay kaymaz */}
