@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { menu } from "@/content/tr";
+import { menuGetir } from "@/lib/veri";
 import { kategoriler } from "@/content/kategoriler";
 import { RevealGroup, RevealItem } from "@/components/Reveal";
 
@@ -15,7 +15,9 @@ import { RevealGroup, RevealItem } from "@/components/Reveal";
  * Kartın altındaki fiyat aralığı karar vermeyi hızlandırır: tıklamadan önce
  * "bu kategori kaç para" sorusu cevaplanır.
  */
-export function MenuKategoriGrid() {
+export async function MenuKategoriGrid() {
+  const bolumler = await menuGetir();
+
   return (
     <RevealGroup
       as="ul"
@@ -23,9 +25,9 @@ export function MenuKategoriGrid() {
       className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6"
     >
       {kategoriler.map((k) => {
-        const section = menu.sections.find((s) => s.id === k.slug);
+        const section = bolumler.find((s) => s.id === k.slug);
         const fiyatlar = (section?.items ?? [])
-          .map((i) => i.price)
+          .map((i) => i.fiyat)
           .filter((p): p is number => p !== null);
         const enDusuk = fiyatlar.length ? Math.min(...fiyatlar) : null;
 

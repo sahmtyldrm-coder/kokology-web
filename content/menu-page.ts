@@ -11,7 +11,7 @@ import { business } from "@/content/tr";
 export const menuPage = {
   title: "Menü ve Fiyatlar — Bursa Nilüfer Kokoreç Fiyatları",
   description:
-    "Kokology güncel menü ve fiyat listesi. Çeyrek kokoreç 200 ₺'den başlıyor; köfte, sucuk, midye dolma, pilav ve içecekler. Ataevler, Nilüfer / Bursa.",
+    "Kokology güncel menü ve fiyat listesi. Çeyrek kokoreç 230 ₺'den başlıyor; köfte, sucuk, midye dolma, pilav ve içecekler. Ataevler, Nilüfer / Bursa.",
   breadcrumb: "Menü",
 
   eyebrow: "Menü",
