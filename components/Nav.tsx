@@ -77,13 +77,13 @@ export function Nav() {
         }`}
       >
         <div className="mx-auto flex h-16 w-full max-w-[1400px] items-center justify-between px-5 sm:h-18 sm:px-8 lg:px-12">
-          <a
-            href="#icerik"
+          <Link
+            href="/"
             aria-label={nav.brandHome}
             className="transition-colors hover:text-brass"
           >
             <Wordmark className="text-xl sm:text-2xl" />
-          </a>
+          </Link>
 
           {/* Masaüstü bağlantıları */}
           <nav className="hidden items-center gap-8 lg:flex">
