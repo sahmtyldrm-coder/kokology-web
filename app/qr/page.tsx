@@ -11,8 +11,10 @@ import { isletmeGetir, anaAksiyon } from "@/lib/veri";
  *
  * Tasarım kararları buradaki kullanım senaryosundan çıkıyor: müşteri masada,
  * telefonda, muhtemelen zayıf bir bağlantıda ve fiyata bakmak istiyor.
- * Bu yüzden hero yok, parallax yok, kategori görselleri yok — sadece liste,
- * üstte hızlı geçiş için kategori sekmeleri.
+ * Bu yüzden hero yok, parallax yok — sadece liste, üstte hızlı geçiş için
+ * kategori sekmeleri. Her kategori başlığının yanında tek bir küçük fotoğraf
+ * var (porsiyon başına değil, kategori başına — aynı ürünün farklı boyunun
+ * ayrı fotoğrafı anlamsız olurdu).
  *
  * `noindex`: içerik /menu ile aynı. İki sayfanın arama sonuçlarında birbiriyle
  * yarışmaması için asıl hedef /menu olarak işaretlenir.
@@ -72,10 +74,11 @@ export default async function QrMenuPage() {
         <h1 className="font-display text-3xl text-bone">{menuPage.h1}</h1>
         <p className="mt-2 font-sans text-sm text-bone/50">{menuPage.qrNote}</p>
 
-        {/* Tek sütun, görselsiz: masada hız her şeyden önemli */}
+        {/* Tek sütun, kategori başına bir fotoğraf: masada hız her şeyden önemli */}
         <MenuSections
           headingLevel="h2"
           columns={1}
+          sectionImages
           className="mt-10"
         />
 

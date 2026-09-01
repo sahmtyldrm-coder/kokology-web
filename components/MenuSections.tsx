@@ -15,6 +15,7 @@ export async function MenuSections({
   className = "",
   only,
   linkToCategory = false,
+  sectionImages = false,
 }: {
   headingLevel?: "h2" | "h3";
   columns?: 1 | 2;
@@ -23,6 +24,9 @@ export async function MenuSections({
   only?: string;
   /** Başlıkları /menu/[kategori] sayfalarına bağla */
   linkToCategory?: boolean;
+  /** Başlığın yanında kategori fotoğrafı göster — QR menüde metnin yanına
+   * yalnızca bir görsel eklemek için (porsiyon başına değil, kategori başına). */
+  sectionImages?: boolean;
 }) {
   const Heading = headingLevel;
   // Menü artık veritabanından geliyor; erişilemezse lib/veri.ts
@@ -38,7 +42,19 @@ export async function MenuSections({
     >
       {sections.map((section) => (
         <section key={section.id} id={`menu-${section.id}`} className="scroll-mt-24">
-          <div className="flex items-baseline gap-4">
+          <div className="flex items-center gap-4">
+            {sectionImages && section.gorsel && (
+              <span className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full bg-soot">
+                <Image
+                  src={section.gorsel}
+                  alt=""
+                  aria-hidden
+                  fill
+                  sizes="56px"
+                  className="object-cover"
+                />
+              </span>
+            )}
             <Heading className="font-display text-2xl text-brass sm:text-3xl">
               {linkToCategory ? (
                 <Link
