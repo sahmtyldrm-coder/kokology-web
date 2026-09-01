@@ -431,6 +431,76 @@ export const yazilar: Yazi[] = [
       { href: "/menu/kokorec", label: "Kokoreç fiyatları" },
     ],
   },
+
+  {
+    slug: "bursa-kokorec-fiyatlari-ne-kadar",
+    title: "Bursa Kokoreç Fiyatları Ne Kadar? Fiyatı Ne Belirler? | Kokology Bursa",
+    description:
+      "Bursa kokoreç fiyatları neye göre değişir? Porsiyon, malzeme ve sunuma göre kokoreç fiyatını belirleyen etkenler ve Kokology'nin güncel fiyat listesi.",
+    h1: "Bursa'da kokoreç fiyatları ne kadar?",
+    ozet:
+      "Kokoreç fiyatını asıl belirleyen şey ne — porsiyon mu, malzeme mi? Bursa'da fiyata bakarken nelere dikkat etmeli.",
+    tarih: "2026-09-01",
+    etiket: "Fiyat rehberi",
+    okumaDakika: 4,
+    image: "/images/urun/kokology-kokorec-ekmek-arasi-bursa-nilufer-10.jpg",
+    alt: "Kokology kokoreç ekmek arası, ahşap tezgahta servis anı — Bursa Nilüfer Ataevler",
+    bloklar: [
+      {
+        tip: "paragraf",
+        metin:
+          "Bursa'da kokoreç arayan biri için ilk soru genelde fiyat oluyor. Ama tek bir \"bursa kokoreç fiyatı\" yok — aynı şehirde, hatta aynı sokakta bile fiyat ciddi şekilde değişebiliyor. Sebebi rastgele değil; birkaç somut etken kokorecin fiyatını belirliyor.",
+      },
+      { tip: "baslik", metin: "Kokoreç fiyatını ne belirler?" },
+      {
+        tip: "liste",
+        ogeler: [
+          "Porsiyon miktarı — çeyrekten tama, şişten kesilen parçanın uzunluğu doğrudan fiyata yansır.",
+          "Malzeme — uykuluk (timus bezi) eklenen kokoreç, daha zengin dokusu yüzünden standart kokoreçten pahalıdır.",
+          "Pişirme süresi ve yöntemi — odun veya kömürle saatlerce çevrilen bir ürün, hızlı pişirilenden maliyetlice farklıdır.",
+          "Sunum — ekmek arası mı, porsiyon tabağı mı olduğu; porsiyon genelde yanına gelen ekler (turşu, salata) yüzünden biraz daha yüksek fiyatlanır.",
+          "Lokasyon — cadde üzeri, oturma alanlı bir mekânın işletme maliyeti, tezgah üstü satıştan farklıdır.",
+        ],
+      },
+      { tip: "baslik", metin: "Bursa'da kokoreç fiyatları hangi aralıkta?" },
+      {
+        tip: "paragraf",
+        metin:
+          "Şehir geneli için tek bir rakam vermek yanıltıcı olur — her kokoreçci kendi malzeme ve porsiyon anlayışına göre fiyatlandırıyor. Bunun yerine kendi güncel listemizi somut bir örnek olarak paylaşalım; Nilüfer / Ataevler şubemizde kokoreç şöyle fiyatlanıyor:",
+      },
+      {
+        tip: "liste",
+        ogeler: [
+          "Çeyrek Kokoreç — 230 ₺",
+          "Yarım Kokoreç — 380 ₺",
+          "Üç Çeyrek Kokoreç — 580 ₺",
+          "Tam Kokoreç — 740 ₺",
+          "Porsiyon Kokoreç — 800 ₺",
+          "Yarım Atom (uykuluklu) — 650 ₺",
+          "Special Atom (uykuluklu) — 1200 ₺",
+        ],
+      },
+      { tip: "baslik", metin: "Ucuz kokoreç her zaman kötü müdür?" },
+      {
+        tip: "paragraf",
+        metin:
+          "Hayır — ama fiyatın arkasında ne olduğunu bilmek önemli. Düşük fiyat bazen ince porsiyondan, bazen de gerçekten sade bir işletme modelinden gelir; bunun kendisi bir sorun değil. Asıl dikkat edilmesi gereken şeffaflık: ateşin görünür olması, kokorecin sipariş anında doğranması, baharatın önceden değil son anda eklenmesi. Fiyat tek başına bir kalite göstergesi değil, ama bu şeffaflığın olduğu yerde fiyat da genelde açık ve tutarlıdır.",
+      },
+      {
+        tip: "not",
+        metin:
+          "Yukarıdaki fiyatlar Kokology Nilüfer / Ataevler şubemiz için 1 Eylül 2026 itibariyledir. Güncel liste her zaman menü sayfamızda.",
+      },
+      {
+        tip: "alinti",
+        metin: "Kokoreçte fiyat sorulur ama asıl soru neyin karşılığı olduğu.",
+      },
+    ],
+    ilgili: [
+      { href: "/menu/kokorec", label: "Güncel kokoreç fiyatları" },
+      { href: "/menu", label: "Tüm menü ve fiyatlar" },
+    ],
+  },
 ];
 
 export const blogSayfa = {
