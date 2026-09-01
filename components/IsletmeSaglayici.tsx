@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, type ReactNode } from "react";
+import { createContext, useContext, useEffect, type ReactNode } from "react";
 import type { Isletme, Saat } from "@/lib/veri";
 
 /**
@@ -25,6 +25,22 @@ export function IsletmeSaglayici({
   deger: Deger;
   children: ReactNode;
 }) {
+  // Bazı mobil tarayıcılar/uygulama içi WebView'ler (Instagram, WhatsApp)
+  // yeni bir girişte önceki bir sekmeden kalma scroll konumunu geri
+  // getirebiliyor — kullanıcı sayfayı sanki en alttan açılmış gibi görüyor.
+  // Tarayıcının kendi hatırlama davranışını kapatıp, hash yoksa bilinçli
+  // olarak en üste alıyoruz. Sadece kök düzende bir kez çalışır (client-side
+  // sayfa geçişlerinde bu bileşen zaten mount'lu kalır).
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
   return <Baglam.Provider value={deger}>{children}</Baglam.Provider>;
 }
 
