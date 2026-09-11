@@ -115,6 +115,7 @@ async function menuOku(): Promise<MenuBolum[]> {
 
 export const menuGetir = unstable_cache(menuOku, ["menu"], {
   tags: [ETIKET.menu],
+  revalidate: 3600,
 });
 
 /* -------------------------------------------------------------------------- */
@@ -155,6 +156,7 @@ async function saatlerOku(): Promise<Saat[]> {
 
 export const saatlerGetir = unstable_cache(saatlerOku, ["saatler"], {
   tags: [ETIKET.saatler],
+  revalidate: 3600,
 });
 
 /* -------------------------------------------------------------------------- */
@@ -173,6 +175,7 @@ async function ayarlarOku(): Promise<Ayarlar> {
 
 export const ayarlarGetir = unstable_cache(ayarlarOku, ["ayarlar"], {
   tags: [ETIKET.ayarlar],
+  revalidate: 3600,
 });
 
 /* -------------------------------------------------------------------------- */
@@ -193,7 +196,7 @@ async function sssOku(): Promise<SoruCevap[]> {
   return data.map((s) => ({ q: s.soru, a: s.cevap }));
 }
 
-export const sssGetir = unstable_cache(sssOku, ["sss"], { tags: [ETIKET.sss] });
+export const sssGetir = unstable_cache(sssOku, ["sss"], { tags: [ETIKET.sss], revalidate: 3600 });
 
 /* -------------------------------------------------------------------------- */
 
@@ -225,6 +228,7 @@ async function yorumlarOku(): Promise<Yorum[]> {
 
 export const yorumlarGetir = unstable_cache(yorumlarOku, ["yorumlar"], {
   tags: [ETIKET.yorumlar],
+  revalidate: 3600,
 });
 
 /* -------------------------------------------------------------------------- */
@@ -297,6 +301,7 @@ async function yazilarOku(): Promise<BlogYazi[]> {
 
 export const yazilarGetir = unstable_cache(yazilarOku, ["blog"], {
   tags: [ETIKET.blog],
+  revalidate: 3600,
 });
 
 export async function yaziGetir(slug: string): Promise<BlogYazi | null> {
@@ -411,6 +416,7 @@ async function isletmeOku(): Promise<Isletme> {
 
 export const isletmeGetir = unstable_cache(isletmeOku, ["isletme"], {
   tags: [ETIKET.ayarlar],
+  revalidate: 3600,
 });
 
 /** Kırmızı CTA'nın hedefi: sipariş linki varsa oraya, yoksa telefona. */

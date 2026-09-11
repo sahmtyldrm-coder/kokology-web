@@ -36,7 +36,7 @@ async function satirlar(): Promise<string[]> {
     `> Kokology, Bursa'nın Nilüfer ilçesinde Ataevler'de bulunan bir kokoreç ` +
       `ve sokak lezzetleri restoranıdır. Odun ateşinde çevrilen kokoreç ana ` +
       `üründür; yanında köfte, sucuk ekmek, midye dolma ve pilav çeşitleri ` +
-      `sunulur. Her gün 11.00–02.00 arası açıktır.`,
+      `sunulur. Pazartesi–Perşembe 11.00–03.00, Cuma–Pazar 11.00–04.00 arası açıktır.`,
   );
   s.push("");
 
