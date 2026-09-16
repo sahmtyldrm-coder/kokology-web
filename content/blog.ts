@@ -208,7 +208,7 @@ export const yazilar: Yazi[] = [
       {
         tip: "paragraf",
         metin:
-          "Kokology, Bursa'nın Nilüfer ilçesinde, Ataevler'de. Adres: Yılmaz Akkılıç Cd. No:18/A, Cadde Ataevler içinde. Her gün 11.00'den gece 02.00'ye kadar açığız; otopark hem açık hem kapalı ve ücretsiz.",
+          "Kokology, Bursa'nın Nilüfer ilçesinde, Ataevler'de. Adres: Yılmaz Akkılıç Cd. No:18/A, Cadde Ataevler içinde. Her gün 11.00'de açılıyoruz; Pazartesi–Perşembe 03.00'e, Cuma–Cumartesi–Pazar 04.00'e kadar açığız. Otopark hem açık hem kapalı ve ücretsiz.",
       },
       {
         tip: "paragraf",
@@ -232,7 +232,7 @@ export const yazilar: Yazi[] = [
     slug: "nilufer-ataevler-gece-acik-kokorec",
     title: "Nilüfer ve Ataevler'de Gece Açık Kokoreç | Kokology Bursa",
     description:
-      "Bursa Nilüfer'de gece geç saatte açık kokoreççi arayanlar için: Kokology her gün 02.00'ye kadar açık. Ataevler, ücretsiz otopark.",
+      "Bursa Nilüfer'de gece geç saatte açık kokoreççi arayanlar için: Kokology hafta içi 03.00, hafta sonu 04.00'e kadar açık. Ataevler, ücretsiz otopark.",
     h1: "Nilüfer ve Ataevler'de gece açık kokoreç",
     ozet:
       "Gece yarısından sonra açık yer bulmak Bursa'da sanıldığından zor. Saatler, konum ve gece gelenler için notlar.",
@@ -251,7 +251,7 @@ export const yazilar: Yazi[] = [
       {
         tip: "paragraf",
         metin:
-          "Her gün 11.00 – 02.00. Hafta içi hafta sonu farkı yok. Ocak kapanış saatine kadar yanıyor; son siparişe kadar taze kokoreç servis ediliyor.",
+          "Pazartesi–Perşembe 11.00 – 03.00, Cuma–Cumartesi–Pazar 11.00 – 04.00. Ocak kapanış saatine kadar yanıyor; son siparişe kadar taze kokoreç servis ediliyor.",
       },
       { tip: "baslik", metin: "Gece gelenler için notlar" },
       {
@@ -499,6 +499,327 @@ export const yazilar: Yazi[] = [
     ilgili: [
       { href: "/menu/kokorec", label: "Güncel kokoreç fiyatları" },
       { href: "/menu", label: "Tüm menü ve fiyatlar" },
+    ],
+  },
+
+  {
+    slug: "ilk-kez-kokorec-yiyeceklere-rehber",
+    title: "İlk Kez Kokoreç Yiyeceklere Rehber | Kokology Bursa",
+    description: "Kokoreç kokar mı, acı mı, ilk seferde ne kadar almalı? Daha önce hiç kokoreç yememiş biri için ne isteyeceğini bilerek sipariş verme rehberi.",
+    h1: "İlk kez kokoreç yiyeceklere rehber",
+    ozet: "Merak var ama tereddüt de var: kokorecin kokusu, acısı, porsiyonu ve ilk siparişte tam olarak ne istemek gerektiği.",
+    tarih: "2026-09-16",
+    etiket: "Sipariş rehberi",
+    okumaDakika: 5,
+    image: "/images/urun/kokology-kokorec-ekmek-arasi-bursa-nilufer-06.jpg",
+    alt: "Kokology kokoreç ekmek arası, sipariş anında doğranmış — Bursa Nilüfer Ataevler",
+    bloklar: [
+      {
+        tip: "paragraf",
+        metin: "Kokoreç Türkiye'nin en çok tüketilen sokak lezzetlerinden biri, ama aynı zamanda en çok tereddüt edileni. Hiç denememiş birinin aklındaki sorular hep aynı: neyden yapılıyor, kokar mı, acı mı, ne kadar yemeliyim. Cevaplar sanıldığından basit.",
+      },
+      {
+        tip: "baslik",
+        metin: "Önce ne olduğunu bilmek",
+      },
+      {
+        tip: "paragraf",
+        metin: "Kokoreç, kuzu bağırsağının iç organların etrafına sıkıca sarılıp şişe geçirilmesi ve ateşin üstünde saatlerce çevrilerek pişirilmesidir. Yani tanımadığınız bir malzeme değil, tanımadığınız bir hazırlık yöntemi. Bağırsak burada bir kılıf görevi görür: içteki eti kurumaktan korur, dışta ise ateşle temas edip çıtır bir yüzey oluşturur.",
+      },
+      {
+        tip: "baslik",
+        metin: "Kokar mı?",
+      },
+      {
+        tip: "paragraf",
+        metin: "İyi temizlenmiş ve doğru pişmiş kokoreç kokmaz. Tereddüdün kaynağı genelde temizliği eksik ya da ateşten uzakta bekletilmiş üründür. Bunu dışarıdan anlamanın en pratik yolu ocağı görebilmektir: kokorecin nerede, ne kadar süredir çevrildiğini görüyorsanız tahmin yürütmenize gerek kalmaz. Bizde ocak salonun içinde, açıkta duruyor — pişirme masaların önünde oluyor.",
+      },
+      {
+        tip: "baslik",
+        metin: "Acı mı?",
+      },
+      {
+        tip: "paragraf",
+        metin: "Kokoreç acılı da yenir, acısız da. Baharat pişerken değil, kokoreç doğrandıktan sonra son anda ekleniyor; yani acı tamamen sizin tercihiniz. Sipariş verirken \"acısız\" ya da \"az acılı\" demek yeterli. İlk denemede acısız veya az acılıyla başlamak, ürünün kendi tadını anlamak açısından daha doğru — sonrasında acıyı artırmak kolay.",
+      },
+      {
+        tip: "baslik",
+        metin: "İlk seferde ne kadar almalı?",
+      },
+      {
+        tip: "paragraf",
+        metin: "En yaygın hata, sevip sevmeyeceğinden emin olmadan büyük porsiyon almak. Kokoreçte porsiyon, şişten kesilen parçanın uzunluğuyla ölçülür:",
+      },
+      {
+        tip: "liste",
+        ogeler: [
+          "Çeyrek — 230 ₺. İlk deneme için doğru boy; ekmek arası olarak tek kişilik.",
+          "Yarım — 380 ₺. Daha önce yediyseniz ya da aç geldiyseniz.",
+          "Üç çeyrek (580 ₺) ve tam (740 ₺) — paylaşmak, sofraya koymak için.",
+          "Uykuluklu Yarım Atom (650 ₺) ve Special Atom (1200 ₺) — daha yumuşak, daha zengin dokulu; ama ilk deneme için gerekmez.",
+        ],
+      },
+      {
+        tip: "not",
+        metin: "Çeyrek, yarım, tam gibi terimler kafa karıştırıyorsa bunları ayrıntılı anlattığımız ayrı bir yazı var: \"Çeyrek, yarım, tam kokoreç ne demek?\"",
+      },
+      {
+        tip: "baslik",
+        metin: "Ekmek arası mı, porsiyon mu?",
+      },
+      {
+        tip: "paragraf",
+        metin: "Ekmek arası kokorecin klasik ve pratik hali; ayaküstü de yenir, masada da. Porsiyon (800 ₺) ise kokorecin tabakta, yanında ekleriyle gelmesi demek. İlk kez deneyen biri için ekmek arası daha tanıdık bir giriş: ekmek tadı dengeliyor, porsiyon kararı ise ikinci ziyarete kalabilir.",
+      },
+      {
+        tip: "baslik",
+        metin: "Yanına ne alınır?",
+      },
+      {
+        tip: "paragraf",
+        metin: "Geleneksel eşlikçiler ayran ve şalgam. Ayran yağı keser ve baharatı yumuşatır; şalgam ise keskinliği artırır, acılı sevenlerin tercihi. Turşu suyu da aynı işi görür. İlk denemede ayranla gitmek en güvenli seçim.",
+      },
+      {
+        tip: "baslik",
+        metin: "Ya sevmezsem?",
+      },
+      {
+        tip: "paragraf",
+        metin: "Olabilir, herkesin sevmesi gerekmiyor. Aynı ocaktan köfte ve sucuk ekmek de çıkıyor; ayrıca midye dolma, tavuklu pilav, kokoreçli pilav ve 300 gramlık ızgara bonfileli Sporcu Pilav var. Yani kalabalık gelip içinizden sadece bir kişi kokoreç denemek istese bile sofrada kimse aç kalmıyor — bu, kokoreci ilk kez deneyecekler için baskıyı da azaltıyor.",
+      },
+      {
+        tip: "alinti",
+        metin: "Kokoreç zor bir yemek değil; sadece tanıdık olmayan bir yemek.",
+      },
+      {
+        tip: "not",
+        metin: "Fiyatlar Kokology Nilüfer / Ataevler için 16 Eylül 2026 itibariyledir. Güncel liste her zaman menü sayfamızda.",
+      },
+    ],
+    ilgili: [
+      {
+        href: "/menu/kokorec",
+        label: "Kokoreç porsiyonları ve fiyatları",
+      },
+      {
+        href: "/blog/kokorec-nedir-nasil-yapilir",
+        label: "Kokoreç nedir, nasıl yapılır?",
+      },
+    ],
+  },
+  {
+    slug: "nilufer-ataevlerde-ne-yenir",
+    title: "Nilüfer ve Ataevler'de Ne Yenir? | Kokology Bursa",
+    description: "Bursa Nilüfer ve Ataevler'de yemek arayanlar için semt rehberi: saate ve kalabalığa göre ne yenir, otopark, oturma ve ayaküstü seçenekleri.",
+    h1: "Nilüfer ve Ataevler'de ne yenir?",
+    ozet: "Geniş bir ilçede yemek seçmek zordur. Saate, kalabalığa ve acelenize göre Ataevler tarafında ne yapılır.",
+    tarih: "2026-09-16",
+    etiket: "Bursa rehberi",
+    okumaDakika: 4,
+    image: "/images/mekan/cadde-ataevler-avm-kokology-bursa-nilufer-konum.jpg",
+    alt: "Cadde Ataevler dış görünümü — Kokology'nin bulunduğu konum, Bursa Nilüfer",
+    bloklar: [
+      {
+        tip: "paragraf",
+        metin: "Nilüfer, Bursa'nın en geniş ilçelerinden biri: Görükle'den Özlüce'ye, Beşevler'den Ataevler'e uzanan bir alan. Bu yüzden \"Nilüfer'de ne yenir\" sorusunun tek bir cevabı yok — soruyu soranın ilçenin neresinde olduğu ve saatin kaç olduğu cevabı baştan değiştiriyor.",
+      },
+      {
+        tip: "baslik",
+        metin: "Önce soruyu daraltın",
+      },
+      {
+        tip: "liste",
+        ogeler: [
+          "Saat kaç? Öğle arasıysa hızlı ve ayaküstü bir şey; akşamsa oturulacak bir yer aranır.",
+          "Kaç kişisiniz? Tek kişilik bir ekmek arası ile paylaşılacak bir sofra aynı mekânda çözülmeyebilir.",
+          "Arabayla mısınız? Nilüfer'de park meselesi, mekân seçiminin yarısıdır.",
+          "Ne kadar geç? Gece yarısından sonra açık kalan yer sayısı ciddi şekilde düşer.",
+        ],
+      },
+      {
+        tip: "baslik",
+        metin: "Ataevler tarafı",
+      },
+      {
+        tip: "paragraf",
+        metin: "Ataevler, Nilüfer'in oturmuş konut semtlerinden biri. Yılmaz Akkılıç Caddesi üzerindeki Cadde Ataevler, semtin yeme-içme tarafının toplandığı noktalardan; hem açık hem kapalı otoparkı ücretsiz olduğu için araçla gelenin park derdi olmuyor. Ataevler'in avantajı Beşevler ve Özlüce'ye yakın kalması, dezavantajı ise semtte gece geç saate kadar açık kalan yer sayısının sınırlı olması.",
+      },
+      {
+        tip: "baslik",
+        metin: "Kokology nerede?",
+      },
+      {
+        tip: "paragraf",
+        metin: "Yılmaz Akkılıç Cd. No:18/A — Cadde Ataevler'in içinde, cam cepheli dükkânız. Her gün 11.00'de açılıyoruz; Pazartesi–Perşembe 03.00'e, Cuma–Cumartesi–Pazar 04.00'e kadar ocak yanıyor. İçeride sedirli oturma alanı ve açık hava bölümü var; ücretsiz Wi-Fi ve çocuklar için oyun alanı mevcut.",
+      },
+      {
+        tip: "paragraf",
+        metin: "Menüde odun ateşinde çevrilen kokorecin yanı sıra köfte, sucuk ekmek, midye dolma, tavuklu pilav, kokoreçli pilav ve 300 gramlık ızgara bonfileli Sporcu Pilav var. Yani sofrada sakatat yemeyen biri olsa da sorun çıkmıyor.",
+      },
+      {
+        tip: "baslik",
+        metin: "Duruma göre ne yapılır",
+      },
+      {
+        tip: "liste",
+        ogeler: [
+          "Öğle arası, acele var → çeyrek köfte (200 ₺) veya çeyrek kokoreç (230 ₺) ekmek arası, ayaküstü alıp gidin.",
+          "Akşam, oturmalı → porsiyon kokoreç ya da köfte, yanına 10'luk midye; sedirli iç alan veya açık hava bölümü.",
+          "Çocuklu aile → oyun alanı var; akşamın erken saatleri daha sakin geçiyor.",
+          "Kalabalık grup → normal ziyaretlerde rezervasyon gerekmiyor, ama kalabalık grup için önceden aramak iyi olur: 0531 715 11 95.",
+          "Gece geç → hafta içi 03.00, hafta sonu 04.00'e kadar açığız; ocak kapanışa kadar yanıyor.",
+          "Eve götürmek → paket alabilir, şişte pişmiş kokoreci dilim dilim ya da kilo hesabıyla da alabilirsiniz.",
+        ],
+      },
+      {
+        tip: "baslik",
+        metin: "Ulaşım ve park",
+      },
+      {
+        tip: "paragraf",
+        metin: "Cadde Ataevler içindeki otopark hem açık hem kapalı ve ücretsiz; gece de park sorunu olmuyor. Ödemede nakit, kredi ve banka kartları geçiyor; yemek kartlarından Sodexo, Multinet, Ticket, Setcard, Metropol ve Edenred kullanılabiliyor.",
+      },
+      {
+        tip: "not",
+        metin: "Çalışma saatleri ve fiyatlar 16 Eylül 2026 itibariyledir. Yol tarifi ve güncel saatler için konum sayfamıza bakabilirsiniz.",
+      },
+    ],
+    ilgili: [
+      {
+        href: "/bul-bizi",
+        label: "Adres, yol tarifi ve çalışma saatleri",
+      },
+      {
+        href: "/menu",
+        label: "Menü ve fiyatlar",
+      },
+    ],
+  },
+  {
+    slug: "kokorec-mi-kofte-mi-sucuk-mu",
+    title: "Kokoreç mi, Köfte mi, Sucuk mu? Ekmek Arası Rehberi | Kokology Bursa",
+    description: "Kokoreç, köfte ve sucuk ekmek arasındaki fark ne? Fiyat, doyuruculuk ve kime hangisi uyar — kalabalık sofrada ne ısmarlanır?",
+    h1: "Kokoreç mi, köfte mi, sucuk mu?",
+    ozet: "Aynı ocaktan çıkan üç ekmek arası: farkları, fiyatları ve kalabalık gelenin \"herkese ne alsam\" sorusunun cevabı.",
+    tarih: "2026-09-16",
+    etiket: "Sipariş rehberi",
+    okumaDakika: 4,
+    image: "/images/urun/kokology-kofte-ekmek-arasi-bursa-nilufer-02.jpg",
+    alt: "Kokology köfte ekmek arası — Bursa Nilüfer Ataevler",
+    bloklar: [
+      {
+        tip: "paragraf",
+        metin: "Tezgâhın önünde en çok duraksatan an bu: üç seçenek var, üçü de ekmek arası, üçü de aynı ocaktan çıkıyor. Fark yalnızca tat tercihinden ibaret değil — doyuruculuk, hız, fiyat ve kiminle geldiğiniz de kararın içinde.",
+      },
+      {
+        tip: "baslik",
+        metin: "Kokoreç",
+      },
+      {
+        tip: "paragraf",
+        metin: "Şişte saatlerce çevrilen, sipariş anında doğranıp baharatlanan ürün. Üçünün arasında tadı en belirgin, en karakterli olanı; sevenler tam da bu yüzden seviyor. Daha önce hiç yemediyseniz çeyrekle başlamak mantıklı, acı miktarını da siz söylüyorsunuz.",
+      },
+      {
+        tip: "liste",
+        ogeler: [
+          "Çeyrek — 230 ₺",
+          "Yarım — 380 ₺",
+          "Üç çeyrek — 580 ₺",
+          "Tam — 740 ₺",
+          "Porsiyon — 800 ₺",
+        ],
+      },
+      {
+        tip: "baslik",
+        metin: "Köfte",
+      },
+      {
+        tip: "paragraf",
+        metin: "En tanıdık ve en az tereddüt yaratan seçenek. Sakatat yemeyen ya da sofrada \"garanti\" bir şey isteyen için doğru cevap genelde bu. Izgarada pişiyor; ekmek arası da olur, tabakta porsiyon da.",
+      },
+      {
+        tip: "liste",
+        ogeler: [
+          "Çeyrek — 200 ₺",
+          "Yarım — 320 ₺",
+          "Porsiyon — 500 ₺",
+        ],
+      },
+      {
+        tip: "baslik",
+        metin: "Sucuk",
+      },
+      {
+        tip: "paragraf",
+        metin: "Üçünün en hızlı hazırlananı. Sucuk kendi baharatını taşıdığı için yanına fazla ek istemez; daha tanıdık, kahvaltıya yakın bir tat arayan için uygun. Acelesi olanın ya da çok ağır bir şey istemeyenin seçeneği.",
+      },
+      {
+        tip: "liste",
+        ogeler: [
+          "Çeyrek — 220 ₺",
+          "Yarım — 350 ₺",
+        ],
+      },
+      {
+        tip: "baslik",
+        metin: "Hangisi kime?",
+      },
+      {
+        tip: "liste",
+        ogeler: [
+          "İlk kez kokoreç deneyecek → çeyrek kokoreç, az acılı.",
+          "Sakatat yemeyen → köfte.",
+          "Acelesi olan → sucuk ekmek.",
+          "Aç gelen → yarım kokoreç ya da porsiyon köfte.",
+          "Oturup paylaşacak olan → üç çeyrek veya tam kokoreç, yanına midye.",
+        ],
+      },
+      {
+        tip: "baslik",
+        metin: "Kalabalık geldiyseniz",
+      },
+      {
+        tip: "paragraf",
+        metin: "En işe yarayan yöntem herkese ayrı ekmek arası almak değil, ortaya koymak. Bir tam kokoreç (740 ₺) sofrada paylaşılırken yanına bir porsiyon köfte (500 ₺) ve 10'luk midye (250 ₺) koymak, farklı damak zevklerini tek masada çözüyor. Midye adet olarak da satılıyor (25 ₺); kalabalık sofralar için 50 adetlik kova (1150 ₺) var.",
+      },
+      {
+        tip: "baslik",
+        metin: "Hiçbiri olmazsa: pilavlar",
+      },
+      {
+        tip: "paragraf",
+        metin: "Ekmek arası istemeyen ya da daha doyurucu bir tabak arayan için üç pilav seçeneği var:",
+      },
+      {
+        tip: "liste",
+        ogeler: [
+          "Tavuklu Pilav — 200 ₺",
+          "Sporcu Pilav (300 gr ızgara bonfile) — 300 ₺",
+          "Kokoreçli Pilav — 470 ₺",
+        ],
+      },
+      {
+        tip: "baslik",
+        metin: "Yanına ne içilir?",
+      },
+      {
+        tip: "paragraf",
+        metin: "Üçünde de klasik eşlik ayran, şalgam ve turşu suyu. Kokoreçte ayran baharatı yumuşatır, şalgam keskinliği artırır; köfte ve sucukta ise gazoz da sık tercih ediliyor. Hangi içeceğin neden gittiğini ayrı bir yazıda anlattık.",
+      },
+      {
+        tip: "not",
+        metin: "Fiyatlar Kokology Nilüfer / Ataevler için 16 Eylül 2026 itibariyledir. Güncel liste her zaman menü sayfamızda.",
+      },
+    ],
+    ilgili: [
+      {
+        href: "/menu",
+        label: "Tüm menü ve fiyatlar",
+      },
+      {
+        href: "/blog/kokorec-yanina-ne-icilir",
+        label: "Kokoreç yanına ne içilir?",
+      },
     ],
   },
 ];
