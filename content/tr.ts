@@ -217,6 +217,12 @@ export const nav = {
     { href: "#kultur", label: "Kültür" },
     { href: "#sss", label: "S.S.S." },
     { href: "/bul-bizi", label: "Bul Bizi" },
+    /**
+     * QR menü listenin SONUNDA: "Menü"nün hemen yanında dursa ziyaretçi
+     * hangisine gireceğini düşünmek zorunda kalırdı. Sitedeki asıl menü
+     * /menu; bu, masadaki sade sürüme giden yardımcı bir kapı.
+     */
+    { href: "/qr", label: "QR Menü" },
   ],
   cta: {
     order: "Sipariş",
