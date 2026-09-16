@@ -53,11 +53,24 @@ export async function fiyatGuncelle(
 
 export async function urunGuncelle(
   urunId: string,
-  alanlar: { ad?: string; fiyat?: number | null; not_metni?: string; imza?: boolean; yayinda?: boolean },
+  alanlar: {
+    ad?: string;
+    fiyat?: number | null;
+    not_metni?: string;
+    imza?: boolean;
+    yayinda?: boolean;
+    /** Fotoğraflı menüdeki satır görseli. Boş bırakılırsa kalem kendi
+     * kategorisinin fotoğrafını gösterir. */
+    gorsel?: string | null;
+    gorsel_alt?: string | null;
+  },
 ): Promise<EylemSonuc> {
   try {
     const db = await yetkiliIstemci();
-    const { error } = await db.from("menu_urunler").update(alanlar).eq("id", urunId);
+    const { error } = await db
+      .from("menu_urunler")
+      .update(alanlar)
+      .eq("id", urunId);
     if (error) return { ok: false, hata: error.message };
 
     updateTag(ETIKET.menu);
@@ -164,7 +177,9 @@ export async function ayarGuncelle(
  *
  * Aynı slug ikinci kez eklenmez; tekrar basılması zarar vermez.
  */
-export async function blogTohumla(): Promise<EylemSonuc & { eklenen?: number }> {
+export async function blogTohumla(): Promise<
+  EylemSonuc & { eklenen?: number }
+> {
   try {
     const db = await yetkiliIstemci();
     const { yazilar } = await import("@/content/blog");
@@ -247,7 +262,10 @@ export async function sssGuncelle(
   }
 }
 
-export async function sssEkle(soru: string, cevap: string): Promise<EylemSonuc> {
+export async function sssEkle(
+  soru: string,
+  cevap: string,
+): Promise<EylemSonuc> {
   try {
     const db = await yetkiliIstemci();
     const { data: son } = await db
@@ -303,7 +321,9 @@ export async function yorumEkle(
 ): Promise<EylemSonuc> {
   try {
     const db = await yetkiliIstemci();
-    const { error } = await db.from("yorumlar").insert({ yazan, puan, metin, tarih });
+    const { error } = await db
+      .from("yorumlar")
+      .insert({ yazan, puan, metin, tarih });
     if (error) return { ok: false, hata: error.message };
     updateTag(ETIKET.yorumlar);
     return { ok: true };

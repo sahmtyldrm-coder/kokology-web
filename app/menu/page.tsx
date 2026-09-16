@@ -91,7 +91,7 @@ export default async function MenuPage() {
               </h2>
             </Reveal>
             <Reveal className="block">
-              <MenuSections headingLevel="h3" linkToCategory />
+              <MenuSections headingLevel="h3" linkToCategory urunGorselleri />
               <p className="mt-10 font-sans text-sm text-bone/40">
                 {menu.priceNote}
               </p>

@@ -119,11 +119,12 @@ export default async function QrMenuPage() {
         <h1 className="font-display text-3xl text-bone">{menuPage.h1}</h1>
         <p className="mt-2 font-sans text-sm text-bone/50">{menuPage.qrNote}</p>
 
-        {/* Tek sütun, kategori başına bir fotoğraf: masada hız her şeyden önemli */}
+        {/* Tek sütun, her kaleme bir fotoğraf: masadaki misafir ne
+            sipariş ettiğini görerek seçsin. Fotoğrafa dokununca büyür. */}
         <MenuSections
           headingLevel="h2"
           columns={1}
-          sectionImages
+          urunGorselleri
           className="mt-10"
         />
 

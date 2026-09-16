@@ -10,11 +10,15 @@ export type PanelUrun = {
   not_metni: string;
   imza: boolean;
   yayinda: boolean;
+  gorsel: string;
+  gorsel_alt: string;
 };
 
 export type PanelKategori = {
   id: string;
   ad: string;
+  /** Ürünün kendi fotoğrafı yoksa sitede bu görünür — önizlemede de öyle. */
+  gorsel: string;
   urunler: PanelUrun[];
 };
 
@@ -33,7 +37,7 @@ export function MenuDuzenle({ kategoriler }: { kategoriler: PanelKategori[] }) {
           <h2 className="font-display text-2xl text-brass">{k.ad}</h2>
           <ul className="mt-4 divide-y divide-bone/10 border-y border-bone/10">
             {k.urunler.map((u) => (
-              <UrunSatiri key={u.id} urun={u} />
+              <UrunSatiri key={u.id} urun={u} kategoriGorseli={k.gorsel} />
             ))}
           </ul>
           <YeniUrun kategoriId={k.id} />
@@ -45,11 +49,21 @@ export function MenuDuzenle({ kategoriler }: { kategoriler: PanelKategori[] }) {
 
 /* -------------------------------------------------------------------------- */
 
-function UrunSatiri({ urun }: { urun: PanelUrun }) {
+function UrunSatiri({
+  urun,
+  kategoriGorseli,
+}: {
+  urun: PanelUrun;
+  kategoriGorseli: string;
+}) {
   const [ad, setAd] = useState(urun.ad);
-  const [fiyat, setFiyat] = useState(urun.fiyat === null ? "" : String(urun.fiyat));
+  const [fiyat, setFiyat] = useState(
+    urun.fiyat === null ? "" : String(urun.fiyat),
+  );
   const [notu, setNotu] = useState(urun.not_metni);
   const [imza, setImza] = useState(urun.imza);
+  const [gorsel, setGorsel] = useState(urun.gorsel);
+  const [gorselAlt, setGorselAlt] = useState(urun.gorsel_alt);
   const [durum, setDurum] = useState<"" | "kaydedildi" | string>("");
   const [bekliyor, basla] = useTransition();
 
@@ -57,7 +71,12 @@ function UrunSatiri({ urun }: { urun: PanelUrun }) {
     ad !== urun.ad ||
     fiyat !== (urun.fiyat === null ? "" : String(urun.fiyat)) ||
     notu !== urun.not_metni ||
-    imza !== urun.imza;
+    imza !== urun.imza ||
+    gorsel !== urun.gorsel ||
+    gorselAlt !== urun.gorsel_alt;
+
+  // Sitede bu satırda hangi fotoğrafın görüneceği — kutu boşsa kategorininki.
+  const onizleme = gorsel.trim() || kategoriGorseli;
 
   function kaydet() {
     setDurum("");
@@ -73,6 +92,9 @@ function UrunSatiri({ urun }: { urun: PanelUrun }) {
         fiyat: sayi,
         not_metni: notu.trim(),
         imza,
+        // Boş kutu NULL gider: ürün kategorisinin fotoğrafına düşer.
+        gorsel: gorsel.trim() || null,
+        gorsel_alt: gorselAlt.trim() || null,
       });
       setDurum(s.ok ? "kaydedildi" : s.hata);
     });
@@ -140,10 +162,59 @@ function UrunSatiri({ urun }: { urun: PanelUrun }) {
         </button>
       </div>
 
+      {/* Fotoğraf satırı — /yonetim/fotograflar'dan kopyalanan adres buraya
+          yapıştırılır. Solda sitede görünecek hâlin önizlemesi durur. */}
+      <div className="flex items-center gap-3 sm:col-span-4">
+        <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-sm border border-bone/15 bg-soot">
+          {onizleme ? (
+            /* Panel görselleri Supabase Storage'dan da gelebildiği için
+               next/image değil düz img: uzak alan adı yapılandırması
+               gerektirmesin. */
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={onizleme}
+              alt=""
+              aria-hidden
+              className={`h-full w-full ${
+                onizleme.endsWith(".png")
+                  ? "object-contain p-1"
+                  : "object-cover"
+              } ${gorsel.trim() ? "" : "opacity-45"}`}
+            />
+          ) : (
+            <span
+              aria-hidden
+              className="flex h-full w-full items-center justify-center font-sans text-lg text-bone/25"
+            >
+              ⤢
+            </span>
+          )}
+        </span>
+
+        <input
+          value={gorsel}
+          onChange={(e) => setGorsel(e.target.value)}
+          placeholder={
+            kategoriGorseli
+              ? "fotoğraf adresi — boşsa kategorininki kullanılır"
+              : "fotoğraf adresi"
+          }
+          aria-label={`${urun.ad} fotoğraf adresi`}
+          className="min-h-[44px] min-w-0 flex-[2] rounded-sm border border-bone/20 bg-soot px-3 font-sans text-xs text-bone/80 outline-none focus:border-brass"
+        />
+        <input
+          value={gorselAlt}
+          onChange={(e) => setGorselAlt(e.target.value)}
+          placeholder="fotoğraf açıklaması (görme engelliler + Google)"
+          aria-label={`${urun.ad} fotoğraf açıklaması`}
+          className="min-h-[44px] min-w-0 flex-[3] rounded-sm border border-bone/20 bg-soot px-3 font-sans text-xs text-bone/80 outline-none focus:border-brass"
+        />
+      </div>
+
       {durum && (
         <p
           role="status"
-          className={`sm:col-span-4 font-sans text-xs ${
+          className={`font-sans text-xs sm:col-span-4 ${
             durum === "kaydedildi" ? "text-brass" : "text-red"
           }`}
         >

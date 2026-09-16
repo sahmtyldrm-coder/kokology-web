@@ -344,11 +344,11 @@ export const menu = {
     {
       id: "kokorec",
       name: "Kokoreç",
-      image: "/images/urun/kokology-kokorec-porsiyon-bursa-nilufer-06.jpg",
-      alt: "Kokology kokoreç porsiyon tabağı, doğranmış kokoreç — Bursa Nilüfer Ataevler",
+      image: "/images/urun/kokology-kokorec-ekmek-arasi-bursa-nilufer-06.jpg",
+      alt: "Kokology kokoreç ekmek arası — Bursa Nilüfer Ataevler",
       items: [
-        { name: "Çeyrek Kokoreç", price: 230 as number | null, note: "" },
-        { name: "Yarım Kokoreç", price: 380 as number | null, note: "" },
+        { name: "Çeyrek Kokoreç", price: 230 as number | null, note: "", image: "/images/urun/kokology-kokorec-ekmek-arasi-bursa-nilufer-10.jpg", alt: "Çeyrek kokoreç ekmek arası, yanında turşu ve ayran — Kokology Bursa Nilüfer Ataevler" },
+        { name: "Yarım Kokoreç", price: 380 as number | null, note: "", image: "/images/urun/kokology-kokorec-ekmek-arasi-bursa-nilufer-06.jpg", alt: "Yarım kokoreç ekmek arası, kekik ve pul biberli — Kokology Bursa Nilüfer Ataevler" },
         {
           name: "Yarım Atom",
           price: 650 as number | null,
@@ -356,8 +356,8 @@ export const menu = {
           signature: true,
         },
         { name: "Üç Çeyrek Kokoreç", price: 580 as number | null, note: "" },
-        { name: "Tam Kokoreç", price: 740 as number | null, note: "" },
-        { name: "Porsiyon Kokoreç", price: 800 as number | null, note: "" },
+        { name: "Tam Kokoreç", price: 740 as number | null, note: "", image: "/images/urun/kokology-kokorec-ekmek-arasi-bursa-nilufer-03.jpg", alt: "Tam kokoreç ekmek arası, uzun ekmekte doğranmış kokoreç — Kokology Bursa Nilüfer Ataevler" },
+        { name: "Porsiyon Kokoreç", price: 800 as number | null, note: "", image: "/images/urun/kokology-kokorec-porsiyon-bursa-nilufer-06.jpg", alt: "Porsiyon kokoreç tabağı, doğranmış kokoreç ve turşu — Kokology Bursa Nilüfer Ataevler" },
         {
           name: "Special Atom",
           price: 1200 as number | null,
@@ -373,9 +373,9 @@ export const menu = {
       image: "/images/urun/kokology-kofte-porsiyon-bursa-nilufer-03.jpg",
       alt: "Kokology köfte porsiyon tabağı, pilav ve közleme ile — Bursa Nilüfer Ataevler",
       items: [
-        { name: "Çeyrek Köfte", price: 200 as number | null, note: "" },
-        { name: "Yarım Köfte", price: 320 as number | null, note: "" },
-        { name: "Porsiyon Köfte", price: 500 as number | null, note: "" },
+        { name: "Çeyrek Köfte", price: 200 as number | null, note: "", image: "/images/urun/kokology-kofte-ekmek-bursa-nilufer-07.jpg", alt: "Çeyrek köfte ekmek, mangalda pişmiş köfte — Kokology Bursa Nilüfer Ataevler" },
+        { name: "Yarım Köfte", price: 320 as number | null, note: "", image: "/images/urun/kokology-kofte-ekmek-arasi-bursa-nilufer-02.jpg", alt: "Yarım köfte ekmek arası, közlenmiş biber ile — Kokology Bursa Nilüfer Ataevler" },
+        { name: "Porsiyon Köfte", price: 500 as number | null, note: "", image: "/images/urun/kokology-kofte-porsiyon-bursa-nilufer-03.jpg", alt: "Porsiyon köfte tabağı, pilav ve közleme ile — Kokology Bursa Nilüfer Ataevler" },
       ],
     },
     {
@@ -384,8 +384,8 @@ export const menu = {
       image: "/images/urun/kokology-sucuk-ekmek-bursa-nilufer-04.jpg",
       alt: "Kokology sucuk ekmek, kızarmış ekmek arasında kalın kesim sucuk — Bursa Nilüfer Ataevler",
       items: [
-        { name: "Çeyrek Sucuk", price: 220 as number | null, note: "" },
-        { name: "Yarım Sucuk", price: 350 as number | null, note: "" },
+        { name: "Çeyrek Sucuk", price: 220 as number | null, note: "", image: "/images/urun/kokology-sucuk-ekmek-bursa-nilufer-06.jpg", alt: "Çeyrek sucuk ekmek, kalın kesim ızgara sucuk — Kokology Bursa Nilüfer Ataevler" },
+        { name: "Yarım Sucuk", price: 350 as number | null, note: "", image: "/images/urun/kokology-sucuk-ekmek-bursa-nilufer-04.jpg", alt: "Yarım sucuk ekmek, kızarmış ekmek arasında sucuk — Kokology Bursa Nilüfer Ataevler" },
       ],
     },
     {
@@ -394,9 +394,9 @@ export const menu = {
       image: "/images/urun/kokology-midye-dolma-bursa-nilufer-04.jpg",
       alt: "Kokology midye dolma tabağı, limon dilimleri ile — Bursa Nilüfer Ataevler",
       items: [
-        { name: "Adet", price: 25 as number | null, note: "" },
-        { name: "10 Adet", price: 250 as number | null, note: "" },
-        { name: "50 Adet Kova", price: 1150 as number | null, note: "" },
+        { name: "Adet", price: 25 as number | null, note: "", image: "/images/urun/kokology-midye-dolma-bursa-nilufer-04.jpg", alt: "Midye dolma, limon dilimleri ile — Kokology Bursa Nilüfer Ataevler" },
+        { name: "10 Adet", price: 250 as number | null, note: "", image: "/images/urun/kokology-midye-dolma-bursa-nilufer-04.jpg", alt: "10 adet midye dolma tabağı, limon ile — Kokology Bursa Nilüfer Ataevler" },
+        { name: "50 Adet Kova", price: 1150 as number | null, note: "", image: "/images/urun/kokology-midye-dolma-bursa-nilufer-04.jpg", alt: "50 adetlik midye dolma kovası — Kokology Bursa Nilüfer Ataevler" },
       ],
     },
     {
@@ -405,16 +405,16 @@ export const menu = {
       image: "/images/urun/kokology-pilav-ustu-kokorec-bursa-nilufer-05.jpg",
       alt: "Kokology pilav üstü kokoreç porsiyonu — Bursa Nilüfer Ataevler",
       items: [
-        { name: "Tavuklu Pilav", price: 200 as number | null, note: "" },
+        { name: "Tavuklu Pilav", price: 200 as number | null, note: "", image: "/images/urun/kokology-tavuklu-pilav-bursa-nilufer-01.jpg", alt: "Tavuklu pilav porsiyonu, domates ve turşu ile — Kokology Bursa Nilüfer Ataevler" },
         { name: "Sporcu Pilav", price: 300 as number | null, note: "300 gr ızgara bonfile" },
-        { name: "Kokoreçli Pilav", price: 470 as number | null, note: "" },
+        { name: "Kokoreçli Pilav", price: 470 as number | null, note: "", image: "/images/urun/kokology-pilav-ustu-kokorec-bursa-nilufer-05.jpg", alt: "Pilav üstü kokoreç porsiyonu — Kokology Bursa Nilüfer Ataevler" },
       ],
     },
     {
       id: "icecekler",
       name: "İçecekler",
-      image: "",
-      alt: "",
+      image: "/images/icecek/kokology-icecekler-ayran-salgam-gazoz-bursa-nilufer.jpg",
+      alt: "Kokology içecekleri: ayran, şalgam ve gazoz — Bursa Nilüfer Ataevler",
       items: [
         { name: "Özerihisar Ayran", price: 90 as number | null, note: "", image: "/images/icecek/ozerihisar-ayran-kokology-bursa-nilufer.png", alt: "Özerhisar ayran şişesi — Kokology Bursa Nilüfer Ataevler" },
         { name: "Sütaş Ayran", price: 60 as number | null, note: "", image: "/images/icecek/sutas-ayran-kokology-bursa-nilufer.png", alt: "Sütaş ayran şişesi — Kokology Bursa Nilüfer Ataevler" },

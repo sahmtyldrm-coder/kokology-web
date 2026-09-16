@@ -52,6 +52,11 @@ async function menuSchema() {
         "@type": "MenuItem",
         name: item.ad,
         ...(item.not && { description: item.not }),
+        /* Kalemin kendi fotoğrafı; yoksa kategorininki. Google menü zengin
+           sonuçlarında ürün görselini buradan okur. */
+        ...((item.gorsel || section.gorsel) && {
+          image: `${site}${item.gorsel || section.gorsel}`,
+        }),
         ...(item.fiyat !== null && {
           offers: {
             "@type": "Offer",

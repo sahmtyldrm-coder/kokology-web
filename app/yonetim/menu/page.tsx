@@ -1,5 +1,8 @@
 import { redirect } from "next/navigation";
-import { MenuDuzenle, type PanelKategori } from "@/components/yonetim/MenuDuzenle";
+import {
+  MenuDuzenle,
+  type PanelKategori,
+} from "@/components/yonetim/MenuDuzenle";
 import { sunucuIstemcisi } from "@/lib/supabase";
 
 export const dynamic = "force-dynamic";
@@ -13,7 +16,9 @@ export default async function MenuYonetim() {
 
   const { data, error } = await db
     .from("menu_kategoriler")
-    .select("id, ad, sira, menu_urunler(id, ad, fiyat, not_metni, imza, yayinda, sira)")
+    .select(
+      "id, ad, gorsel, sira, menu_urunler(id, ad, fiyat, not_metni, imza, yayinda, gorsel, gorsel_alt, sira)",
+    )
     .order("sira");
 
   if (error) {
@@ -27,6 +32,7 @@ export default async function MenuYonetim() {
   const kategoriler: PanelKategori[] = (data ?? []).map((k) => ({
     id: k.id,
     ad: k.ad,
+    gorsel: k.gorsel ?? "",
     urunler: (k.menu_urunler ?? [])
       .sort((a, b) => a.sira - b.sira)
       .map((u) => ({
@@ -36,6 +42,8 @@ export default async function MenuYonetim() {
         not_metni: u.not_metni ?? "",
         imza: u.imza,
         yayinda: u.yayinda,
+        gorsel: u.gorsel ?? "",
+        gorsel_alt: u.gorsel_alt ?? "",
       })),
   }));
 
@@ -47,7 +55,8 @@ export default async function MenuYonetim() {
       <p className="mt-2 max-w-[60ch] font-sans text-sm text-bone/50">
         Bir satırı değiştirip Kaydet&apos;e bas — site birkaç saniye içinde
         güncellenir. Fiyat kutusunu boş bırakırsan o üründe fiyat hiç
-        gösterilmez.
+        gösterilmez. Fotoğraf kutusu boşsa ürün, kendi kategorisinin fotoğrafını
+        gösterir.
       </p>
 
       <div className="mt-10">
