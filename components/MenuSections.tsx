@@ -26,7 +26,11 @@ function fotoAnahtari(bolumId: string, urunAdi: string): string {
  * satır boş kalmaz, kategorinin fotoğrafıyla dolar.
  */
 function urunFotografi(bolum: MenuBolum, urun: MenuBolum["items"][number]) {
-  const src = urun.gorsel || bolum.gorsel;
+  // Boş dize "fotoğraf gösterme" demek; kategorininkine DÜŞMEZ. Ayrımı
+  // koruyabilmek için burada `||` değil açık bir null kontrolü var.
+  if (urun.gorsel === "") return null;
+
+  const src = urun.gorsel ?? bolum.gorsel;
   if (!src) return null;
   const kendi = Boolean(urun.gorsel);
   return {
@@ -194,6 +198,15 @@ export async function MenuSections({
                         ⤢
                       </span>
                     </button>
+                  ) : urunGorselleri ? (
+                    /* Fotoğraflı listede fotoğrafı olmayan kalem (ör. Atom):
+                       kutu kadar boşluk bırakılır ki ürün adları aynı hizada
+                       kalsın — aksi hâlde o satırlar sola kayıp liste bozuk
+                       görünürdü. */
+                    <span
+                      aria-hidden
+                      className="h-16 w-24 shrink-0 sm:h-[4.5rem] sm:w-28"
+                    />
                   ) : (
                     /* Fotoğrafsız görünüm — ana sayfa ve kategori sayfaları.
                        Burada yalnızca fonsuz kesilmiş şişe/kutu görselleri
@@ -201,7 +214,6 @@ export async function MenuSections({
                        gibi dururlar. Yemek fotoğrafları (JPEG) bu boyutta
                        tanınmaz; onlar `urunGorselleri` açıkken büyük kutuda
                        gösterilir. */
-                    !urunGorselleri &&
                     item.gorsel?.endsWith(".png") && (
                       <span className="relative h-11 w-9 shrink-0 self-center">
                         <Image

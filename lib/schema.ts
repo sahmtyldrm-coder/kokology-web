@@ -53,10 +53,13 @@ async function menuSchema() {
         name: item.ad,
         ...(item.not && { description: item.not }),
         /* Kalemin kendi fotoğrafı; yoksa kategorininki. Google menü zengin
-           sonuçlarında ürün görselini buradan okur. */
-        ...((item.gorsel || section.gorsel) && {
-          image: `${site}${item.gorsel || section.gorsel}`,
-        }),
+           sonuçlarında ürün görselini buradan okur. Boş dize "fotoğraf
+           gösterme" demek (bkz. lib/veri.ts) — sayfada gizlediğimiz bir
+           fotoğrafı şemada beyan etmek tutarsız olurdu. */
+        ...(item.gorsel !== "" &&
+          (item.gorsel ?? section.gorsel) && {
+            image: `${site}${item.gorsel ?? section.gorsel}`,
+          }),
         ...(item.fiyat !== null && {
           offers: {
             "@type": "Offer",
@@ -162,7 +165,12 @@ export async function yaziSchema(slug: string) {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: business.name, item: site },
-          { "@type": "ListItem", position: 2, name: "Blog", item: `${site}/blog` },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Blog",
+            item: `${site}/blog`,
+          },
           { "@type": "ListItem", position: 3, name: yazi.baslik, item: url },
         ],
       },
@@ -183,7 +191,9 @@ export async function yaziSchema(slug: string) {
         keywords: [yazi.etiket, "kokoreç", "Bursa", "Nilüfer", "Ataevler"],
         wordCount: yazi.bloklar
           .map((b) =>
-            b.tip === "liste" ? b.ogeler.join(" ") : (b as { metin: string }).metin,
+            b.tip === "liste"
+              ? b.ogeler.join(" ")
+              : (b as { metin: string }).metin,
           )
           .join(" ")
           .split(/\s+/).length,
@@ -251,7 +261,12 @@ export async function kategoriSchema(slug: string) {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: business.name, item: site },
-          { "@type": "ListItem", position: 2, name: "Menü", item: `${site}/menu` },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Menü",
+            item: `${site}/menu`,
+          },
           {
             "@type": "ListItem",
             position: 3,

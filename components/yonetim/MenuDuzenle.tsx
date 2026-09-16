@@ -64,6 +64,9 @@ function UrunSatiri({
   const [imza, setImza] = useState(urun.imza);
   const [gorsel, setGorsel] = useState(urun.gorsel);
   const [gorselAlt, setGorselAlt] = useState(urun.gorsel_alt);
+  /* Veritabanında boş dize "fotoğraf gösterme" demek; NULL ise kalem
+     kategorisinin fotoğrafına düşer. Panelde bu ayrımı bu kutu taşıyor. */
+  const [fotografsiz, setFotografsiz] = useState(urun.gorsel === "");
   const [durum, setDurum] = useState<"" | "kaydedildi" | string>("");
   const [bekliyor, basla] = useTransition();
 
@@ -73,10 +76,12 @@ function UrunSatiri({
     notu !== urun.not_metni ||
     imza !== urun.imza ||
     gorsel !== urun.gorsel ||
-    gorselAlt !== urun.gorsel_alt;
+    gorselAlt !== urun.gorsel_alt ||
+    fotografsiz !== (urun.gorsel === "");
 
-  // Sitede bu satırda hangi fotoğrafın görüneceği — kutu boşsa kategorininki.
-  const onizleme = gorsel.trim() || kategoriGorseli;
+  // Sitede bu satırda hangi fotoğrafın görüneceği — kutu boşsa kategorininki,
+  // "fotoğrafsız" işaretliyse hiçbiri.
+  const onizleme = fotografsiz ? "" : gorsel.trim() || kategoriGorseli;
 
   function kaydet() {
     setDurum("");
@@ -92,9 +97,10 @@ function UrunSatiri({
         fiyat: sayi,
         not_metni: notu.trim(),
         imza,
-        // Boş kutu NULL gider: ürün kategorisinin fotoğrafına düşer.
-        gorsel: gorsel.trim() || null,
-        gorsel_alt: gorselAlt.trim() || null,
+        /* "fotoğrafsız" → boş dize (hiç gösterme).
+           Boş kutu → NULL (kategori fotoğrafına düş). */
+        gorsel: fotografsiz ? "" : gorsel.trim() || null,
+        gorsel_alt: fotografsiz ? null : gorselAlt.trim() || null,
       });
       setDurum(s.ok ? "kaydedildi" : s.hata);
     });
@@ -186,29 +192,45 @@ function UrunSatiri({
               aria-hidden
               className="flex h-full w-full items-center justify-center font-sans text-lg text-bone/25"
             >
-              ⤢
+              {fotografsiz ? "–" : "⤢"}
             </span>
           )}
         </span>
 
         <input
-          value={gorsel}
+          value={fotografsiz ? "" : gorsel}
           onChange={(e) => setGorsel(e.target.value)}
+          disabled={fotografsiz}
           placeholder={
-            kategoriGorseli
-              ? "fotoğraf adresi — boşsa kategorininki kullanılır"
-              : "fotoğraf adresi"
+            fotografsiz
+              ? "bu üründe fotoğraf gösterilmiyor"
+              : kategoriGorseli
+                ? "fotoğraf adresi — boşsa kategorininki kullanılır"
+                : "fotoğraf adresi"
           }
           aria-label={`${urun.ad} fotoğraf adresi`}
-          className="min-h-[44px] min-w-0 flex-[2] rounded-sm border border-bone/20 bg-soot px-3 font-sans text-xs text-bone/80 outline-none focus:border-brass"
+          className="min-h-[44px] min-w-0 flex-[2] rounded-sm border border-bone/20 bg-soot px-3 font-sans text-xs text-bone/80 outline-none focus:border-brass disabled:opacity-40"
         />
         <input
-          value={gorselAlt}
+          value={fotografsiz ? "" : gorselAlt}
           onChange={(e) => setGorselAlt(e.target.value)}
+          disabled={fotografsiz}
           placeholder="fotoğraf açıklaması (görme engelliler + Google)"
           aria-label={`${urun.ad} fotoğraf açıklaması`}
-          className="min-h-[44px] min-w-0 flex-[3] rounded-sm border border-bone/20 bg-soot px-3 font-sans text-xs text-bone/80 outline-none focus:border-brass"
+          className="min-h-[44px] min-w-0 flex-[3] rounded-sm border border-bone/20 bg-soot px-3 font-sans text-xs text-bone/80 outline-none focus:border-brass disabled:opacity-40"
         />
+
+        {/* Yanlış fotoğraf, fotoğrafsızlıktan kötüdür: Atom gibi kendine
+            özgü ürünlerde kategori fotoğrafına düşmeyi kapatmak gerekiyor. */}
+        <label className="flex shrink-0 cursor-pointer items-center gap-2 font-sans text-xs whitespace-nowrap text-bone/60">
+          <input
+            type="checkbox"
+            checked={fotografsiz}
+            onChange={(e) => setFotografsiz(e.target.checked)}
+            className="h-4 w-4 accent-[var(--color-brass)]"
+          />
+          fotoğrafsız
+        </label>
       </div>
 
       {durum && (

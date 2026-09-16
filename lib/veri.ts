@@ -50,6 +50,16 @@ export type MenuUrun = {
   fiyat: number | null;
   not: string;
   imza: boolean;
+  /**
+   * Üç ayrı durum taşır:
+   * - dolu   → kalemin kendi fotoğrafı
+   * - `null` → fotoğrafı yok, kategorisininkine düşsün
+   * - `""`   → fotoğrafı yok ve kategorininki de KULLANILMASIN
+   *
+   * Üçüncüsü gerçek bir ihtiyaçtan doğdu: Atom uykuluklu bir üründür, ona
+   * normal kokoreç fotoğrafı düşürmek müşteriyi yanıltır. Yanlış fotoğraf,
+   * fotoğrafsızlıktan kötüdür.
+   */
   gorsel: string | null;
   alt: string | null;
 };

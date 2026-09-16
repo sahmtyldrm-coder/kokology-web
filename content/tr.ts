@@ -353,15 +353,18 @@ export const menu = {
       image: "/images/urun/kokology-kokorec-ekmek-arasi-bursa-nilufer-06.jpg",
       alt: "Kokology kokoreç ekmek arası — Bursa Nilüfer Ataevler",
       items: [
-        { name: "Çeyrek Kokoreç", price: 230 as number | null, note: "", image: "/images/urun/kokology-kokorec-ekmek-arasi-bursa-nilufer-10.jpg", alt: "Çeyrek kokoreç ekmek arası, yanında turşu ve ayran — Kokology Bursa Nilüfer Ataevler" },
-        { name: "Yarım Kokoreç", price: 380 as number | null, note: "", image: "/images/urun/kokology-kokorec-ekmek-arasi-bursa-nilufer-06.jpg", alt: "Yarım kokoreç ekmek arası, kekik ve pul biberli — Kokology Bursa Nilüfer Ataevler" },
+        { name: "Çeyrek Kokoreç", price: 230 as number | null, note: "", image: "/images/urun/kokology-kokorec-ekmek-arasi-bursa-nilufer-06.jpg", alt: "Çeyrek kokoreç ekmek arası, yanında turşu ve ayran — Kokology Bursa Nilüfer Ataevler" },
+        { name: "Yarım Kokoreç", price: 380 as number | null, note: "", image: "/images/urun/kokology-kokorec-ekmek-arasi-bursa-nilufer-10.jpg", alt: "Yarım kokoreç ekmek arası, kekik ve pul biberli — Kokology Bursa Nilüfer Ataevler" },
         {
           name: "Yarım Atom",
           price: 650 as number | null,
           note: "Uykuluklu",
           signature: true,
+          /* Uykuluklu ürün: normal kokoreç fotoğrafı yanıltıcı olurdu.
+             Boş dize "fotoğraf gösterme" demek, bkz. lib/veri.ts. */
+          image: "",
         },
-        { name: "Üç Çeyrek Kokoreç", price: 580 as number | null, note: "" },
+        { name: "Üç Çeyrek Kokoreç", price: 580 as number | null, note: "", image: "/images/urun/kokology-kokorec-ekmek-arasi-bursa-nilufer-03.jpg", alt: "Üç çeyrek kokoreç ekmek arası, uzun ekmekte doğranmış kokoreç — Kokology Bursa Nilüfer Ataevler" },
         { name: "Tam Kokoreç", price: 740 as number | null, note: "", image: "/images/urun/kokology-kokorec-ekmek-arasi-bursa-nilufer-03.jpg", alt: "Tam kokoreç ekmek arası, uzun ekmekte doğranmış kokoreç — Kokology Bursa Nilüfer Ataevler" },
         { name: "Porsiyon Kokoreç", price: 800 as number | null, note: "", image: "/images/urun/kokology-kokorec-porsiyon-bursa-nilufer-06.jpg", alt: "Porsiyon kokoreç tabağı, doğranmış kokoreç ve turşu — Kokology Bursa Nilüfer Ataevler" },
         {
@@ -370,6 +373,9 @@ export const menu = {
           note: "Uykuluklu",
           /** Markanın imza ürünü — menüde ayrıca işaretlenir */
           signature: true,
+          /* Uykuluklu ürün: normal kokoreç fotoğrafı yanıltıcı olurdu.
+             Boş dize "fotoğraf gösterme" demek, bkz. lib/veri.ts. */
+          image: "",
         },
       ],
     },
@@ -379,8 +385,8 @@ export const menu = {
       image: "/images/urun/kokology-kofte-porsiyon-bursa-nilufer-03.jpg",
       alt: "Kokology köfte porsiyon tabağı, pilav ve közleme ile — Bursa Nilüfer Ataevler",
       items: [
-        { name: "Çeyrek Köfte", price: 200 as number | null, note: "", image: "/images/urun/kokology-kofte-ekmek-bursa-nilufer-07.jpg", alt: "Çeyrek köfte ekmek, mangalda pişmiş köfte — Kokology Bursa Nilüfer Ataevler" },
-        { name: "Yarım Köfte", price: 320 as number | null, note: "", image: "/images/urun/kokology-kofte-ekmek-arasi-bursa-nilufer-02.jpg", alt: "Yarım köfte ekmek arası, közlenmiş biber ile — Kokology Bursa Nilüfer Ataevler" },
+        { name: "Çeyrek Köfte", price: 200 as number | null, note: "", image: "/images/urun/kokology-kofte-ekmek-arasi-bursa-nilufer-02.jpg", alt: "Çeyrek köfte ekmek arası, közlenmiş biber ile — Kokology Bursa Nilüfer Ataevler" },
+        { name: "Yarım Köfte", price: 320 as number | null, note: "", image: "/images/urun/kokology-kofte-ekmek-bursa-nilufer-07.jpg", alt: "Yarım köfte ekmek, mangalda pişmiş köfte — Kokology Bursa Nilüfer Ataevler" },
         { name: "Porsiyon Köfte", price: 500 as number | null, note: "", image: "/images/urun/kokology-kofte-porsiyon-bursa-nilufer-03.jpg", alt: "Porsiyon köfte tabağı, pilav ve közleme ile — Kokology Bursa Nilüfer Ataevler" },
       ],
     },
