@@ -7,9 +7,10 @@ import { menu } from "@/content/tr";
  * "nilüfer midye dolma", "ataevler köfte ekmek" gibi sorgular tek bir menü
  * sayfasıyla değil, o ürüne ayrılmış sayfayla kazanılır.
  *
- * KURAL: Fiyat ve porsiyon bilgisi burada TEKRARLANMAZ — tek kaynak
- * `tr.ts` içindeki `menu.sections`. Buradaki metinler yalnızca hikâye,
- * yerel bağlam ve o kategoriye özel sorular.
+ * KURAL: Fiyat buraya RAKAM olarak yazılmaz. Açıklama ve S.S.S. fiyat
+ * söyleyecekse `{Ürün Adı}` yer tutucusu kullanılır; sayfa ve şema bunu
+ * `lib/fiyat-metni.ts` → `fiyatDoldur` ile canlı menüden doldurur. Elle
+ * yazılan rakamlar menü güncellenince eskide kalıyordu.
  *
  * S.S.S. cevapları doğrulanmış bilgiyle sınırlıdır; hikâye metinleri marka
  * anlatısıdır ama ölçülebilir bir iddia (süre, adet, sertifika) içermez.
@@ -37,7 +38,7 @@ export const kategoriler: Kategori[] = [
     slug: "kokorec",
     title: "Bursa Kokoreç Fiyatları — Çeyrek, Yarım, Tam | Kokology Ataevler",
     description:
-      "Kokology'de kokoreç fiyatları: çeyrek 200 ₺, yarım 350 ₺, tam 700 ₺. Odun ateşinde çevrilen kokoreç, Ataevler / Nilüfer. Gece 02.00'ye kadar açık.",
+      "Kokology'de kokoreç fiyatları: çeyrek {Çeyrek Kokoreç}, yarım {Yarım Kokoreç}, tam {Tam Kokoreç}. Odun ateşinde çevrilen kokoreç, Ataevler / Nilüfer. Gece 03.00'e kadar açık.",
     h1: "Bursa'da kokoreç: çeyrekten tama",
     eyebrow: "Kokoreç",
     lead: "Markanın adı buradan geliyor. Ateşte döner, siparişte doğranır, ekmeğin arasına sıcak girer.",
@@ -47,17 +48,17 @@ export const kategoriler: Kategori[] = [
       "Çeyrek acıkmışlığa, yarım öğüne, tam paylaşmaya yeter. Porsiyon isterseniz tabakta gelir, ekmeği yanında. Uykuluklu Special Atom ise ayrı bir mesele — onu bilerek isteyen bilir.",
     ],
     local:
-      "Bursa'da kokoreç denince akla gelen yerlerin çoğu ya kapanmış ya da ayaküstü bir tezgâh. Nilüfer tarafında oturarak, temiz bir masada ve gece 02.00'ye kadar kokoreç yenebilecek yer sayısı az. Cadde Ataevler'in içindeyiz; otopark ücretsiz, çıkışta kuyruk olsa da hızlı akar.",
+      "Bursa'da kokoreç denince akla gelen yerlerin çoğu ya kapanmış ya da ayaküstü bir tezgâh. Nilüfer tarafında oturarak, temiz bir masada ve gece 03.00'e kadar kokoreç yenebilecek yer sayısı az. Cadde Ataevler'in içindeyiz; otopark ücretsiz, çıkışta kuyruk olsa da hızlı akar.",
     image: "/images/urun/kokology-kokorec-ekmek-arasi-bursa-nilufer-06.jpg",
     alt: "Kokology kokoreç ekmek arası, yanında turşu ve şalgam — Bursa Nilüfer Ataevler",
     faq: [
       {
         q: "Çeyrek, yarım, tam kokoreç ne kadar geliyor?",
-        a: "Çeyrek kokoreç 200 ₺, yarım 350 ₺, üç çeyrek 550 ₺, tam kokoreç 700 ₺. Porsiyon kokoreç de 700 ₺ ve tabakta, yanında ekmekle geliyor.",
+        a: "Çeyrek kokoreç {Çeyrek Kokoreç}, yarım {Yarım Kokoreç}, üç çeyrek {Üç Çeyrek Kokoreç}, tam kokoreç {Tam Kokoreç}. Porsiyon kokoreç {Porsiyon Kokoreç}; tabakta, yanında ekmekle geliyor.",
       },
       {
         q: "Special Atom nedir?",
-        a: "Uykuluklu kokoreç. Standart kokorece göre daha zengin ve daha ağır bir tat isteyenler için; 1200 ₺.",
+        a: "Uykuluklu kokoreç. Standart kokorece göre daha zengin ve daha ağır bir tat isteyenler için; {Special Atom}. Yarım boyu Yarım Atom {Yarım Atom}.",
       },
       {
         q: "Pişmiş kokoreç alıp eve götürebilir miyim?",
@@ -69,7 +70,7 @@ export const kategoriler: Kategori[] = [
     slug: "kofte",
     title: "Ataevler Köfte Ekmek ve Porsiyon Köfte | Kokology Bursa",
     description:
-      "Kokology'de köfte fiyatları: çeyrek 180 ₺, yarım 300 ₺, porsiyon 500 ₺. Elde yoğrulmuş köfte, mangal ateşi. Ataevler / Nilüfer, Bursa.",
+      "Kokology'de köfte fiyatları: çeyrek {Çeyrek Köfte}, yarım {Yarım Köfte}, porsiyon {Porsiyon Köfte}. Elde yoğrulmuş köfte, mangal ateşi. Ataevler / Nilüfer, Bursa.",
     h1: "Mangalda köfte — ekmek arası ya da porsiyon",
     eyebrow: "Köfte",
     lead: "Elde yoğrulur, mangalda pişer. Kömür kokusu tabağa kadar gelir.",
@@ -84,11 +85,11 @@ export const kategoriler: Kategori[] = [
     faq: [
       {
         q: "Köfte porsiyonun yanında ne geliyor?",
-        a: "Pilav ve közleme geliyor. Porsiyon köfte 500 ₺.",
+        a: "Pilav ve közleme geliyor. Porsiyon köfte {Porsiyon Köfte}.",
       },
       {
         q: "Köfte ekmek kaç para?",
-        a: "Çeyrek köfte 180 ₺, yarım köfte 300 ₺.",
+        a: "Çeyrek köfte {Çeyrek Köfte}, yarım köfte {Yarım Köfte}.",
       },
     ],
   },
@@ -96,7 +97,7 @@ export const kategoriler: Kategori[] = [
     slug: "sucuk",
     title: "Sucuk Ekmek — Bursa Nilüfer Ataevler | Kokology",
     description:
-      "Kokology'de sucuk ekmek: çeyrek 200 ₺, yarım 350 ₺. Kalın kesim sucuk, kızarmış ekmek. Cadde Ataevler, Nilüfer / Bursa.",
+      "Kokology'de sucuk ekmek: çeyrek {Çeyrek Sucuk}, yarım {Yarım Sucuk}. Kalın kesim sucuk, kızarmış ekmek. Cadde Ataevler, Nilüfer / Bursa.",
     h1: "Sucuk ekmek: kalın kesim, kızarmış ekmek",
     eyebrow: "Sucuk",
     lead: "İnce kesilirse çıtır olur ama tadı kaçar. Biz kalın kesiyoruz.",
@@ -111,7 +112,7 @@ export const kategoriler: Kategori[] = [
     faq: [
       {
         q: "Sucuk ekmek fiyatı ne kadar?",
-        a: "Çeyrek sucuk 200 ₺, yarım sucuk 350 ₺.",
+        a: "Çeyrek sucuk {Çeyrek Sucuk}, yarım sucuk {Yarım Sucuk}.",
       },
     ],
   },
@@ -119,7 +120,7 @@ export const kategoriler: Kategori[] = [
     slug: "midye",
     title: "Midye Dolma — Bursa Nilüfer | Adet, 10'lu, Kova | Kokology",
     description:
-      "Kokology'de midye dolma: adedi 20 ₺, 10 adet 200 ₺, 50 adetlik kova 1000 ₺. Baharatlı iç pilav, bol limon. Ataevler / Nilüfer, Bursa.",
+      "Kokology'de midye dolma: adedi {Adet}, 10 adet {10 Adet}, 50 adetlik kova {50 Adet Kova}. Baharatlı iç pilav, bol limon. Ataevler / Nilüfer, Bursa.",
     h1: "Midye dolma — adetle ya da kovayla",
     eyebrow: "Midye",
     lead: "Tek yenmez. Bunu herkes bilir, biz de buna göre kova yapıyoruz.",
@@ -134,7 +135,7 @@ export const kategoriler: Kategori[] = [
     faq: [
       {
         q: "Midye dolma kaç para?",
-        a: "Adedi 20 ₺. 10 adet 200 ₺, 50 adetlik kova 1000 ₺.",
+        a: "Adedi {Adet}. 10 adet {10 Adet}, 50 adetlik kova {50 Adet Kova}.",
       },
       {
         q: "Kova kaç kişilik?",
@@ -146,7 +147,7 @@ export const kategoriler: Kategori[] = [
     slug: "pilav",
     title: "Tavuklu Pilav, Kokoreçli Pilav, Sporcu Pilav | Kokology Bursa",
     description:
-      "Kokology'de pilav çeşitleri: tavuklu pilav 200 ₺, sporcu pilav (300 gr ızgara bonfile) 300 ₺, kokoreçli pilav 400 ₺. Ataevler / Nilüfer, Bursa.",
+      "Kokology'de pilav çeşitleri: tavuklu pilav {Tavuklu Pilav}, sporcu pilav (300 gr ızgara bonfile) {Sporcu Pilav}, kokoreçli pilav {Kokoreçli Pilav}. Ataevler / Nilüfer, Bursa.",
     h1: "Tereyağlı pilav — üstü size kalmış",
     eyebrow: "Pilav",
     lead: "Öğle arasının en kestirme yolu. Tavuklu, bonfileli ya da üstüne kokoreçli.",
@@ -161,11 +162,11 @@ export const kategoriler: Kategori[] = [
     faq: [
       {
         q: "Sporcu Pilav nedir?",
-        a: "Tereyağlı pilavın üstüne 300 gram ızgara bonfile. 300 ₺.",
+        a: "Tereyağlı pilavın üstüne 300 gram ızgara bonfile. {Sporcu Pilav}.",
       },
       {
         q: "Kokoreçli pilav var mı?",
-        a: "Var. Pilavın üstüne kokoreç, 400 ₺.",
+        a: "Var. Pilavın üstüne kokoreç, {Kokoreçli Pilav}.",
       },
     ],
   },
@@ -173,7 +174,7 @@ export const kategoriler: Kategori[] = [
     slug: "icecekler",
     title: "Ayran, Şalgam, Turşu Suyu ve İçecekler | Kokology Bursa Ataevler",
     description:
-      "Kokology içecek fiyatları: Özerihisar ayran 80 ₺, şalgam 100 ₺, turşu suyu 60 ₺, Uludağ gazoz 90 ₺. Ataevler / Nilüfer, Bursa.",
+      "Kokology içecek fiyatları: Özerihisar ayran {Özerihisar Ayran}, şalgam {Adanus Şalgam}, turşu suyu {Turşu Suyu}, Uludağ gazoz {Uludağ Gazoz}. Ataevler / Nilüfer, Bursa.",
     h1: "Yanında ne içilir?",
     eyebrow: "İçecekler",
     lead: "Kokorecin yanına ne gittiği tartışılır. Bizde üç tarafın da hakkı veriliyor.",

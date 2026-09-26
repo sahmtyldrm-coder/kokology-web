@@ -12,7 +12,8 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { menu, a11y, business, nav } from "@/content/tr";
 import { kategoriler, kategoriBul, kategoriSluglari } from "@/content/kategoriler";
 import { kategoriSchema, jsonLdString } from "@/lib/schema";
-import { isletmeGetir, anaAksiyon } from "@/lib/veri";
+import { isletmeGetir, anaAksiyon, menuGetir } from "@/lib/veri";
+import { fiyatDoldur } from "@/lib/fiyat-metni";
 
 export function generateStaticParams() {
   return kategoriSluglari.map((kategori) => ({ kategori }));
@@ -26,16 +27,17 @@ export async function generateMetadata({
   if (!bulunan) return {};
 
   const { kategori: k } = bulunan;
+  const description = fiyatDoldur(k.description, await menuGetir(), k.slug);
   return {
     title: k.title,
-    description: k.description,
+    description,
     alternates: { canonical: `/menu/${k.slug}` },
     openGraph: {
       type: "article",
       locale: "tr_TR",
       url: `${business.siteUrl}/menu/${k.slug}`,
       title: k.title,
-      description: k.description,
+      description,
       images: [{ url: k.image, alt: k.alt }],
     },
   };
@@ -50,6 +52,8 @@ export default async function KategoriPage({
 
   const { kategori: k } = bulunan;
   const action = anaAksiyon(await isletmeGetir());
+  const bolumler = await menuGetir();
+  const faq = k.faq.map((f) => ({ q: f.q, a: fiyatDoldur(f.a, bolumler, k.slug) }));
   const digerleri = kategoriler.filter((x) => x.slug !== k.slug);
 
   return (
@@ -154,7 +158,7 @@ export default async function KategoriPage({
         </section>
 
         {/* Kategoriye özel sorular */}
-        {k.faq.length > 0 && (
+        {faq.length > 0 && (
           <section className="border-t border-bone/10 bg-charcoal px-5 py-16 sm:px-8 md:py-20 lg:px-12">
             <div className="mx-auto w-full max-w-[1400px]">
               <Reveal>
@@ -162,7 +166,7 @@ export default async function KategoriPage({
                   {k.eyebrow} hakkında sık sorulanlar
                 </h2>
                 <ul className="mt-8 max-w-[72ch]">
-                  {k.faq.map((item) => (
+                  {faq.map((item) => (
                     <li key={item.q}>
                       <details className="group border-b border-bone/10">
                         <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-5 font-sans text-lg font-medium text-bone transition-colors hover:text-brass [&::-webkit-details-marker]:hidden">

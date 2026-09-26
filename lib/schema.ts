@@ -1,6 +1,7 @@
 import { business, menu, culture, seo, hero } from "@/content/tr";
 import { kategoriBul } from "@/content/kategoriler";
 import { blogSayfa } from "@/content/blog";
+import { fiyatDoldur } from "@/lib/fiyat-metni";
 import {
   menuGetir,
   sssGetir,
@@ -253,6 +254,14 @@ export async function kategoriSchema(slug: string) {
   if (!bulunan) return { "@context": "https://schema.org", "@graph": [] };
   const { kategori, section } = bulunan;
   const url = `${site}/menu/${slug}`;
+  const bolumler = await menuGetir();
+  const doldur = (metin: string) => fiyatDoldur(metin, bolumler, slug);
+  // Sayfadaki fiyat listesi canlı menüden geliyor; şema da aynısını beyan etsin.
+  const kalemler =
+    bolumler
+      .find((b) => b.id === slug)
+      ?.items.map((u) => ({ name: u.ad, note: u.not, price: u.fiyat })) ??
+    section.items.map((i) => ({ name: i.name, note: i.note, price: i.price }));
 
   return {
     "@context": "https://schema.org",
@@ -285,7 +294,7 @@ export async function kategoriSchema(slug: string) {
             "@type": "MenuSection",
             name: section.name,
             image: `${site}${kategori.image}`,
-            hasMenuItem: section.items.map((item) => ({
+            hasMenuItem: kalemler.map((item) => ({
               "@type": "MenuItem",
               name: item.name,
               ...(item.note && { description: item.note }),
@@ -310,7 +319,7 @@ export async function kategoriSchema(slug: string) {
               mainEntity: kategori.faq.map((f) => ({
                 "@type": "Question",
                 name: f.q,
-                acceptedAnswer: { "@type": "Answer", text: f.a },
+                acceptedAnswer: { "@type": "Answer", text: doldur(f.a) },
               })),
             },
           ]
@@ -320,7 +329,7 @@ export async function kategoriSchema(slug: string) {
         "@id": `${url}#webpage`,
         url,
         name: kategori.title,
-        description: kategori.description,
+        description: doldur(kategori.description),
         inLanguage: "tr-TR",
         isPartOf: { "@id": `${site}/#website` },
         about: { "@id": `${site}/#restaurant` },
