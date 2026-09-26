@@ -77,7 +77,7 @@ async function menuSchema() {
  * Yorum ve puan yalnızca gerçek veri varsa yayınlanır.
  *
  * `aggregateRating` sitede gösterilen yorumların ortalamasından değil,
- * Google İşletme Profilinin tamamından (5,0 / 20 yorum) alınır — altı yorumu
+ * Google İşletme Profilinin tamamından (content/tr.ts → culture.rating) alınır — altı yorumu
  * "20 yorum" diye sunmak yanlış beyan olurdu.
  */
 async function reviewSchema() {
