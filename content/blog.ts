@@ -208,7 +208,7 @@ export const yazilar: Yazi[] = [
       {
         tip: "paragraf",
         metin:
-          "Kokology, Bursa'nın Nilüfer ilçesinde, Ataevler'de. Adres: Yılmaz Akkılıç Cd. No:18/A, Cadde Ataevler içinde. Her gün 11.00'de açılıyoruz; Pazartesi–Perşembe 03.00'e, Cuma–Cumartesi–Pazar 04.00'e kadar açığız. Otopark hem açık hem kapalı ve ücretsiz.",
+          "Kokology, Bursa'nın Nilüfer ilçesinde, Ataevler'de. Adres: Yılmaz Akkılıç Cd. No:18/A, Cadde Ataevler içinde. Her gün 11.00'den gece 03.00'e kadar açığız. Otopark hem açık hem kapalı ve ücretsiz.",
       },
       {
         tip: "paragraf",
@@ -232,7 +232,7 @@ export const yazilar: Yazi[] = [
     slug: "nilufer-ataevler-gece-acik-kokorec",
     title: "Nilüfer ve Ataevler'de Gece Açık Kokoreç | Kokology Bursa",
     description:
-      "Bursa Nilüfer'de gece geç saatte açık kokoreççi arayanlar için: Kokology hafta içi 03.00, hafta sonu 04.00'e kadar açık. Ataevler, ücretsiz otopark.",
+      "Bursa Nilüfer'de gece geç saatte açık kokoreççi arayanlar için: Kokology her gün gece 03.00'e kadar açık. Ataevler, ücretsiz otopark.",
     h1: "Nilüfer ve Ataevler'de gece açık kokoreç",
     ozet:
       "Gece yarısından sonra açık yer bulmak Bursa'da sanıldığından zor. Saatler, konum ve gece gelenler için notlar.",
@@ -251,7 +251,7 @@ export const yazilar: Yazi[] = [
       {
         tip: "paragraf",
         metin:
-          "Pazartesi–Perşembe 11.00 – 03.00, Cuma–Cumartesi–Pazar 11.00 – 04.00. Ocak kapanış saatine kadar yanıyor; son siparişe kadar taze kokoreç servis ediliyor.",
+          "Her gün 11.00 – 03.00. Ocak kapanış saatine kadar yanıyor; son siparişe kadar taze kokoreç servis ediliyor.",
       },
       { tip: "baslik", metin: "Gece gelenler için notlar" },
       {
@@ -650,7 +650,7 @@ export const yazilar: Yazi[] = [
       },
       {
         tip: "paragraf",
-        metin: "Yılmaz Akkılıç Cd. No:18/A — Cadde Ataevler'in içinde, cam cepheli dükkânız. Her gün 11.00'de açılıyoruz; Pazartesi–Perşembe 03.00'e, Cuma–Cumartesi–Pazar 04.00'e kadar ocak yanıyor. İçeride sedirli oturma alanı ve açık hava bölümü var; ücretsiz Wi-Fi ve çocuklar için oyun alanı mevcut.",
+        metin: "Yılmaz Akkılıç Cd. No:18/A — Cadde Ataevler'in içinde, cam cepheli dükkânız. Her gün 11.00'den gece 03.00'e kadar ocak yanıyor. İçeride sedirli oturma alanı ve açık hava bölümü var; ücretsiz Wi-Fi ve çocuklar için oyun alanı mevcut.",
       },
       {
         tip: "paragraf",
@@ -667,7 +667,7 @@ export const yazilar: Yazi[] = [
           "Akşam, oturmalı → porsiyon kokoreç ya da köfte, yanına 10'luk midye; sedirli iç alan veya açık hava bölümü.",
           "Çocuklu aile → oyun alanı var; akşamın erken saatleri daha sakin geçiyor.",
           "Kalabalık grup → normal ziyaretlerde rezervasyon gerekmiyor, ama kalabalık grup için önceden aramak iyi olur: 0531 715 11 95.",
-          "Gece geç → hafta içi 03.00, hafta sonu 04.00'e kadar açığız; ocak kapanışa kadar yanıyor.",
+          "Gece geç → her gün 03.00'e kadar açığız; ocak kapanışa kadar yanıyor.",
           "Eve götürmek → paket alabilir, şişte pişmiş kokoreci dilim dilim ya da kilo hesabıyla da alabilirsiniz.",
         ],
       },

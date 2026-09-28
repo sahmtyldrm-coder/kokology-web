@@ -69,7 +69,7 @@ export const business = {
    * Haftanın günleri: 0 = Pazar ... 6 = Cumartesi
    * "Şu an açık" rozeti ve schema.org openingHoursSpecification bundan üretilir.
    *
-   * Pzt–Per 11.00–03.00, Cum–Cmt–Paz 11.00–04.00 (2026-09-11 işletmeden teyitli). Kapanış gece yarısını aştığı
+   * Her gün 11.00–03.00 (2026-09-28 işletmeden teyitli; önceden hafta sonu 04.00). Kapanış gece yarısını aştığı
    * için ertesi güne taşan vardiya olarak hesaplanır (bkz. lib/hours.ts).
    */
   hours: [
@@ -77,9 +77,9 @@ export const business = {
     { day: 2, label: "Salı", opens: "11:00", closes: "03:00" },
     { day: 3, label: "Çarşamba", opens: "11:00", closes: "03:00" },
     { day: 4, label: "Perşembe", opens: "11:00", closes: "03:00" },
-    { day: 5, label: "Cuma", opens: "11:00", closes: "04:00" },
-    { day: 6, label: "Cumartesi", opens: "11:00", closes: "04:00" },
-    { day: 0, label: "Pazar", opens: "11:00", closes: "04:00" },
+    { day: 5, label: "Cuma", opens: "11:00", closes: "03:00" },
+    { day: 6, label: "Cumartesi", opens: "11:00", closes: "03:00" },
+    { day: 0, label: "Pazar", opens: "11:00", closes: "03:00" },
   ],
 
   priceRange: "₺₺",
@@ -181,7 +181,7 @@ export const seo = {
   title: "Kokology — Bursa Nilüfer Kokoreççi | Ataevler Kokoreç & Sokak Lezzetleri",
   titleTemplate: "%s | Kokology Bursa Kokoreç",
   description:
-    "Ataevler'de kokoreççi. Odun ateşinde çevrilen kokoreç, yanında köfte, sucuk, midye dolma ve pilav. Hafta içi 03.00, hafta sonu 04.00'e kadar açık. Yılmaz Akkılıç Cd., Nilüfer / Bursa.",
+    "Ataevler'de kokoreççi. Odun ateşinde çevrilen kokoreç, yanında köfte, sucuk, midye dolma ve pilav. Her gün gece 03.00'e kadar açık. Yılmaz Akkılıç Cd., Nilüfer / Bursa.",
   keywords: [
     "kokoreç Bursa",
     "Bursa kokoreççi",
@@ -589,7 +589,7 @@ export const culture = {
 export const findUs = {
   eyebrow: "Kapı",
   heading: "Bul bizi",
-  lead: "Otopark ücretsiz; hafta içi üçe, hafta sonu dörde kadar ocak yanıyor. Ayaküstü de olur, oturarak da.",
+  lead: "Otopark ücretsiz; her gece üçe kadar ocak yanıyor. Ayaküstü de olur, oturarak da.",
   addressLabel: "Adres",
   hoursLabel: "Çalışma saatleri",
   phoneLabel: "Telefon",
@@ -633,7 +633,7 @@ export const faq = {
     },
     {
       q: "Kokology kaça kadar açık?",
-      a: "Pazartesi–Perşembe 11.00–03.00, Cuma–Cumartesi–Pazar 11.00–04.00. Ocak kapanış saatine kadar yanıyor.",
+      a: "Her gün 11.00–03.00. Ocak kapanış saatine kadar yanıyor.",
     },
     {
       q: "Kokoreç fiyatları ne kadar?",
