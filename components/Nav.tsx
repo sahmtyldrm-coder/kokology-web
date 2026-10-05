@@ -150,6 +150,7 @@ export function Nav() {
 
           <a
             href={`tel:${isletme.phone.e164}`}
+            data-olcum="ara"
             className="mt-10 font-sans text-lg text-bone/60 transition-colors hover:text-brass"
           >
             {isletme.phone.display}

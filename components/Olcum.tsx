@@ -73,9 +73,10 @@ type ReklamPenceresi = Window & {
 /**
  * Reklam araçlarına ilet.
  *
- * `gtag` ve `fbq` yalnızca ziyaretçi çerez onayı verdiğinde sayfaya basılıyor.
- * Yani buradaki varlık kontrolü aynı zamanda rıza kontrolü: onay yoksa
- * fonksiyonlar tanımsızdır ve hiçbir şey gönderilmez.
+ * `fbq` yalnızca ziyaretçi çerez onayı verdiğinde sayfaya basılıyor; onay
+ * yoksa tanımsızdır ve Meta'ya hiçbir şey gitmez. `gtag` ise İzin Modu v2 ile
+ * her zaman yüklü: onay yokken olay çerezsiz ve kimliksiz gidiyor, Google
+ * dönüşümü bundan modelliyor (bkz. `GoogleEtiketi`).
  */
 function reklamaBildir(tip: string) {
   const olay = REKLAM_OLAYLARI[tip];

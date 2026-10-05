@@ -61,9 +61,24 @@ export function onaySunucuAnlik(): undefined {
   return undefined;
 }
 
-/** Karar verildiğinde çerezi yaz ve aboneleri uyar. */
+/**
+ * Karar verildiğinde çerezi yaz, Google'a ilet ve aboneleri uyar.
+ *
+ * Google etiketi onaydan bağımsız, "denied" izinlerle yüklü (bkz.
+ * `GoogleEtiketi`); kabul edilince aynı sayfada çerezli ölçüme geçiyor.
+ * Ret'te bir şey göndermeye gerek yok, varsayılan zaten "denied".
+ */
 export function onayKaydet(durum: Exclude<OnayDurumu, null>) {
   onayYaz(durum);
+  if (durum === "kabul") {
+    const w = window as Window & { gtag?: (...a: unknown[]) => void };
+    w.gtag?.("consent", "update", {
+      ad_storage: "granted",
+      analytics_storage: "granted",
+      ad_user_data: "granted",
+      ad_personalization: "granted",
+    });
+  }
   sonDeger = durum;
   dinleyiciler.forEach((d) => d());
 }

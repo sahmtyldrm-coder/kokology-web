@@ -5,7 +5,8 @@ import { siteSchema, jsonLdString } from "@/lib/schema";
 import { Olcum } from "@/components/Olcum";
 import { IsletmeSaglayici } from "@/components/IsletmeSaglayici";
 import { OnayVePikseller } from "@/components/OnayVePikseller";
-import type { TakipKodlari } from "@/components/Pikseller";
+import { GoogleEtiketi, type TakipKodlari } from "@/components/Pikseller";
+import { ONAY_CEREZI } from "@/lib/onay";
 import { isletmeGetir, saatlerGetir, ayarlarGetir } from "@/lib/veri";
 import "./globals.css";
 
@@ -155,6 +156,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
             varsa çıkar — hiçbir kod tanımlı değilken onay sormak gereksiz.
             Onay tarayıcıda okunuyor; sunucuda okumak tüm sayfaları
             dinamikleştirip statik hızı öldürüyordu. */}
+        {takipVar && <GoogleEtiketi kodlar={takip} onayCerezi={ONAY_CEREZI} />}
         {takipVar && <OnayVePikseller kodlar={takip} />}
       </body>
     </html>

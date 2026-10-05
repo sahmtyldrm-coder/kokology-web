@@ -35,6 +35,7 @@ export async function Footer() {
             </address>
             <a
               href={`tel:${isletme.phone.e164}`}
+            data-olcum="ara"
               className="mt-3 inline-block font-sans text-base text-bone transition-colors hover:text-brass"
             >
               {isletme.phone.display}

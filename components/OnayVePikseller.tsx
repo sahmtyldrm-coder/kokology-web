@@ -23,7 +23,8 @@ import { Pikseller, type TakipKodlari } from "@/components/Pikseller";
  *
  * Kritik nokta: onay yoksa kodlar sayfaya HİÇ basılmıyor. Yüklenip sonra
  * susturulan bir piksel ağ isteğini zaten yapmış, yani rıza öncesi veri
- * toplamış olurdu.
+ * toplamış olurdu. Tek istisna Google etiketi: İzin Modu v2 ile "denied"
+ * başlayarak her zaman yükleniyor (bkz. `GoogleEtiketi`).
  */
 export function OnayVePikseller({ kodlar }: { kodlar: TakipKodlari }) {
   // `undefined` = sunucuda / henüz okunmadı, `null` = karar verilmemiş

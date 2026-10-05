@@ -88,6 +88,7 @@ export function FindUs({
                 </h3>
                 <a
                   href={`tel:${isletme.phone.e164}`}
+                  data-olcum="ara"
                   className="mt-3 inline-block font-sans text-xl text-bone underline decoration-brass/50 decoration-1 underline-offset-[6px] transition-colors hover:text-brass sm:text-2xl"
                 >
                   {isletme.phone.display}
@@ -146,12 +147,14 @@ export function FindUs({
               <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a
                   href={`tel:${isletme.phone.e164}`}
+                  data-olcum="ara"
                   className="inline-flex min-h-[56px] flex-1 items-center justify-center gap-2 rounded-full bg-red px-8 font-sans text-base font-semibold text-bone transition-colors duration-200 hover:bg-brass hover:text-charcoal sm:flex-initial"
                 >
                   {findUs.callCta}
                 </a>
                 <a
                   href={isletme.maps.directionsUrl}
+                  data-olcum="yol_tarifi"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex min-h-[56px] flex-1 items-center justify-center gap-2 rounded-full border border-bone/25 px-8 font-sans text-base font-medium text-bone transition-colors duration-200 hover:border-brass hover:text-brass sm:flex-initial"
@@ -161,6 +164,7 @@ export function FindUs({
                 {action.label === "order" && (
                   <a
                     href={action.href}
+                    data-olcum="siparis"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex min-h-[56px] flex-1 items-center justify-center gap-2 rounded-full border border-bone/25 px-8 font-sans text-base font-medium text-bone transition-colors duration-200 hover:border-brass hover:text-brass sm:flex-initial"

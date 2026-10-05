@@ -86,6 +86,7 @@ export default async function KategoriPage({
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a
                     href={action.href}
+                    data-olcum={action.label === "order" ? "siparis" : "ara"}
                     {...(action.label === "order" && {
                       target: "_blank",
                       rel: "noopener noreferrer",
@@ -96,6 +97,7 @@ export default async function KategoriPage({
                   </a>
                   <a
                     href={business.maps.directionsUrl}
+                    data-olcum="yol_tarifi"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex min-h-[52px] items-center rounded-full border border-bone/25 px-7 font-sans text-base font-medium text-bone/90 transition-colors hover:border-brass hover:text-brass"
