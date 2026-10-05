@@ -33,7 +33,7 @@ export const hakkimizda = {
       title: "Mekân",
       body: [
         "Yeşil sedirler, tuğla zemin, pirinç detaylar ve duvarda Old Master resimleri. Leonardo elinde kokoreç ekmek tutuyor — şaka gibi duruyor ama ciddi bir iddia: bu yemek de bir kültürün parçası ve öyle muamele görmeyi hak ediyor.",
-        "Ayaküstü alıp gitmek de mümkün, üç saat oturmak da. Açık hava bölümü var, Wi-Fi var, çocuklar için oyun alanı var. Gece 02.00'ye kadar ocak yanıyor.",
+        "Ayaküstü alıp gitmek de mümkün, üç saat oturmak da. Açık hava bölümü var, Wi-Fi var, çocuklar için oyun alanı var. Gece 03.00'e kadar ocak yanıyor.",
       ],
     },
   ],
@@ -61,7 +61,7 @@ export const hakkimizda = {
 export const bulBiziSayfa = {
   title: "Bul Bizi — Adres, Çalışma Saatleri, Telefon | Kokology Bursa",
   description:
-    "Kokology adresi: Yılmaz Akkılıç Cd. No:18/A, Ataevler, 16140 Nilüfer / Bursa. Her gün 11.00-02.00 açık, ücretsiz otopark. Telefon: 0531 715 11 95.",
+    "Kokology adresi: Yılmaz Akkılıç Cd. No:18/A, Ataevler, 16140 Nilüfer / Bursa. Her gün 11.00-03.00 açık, ücretsiz otopark. Telefon: 0531 715 11 95.",
   breadcrumb: "Bul Bizi",
   eyebrow: "Kapı",
   h1: "Kokology nerede, nasıl gelinir?",

@@ -10,11 +10,12 @@ import { a11y, business } from "@/content/tr";
 import { isletmeGetir } from "@/lib/veri";
 import { bulBiziSayfa } from "@/content/sayfalar";
 import { sayfaSchema, jsonLdString } from "@/lib/schema";
+import { sayfaBasligi } from "@/lib/baslik";
 
 export async function generateMetadata(): Promise<Metadata> {
   const isletme = await isletmeGetir();
   return {
-    title: bulBiziSayfa.title,
+    title: sayfaBasligi(bulBiziSayfa.title),
     description: bulBiziSayfa.description,
     alternates: { canonical: "/bul-bizi" },
     openGraph: {
@@ -23,6 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
     url: `${isletme.siteUrl}/bul-bizi`,
     title: bulBiziSayfa.title,
     description: bulBiziSayfa.description,
+    images: [{ url: "/images/mekan/kokology-kokorec-bursa-nilufer-cadde-ataevler-dis-cephe.jpg", alt: "Kokology dış cephesi, Cadde Ataevler — Yılmaz Akkılıç Cd., Nilüfer / Bursa" }],
   },
   };
 }

@@ -12,11 +12,12 @@ import { menu, a11y, business } from "@/content/tr";
 import { isletmeGetir } from "@/lib/veri";
 import { menuPage } from "@/content/menu-page";
 import { menuPageSchema, jsonLdString } from "@/lib/schema";
+import { sayfaBasligi } from "@/lib/baslik";
 
 export async function generateMetadata(): Promise<Metadata> {
   const isletme = await isletmeGetir();
   return {
-    title: menuPage.title,
+    title: sayfaBasligi(menuPage.title),
     description: menuPage.description,
     alternates: { canonical: "/menu" },
     openGraph: {
@@ -25,6 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
     url: `${isletme.siteUrl}/menu`,
     title: menuPage.title,
     description: menuPage.description,
+    images: [{ url: "/images/urun/kokology-kokorec-porsiyon-bursa-nilufer-06.jpg", alt: "Kokology porsiyon kokoreç — Bursa Nilüfer Ataevler" }],
   },
   };
 }

@@ -13,6 +13,7 @@ import { a11y, business } from "@/content/tr";
 import { yaziSluglari } from "@/content/blog";
 import { yazilarGetir, yaziGetir } from "@/lib/veri";
 import { yaziSchema, jsonLdString } from "@/lib/schema";
+import { sayfaBasligi } from "@/lib/baslik";
 
 export function generateStaticParams() {
   return yaziSluglari.map((slug) => ({ slug }));
@@ -26,7 +27,7 @@ export async function generateMetadata({
   if (!yazi) return {};
 
   return {
-    title: yazi.seoBaslik,
+    title: sayfaBasligi(yazi.seoBaslik),
     description: yazi.aciklama,
     alternates: { canonical: `/blog/${yazi.slug}` },
     openGraph: {

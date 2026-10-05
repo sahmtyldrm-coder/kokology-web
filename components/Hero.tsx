@@ -166,7 +166,7 @@ export function Hero() {
 /* -------------------------------------------------------------------------- */
 
 /**
- * Gece 02.00'ye kadar açık olmak yerel aramada gerçek bir avantaj — bunu
+ * Gece 03.00'e kadar açık olmak yerel aramada gerçek bir avantaj — bunu
  * hero'da göstermek karar süresini kısaltır. Durum istemcide hesaplanır;
  * statik HTML'e gömülse saatler sonra yanlış olurdu.
  */

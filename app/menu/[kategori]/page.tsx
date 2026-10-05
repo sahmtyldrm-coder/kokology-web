@@ -14,6 +14,7 @@ import { kategoriler, kategoriBul, kategoriSluglari } from "@/content/kategorile
 import { kategoriSchema, jsonLdString } from "@/lib/schema";
 import { isletmeGetir, anaAksiyon, menuGetir } from "@/lib/veri";
 import { fiyatDoldur } from "@/lib/fiyat-metni";
+import { sayfaBasligi } from "@/lib/baslik";
 
 export function generateStaticParams() {
   return kategoriSluglari.map((kategori) => ({ kategori }));
@@ -29,7 +30,7 @@ export async function generateMetadata({
   const { kategori: k } = bulunan;
   const description = fiyatDoldur(k.description, await menuGetir(), k.slug);
   return {
-    title: k.title,
+    title: sayfaBasligi(k.title),
     description,
     alternates: { canonical: `/menu/${k.slug}` },
     openGraph: {

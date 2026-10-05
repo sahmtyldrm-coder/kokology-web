@@ -11,11 +11,12 @@ import { a11y, business } from "@/content/tr";
 import { isletmeGetir } from "@/lib/veri";
 import { hakkimizda } from "@/content/sayfalar";
 import { sayfaSchema, jsonLdString } from "@/lib/schema";
+import { sayfaBasligi } from "@/lib/baslik";
 
 export async function generateMetadata(): Promise<Metadata> {
   const isletme = await isletmeGetir();
   return {
-    title: hakkimizda.title,
+    title: sayfaBasligi(hakkimizda.title),
     description: hakkimizda.description,
     alternates: { canonical: "/hakkimizda" },
     openGraph: {
@@ -24,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
     url: `${isletme.siteUrl}/hakkimizda`,
     title: hakkimizda.title,
     description: hakkimizda.description,
+    images: [{ url: "/images/mekan/kokology-kokorec-pisirme-acik-mutfak-bursa.jpg", alt: "Kokology açık mutfağında odun ateşinde kokoreç — Bursa Nilüfer Ataevler" }],
   },
   };
 }

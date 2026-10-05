@@ -12,11 +12,12 @@ import { isletmeGetir } from "@/lib/veri";
 import { blogSayfa } from "@/content/blog";
 import { yazilarGetir } from "@/lib/veri";
 import { blogListeSchema, jsonLdString } from "@/lib/schema";
+import { sayfaBasligi } from "@/lib/baslik";
 
 export async function generateMetadata(): Promise<Metadata> {
   const isletme = await isletmeGetir();
   return {
-    title: blogSayfa.title,
+    title: sayfaBasligi(blogSayfa.title),
     description: blogSayfa.description,
     alternates: { canonical: "/blog" },
     openGraph: {
@@ -25,6 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
     url: `${isletme.siteUrl}/blog`,
     title: blogSayfa.title,
     description: blogSayfa.description,
+    images: [{ url: "/images/urun/kokology-kokorec-ekmek-arasi-bursa-nilufer-03.jpg", alt: "Kokology kokoreç ekmek arası — Bursa Nilüfer Ataevler" }],
   },
   };
 }
