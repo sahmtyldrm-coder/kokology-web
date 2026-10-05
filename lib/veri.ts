@@ -314,9 +314,22 @@ export const yazilarGetir = unstable_cache(yazilarOku, ["blog"], {
   revalidate: 3600,
 });
 
+/**
+ * Önbellekte bulunamayan yazı için 404 vermeden önce veritabanına doğrudan bakılır.
+ *
+ * Vercel'in veri önbelleği deploy'la temizlenmiyor ve bölgeden bölgeye farklı
+ * yaşta olabiliyor. SQL ile eklenen yeni bir yazı, panelden "kaydet" yapılmadığı
+ * sürece bazı bölgelerde eski listede kalıyor; o bölgeden gelen istek (2026-10-05'te
+ * Googlebot) sayfayı notFound ile üretip 404'ü önbelleğe alıyordu. Ek sorgu
+ * yalnızca listede olmayan slug'da çalışır; normal ziyarette maliyeti yok.
+ */
 export async function yaziGetir(slug: string): Promise<BlogYazi | null> {
   const hepsi = await yazilarGetir();
-  return hepsi.find((y) => y.slug === slug) ?? null;
+  const onbellekte = hepsi.find((y) => y.slug === slug);
+  if (onbellekte) return onbellekte;
+
+  const taze = await yazilarOku();
+  return taze.find((y) => y.slug === slug) ?? null;
 }
 
 /* -------------------------------------------------------------------------- */
