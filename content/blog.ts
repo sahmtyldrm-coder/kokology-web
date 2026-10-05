@@ -44,10 +44,10 @@ export type Yazi = {
 export const yazilar: Yazi[] = [
   {
     slug: "kokorec-nedir-nasil-yapilir",
-    title: "Kokoreç Nedir, Nasıl Yapılır? | Kokology Bursa",
+    title: "Kokoreç Nedir, Neyden Yapılır, Nasıl Pişirilir? | Kokology Bursa",
     description:
       "Kokoreç nedir, neyden yapılır, nasıl pişirilir? Şişe sarımından ateş yönetimine, baharatından ekmeğine kadar kokorecin bütün aşamaları.",
-    h1: "Kokoreç nedir, nasıl yapılır?",
+    h1: "Kokoreç nedir, neyden yapılır, nasıl pişirilir?",
     ozet:
       "Neyden yapıldığı, nasıl sarıldığı, ateşin neden en zor kısım olduğu ve iyi kokoreci kötüsünden ayıran şey.",
     tarih: "2026-08-06",
@@ -822,6 +822,320 @@ export const yazilar: Yazi[] = [
       },
     ],
   },
+
+  {
+    slug: "evde-kokorec-nasil-pisirilir",
+    title: "Evde Kokoreç Nasıl Pişirilir? Hazır ve Dondurulmuş | Kokology Bursa",
+    description: "Hazır, dondurulmuş ya da çiğ kokoreci evde tavada ve fırında nasıl pişirirsiniz? Çözdürme, pişirme, baharat ve ekmek için pratik rehber.",
+    h1: "Evde kokoreç nasıl pişirilir?",
+    ozet: "Hazır, dondurulmuş ya da çiğ: elinizdeki kokoreci tavada ve fırında doğru pişirmenin yolları ve evde neyin eksik kalacağı.",
+    tarih: "2026-10-05",
+    etiket: "Merak edilenler",
+    okumaDakika: 5,
+    image: "/images/urun/kokology-kokorec-porsiyon-bursa-nilufer-06.jpg",
+    alt: "Kokology porsiyon kokoreç, doğranmış ve baharatlanmış — Bursa Nilüfer Ataevler",
+    bloklar: [
+      {
+        tip: "paragraf",
+        metin: "Kokoreç aslında evde yapılmak için icat edilmiş bir yemek değil. Saatlerce dönen bir şiş ve sürekli beslenen bir ateş ister; mutfakta ikisi de yok. Ama market reyonunda hazır ve dondurulmuş kokoreç, kasapta da çiğ kokoreç bulunuyor ve evde gayet yenir bir sonuç almak mümkün. Önemli olan elinizdeki ürünün hangisi olduğunu bilmek, çünkü üçü üç ayrı iş."
+      },
+      {
+        tip: "baslik",
+        metin: "Önce: elinizdeki kokoreç hangisi?"
+      },
+      {
+        tip: "liste",
+        ogeler: [
+          "Hazır (pişmiş) kokoreç — üretimde pişirilmiş, vakumlu ya da soğuk zincirde satılır. Sizin işiniz ısıtmak ve kızartmak.",
+          "Dondurulmuş kokoreç — pişmiş de olabilir, çiğ de. Paketin üzerinde hangisi olduğu yazar; bunu okumadan pişirmeye başlamayın.",
+          "Çiğ kokoreç — kasaptan sarılmış hâlde alınır. Gerçek anlamda pişirilmesi gereken tek tür budur ve en uzun süreyi o ister."
+        ]
+      },
+      {
+        tip: "not",
+        metin: "Kokoreç sakatattan yapılır; çiğ ya da çiğ-dondurulmuş üründe içinin tamamen pişmesi şarttır. Üreticinin pakette yazdığı süre ve yöntem her zaman bu yazıdaki genel önerilerden önce gelir."
+      },
+      {
+        tip: "baslik",
+        metin: "Dondurulmuş kokoreç nasıl çözdürülür?"
+      },
+      {
+        tip: "paragraf",
+        metin: "En güvenli yol, pişirmeden önceki akşam buzdolabının alt rafına almak. Tezgâhta oda sıcaklığında saatlerce bekletmek dışı ılınıp içi donukken bakteriye zaman tanır. Çözülen kokoreci tekrar dondurmayın; çözdüyseniz o gün pişirin."
+      },
+      {
+        tip: "baslik",
+        metin: "Tavada kokoreç nasıl yapılır?"
+      },
+      {
+        tip: "paragraf",
+        metin: "Evde en çok kullanılan ve en iyi sonuç veren yöntem tava. Kokoreç kendi yağını bıraktığı için ekstra yağa çoğu zaman gerek yoktur."
+      },
+      {
+        tip: "liste",
+        ogeler: [
+          "Kokoreci küçük parçalara doğrayın. Bütün hâlde tavaya koymak dışı yakar, içi geç ısınır.",
+          "Tavayı orta ateşte iyice ısıtın, kokoreci yayarak koyun; üst üste yığmayın.",
+          "Ara ara çevirerek kendi yağında pişirin. Kenarlar kızarıp hafif çıtırlaşınca kıvamındadır.",
+          "Çiğ kokoreçte acele etmeyin: dışı kızardığı hâlde içi pembe kalan parça varsa ateşi kısıp kapağı kapatın, birkaç dakika daha pişirin.",
+          "Fazla yağı kâğıt havluya alın ya da tavanın kenarına toplayıp ayırın."
+        ]
+      },
+      {
+        tip: "baslik",
+        metin: "Fırında kokoreç nasıl yapılır?"
+      },
+      {
+        tip: "paragraf",
+        metin: "Fırın daha az emek ister ama kokoreç tavadaki kadar çıtır olmaz. Bütün ya da büyük parça hâlindeki kokoreci önceden ısıtılmış fırında, yağının akabileceği bir ızgara teli üstünde ya da altına tepsi konmuş şekilde pişirin. Arada bir çevirin. Fırından çıkınca doğrayıp birkaç dakika sıcak tavada çevirmek, kenarları ocaktaki kokorece en çok yaklaştıran adımdır."
+      },
+      {
+        tip: "baslik",
+        metin: "Kokorece hangi baharat atılır?"
+      },
+      {
+        tip: "paragraf",
+        metin: "Klasik ikili kekik ve pul biberdir. Bunlara tuz, karabiber ve isteğe göre çok az kimyon eklenir. Asıl püf noktası zamanlama: baharatı pişirme başında değil, kokoreç doğranıp tavadan alınırken ekleyin. Kekik ve pul biber uzun süre ateş gördüğünde kokusunu kaybeder, hatta acılaşır."
+      },
+      {
+        tip: "paragraf",
+        metin: "Sebzeli kokoreç isteyenler için domates ve sivri biber de son dakikada aynı tavaya girebilir; yalnız sebzenin suyu kokorecin çıtırlığını alır, bu yüzden en sona bırakın."
+      },
+      {
+        tip: "baslik",
+        metin: "Ekmek: işin yarısı"
+      },
+      {
+        tip: "paragraf",
+        metin: "Soğuk ekmek kokorecin yağını emmez, lokma dağılır. Ekmeği ikiye bölüp iç yüzünü kokorecin kaldığı tavaya birkaç saniye bastırın; hem ısınır hem kokorecin yağını alır. Yanına ayran ya da acılı şalgam iyi gider."
+      },
+      {
+        tip: "baslik",
+        metin: "Evde neyin eksik kalacağını bilmek"
+      },
+      {
+        tip: "paragraf",
+        metin: "Evde pişen kokoreç doyurur, ama ocakta dönen kokorecin dışındaki karamelize kabuğu ve isli kokuyu vermez. Bunu sağlayan şey saatlerce çevrilen şiş ve ateşle kurulan mesafe; tavada taklit edilemiyor. Bizde kokoreç odun ateşinde, salonun içindeki açık ocakta dönüyor ve siparişte doğranıyor. Evde canınız çektiyse ama uğraşmak istemiyorsanız paket servisimiz de var."
+      },
+      {
+        tip: "alinti",
+        metin: "Tava kokoreci ısıtır; ateş kokoreci pişirir."
+      }
+    ],
+    ilgili: [
+      {
+        href: "/blog/kokorec-nedir-nasil-yapilir",
+        label: "Kokoreç nedir, neyden yapılır?"
+      },
+      {
+        href: "/menu/kokorec",
+        label: "Güncel kokoreç fiyatları"
+      },
+      {
+        href: "/blog/kokorec-yanina-ne-icilir",
+        label: "Kokoreç yanına ne içilir?"
+      }
+    ]
+  },
+
+  {
+    slug: "tavuk-kokorec-mantar-kokorec-nedir",
+    title: "Tavuk Kokoreç ve Mantar Kokoreç Nedir? | Kokology Bursa",
+    description: "Tavuk kokoreç ve mantar kokoreç neyden yapılır, gerçek kokoreçle farkı ne? Sakatat yemeyenler için kokoreç usulü alternatifler ve neyi kaçırdıkları.",
+    h1: "Tavuk kokoreç ve mantar kokoreç nedir?",
+    ozet: "Adında kokoreç geçen ama kokoreç olmayan iki popüler tarif: neyden yapılıyorlar, neyi taklit ediyorlar ve gerçeğinden farkları ne.",
+    tarih: "2026-10-05",
+    etiket: "Merak edilenler",
+    okumaDakika: 4,
+    image: "/images/urun/kokology-kokorec-ekmek-arasi-bursa-nilufer-10.jpg",
+    alt: "Kokology kuzu kokoreç ekmek arası, kekik ve pul biberle — Bursa Nilüfer Ataevler",
+    bloklar: [
+      {
+        tip: "paragraf",
+        metin: "Kokoreç sevenlerin sayısı kadar, kokorecin tadını sevip malzemesine mesafeli duranların sayısı da kalabalık. Tavuk kokoreç ve mantar kokoreç bu boşluktan doğdu: ikisi de kokorecin baharatını, doğrama biçimini ve ekmek arası sunumunu ödünç alıyor, ama kuzu bağırsağını kullanmıyor."
+      },
+      {
+        tip: "baslik",
+        metin: "Önce gerçek kokoreç: neyden yapılır?"
+      },
+      {
+        tip: "paragraf",
+        metin: "Klasik kokoreç kuzu bağırsağının, kuzu iç organlarının etrafına sıkıca sarılıp şişte, ateşin üstünde saatlerce çevrilerek pişirilmesiyle yapılır. Servis anında doğranır, kekik ve pul biberle sıcak ekmeğe girer. Kokorecin kimliği malzeme kadar bu yöntemden de gelir: şiş, ateş ve doğrama."
+      },
+      {
+        tip: "baslik",
+        metin: "Tavuk kokoreç nedir?"
+      },
+      {
+        tip: "paragraf",
+        metin: "Tavuk kokoreç adı tek bir tarife verilmiyor. En yaygın ev versiyonunda tavuk eti (çoğunlukla but) ve bazen tavuk ciğeri küçük küçük doğranıp tavada kızartılır, sonra kokoreç gibi kekik, pul biber, domates ve biberle karıştırılıp ekmeğe konur. Bazı yerlerde ise tavuk bağırsağıyla, şişe sarılarak yapılan versiyonlar da tavuk kokoreç olarak satılır."
+      },
+      {
+        tip: "paragraf",
+        metin: "Doku açısından tavuk kokoreç daha hafif ve daha kurudur; kuzu kokorecin yağlı, çıtır kenarlı ve yumuşak içli yapısı yoktur. Kokoreç tadına yakınlığı büyük ölçüde baharata ve tavada ne kadar kızartıldığına bağlıdır."
+      },
+      {
+        tip: "baslik",
+        metin: "Mantar kokoreç nedir?"
+      },
+      {
+        tip: "paragraf",
+        metin: "Mantar kokoreç ya da mantardan kokoreç, genellikle istiridye mantarıyla yapılan etsiz bir tariftir. Mantar ince şeritler hâlinde doğranır, suyunu çekip kenarları kızarana kadar yüksek ateşte pişirilir, sonra kokoreç baharatıyla ekmeğe konur. İstiridye mantarının lifli yapısı doğranmış kokorecin görüntüsünü şaşırtıcı biçimde andırır; bu yüzden yalancı kokoreç diye de anılır."
+      },
+      {
+        tip: "paragraf",
+        metin: "Vejetaryenler ve sakatat yemeyenler için iyi bir seçenek. Ama tadı kokoreç değil, kokoreç baharatıyla yapılmış mantardır; beklentiyi buna göre kurmak gerekir."
+      },
+      {
+        tip: "baslik",
+        metin: "Kısaca farkları"
+      },
+      {
+        tip: "liste",
+        ogeler: [
+          "Kuzu kokoreç — kuzu bağırsağı ve iç organlar, şişte ateşte pişer; yağlı, çıtır kenarlı, yoğun tatlı.",
+          "Tavuk kokoreç — çoğunlukla tavuk eti veya ciğeri, tavada pişer; daha hafif, daha kuru.",
+          "Mantar kokoreç — istiridye mantarı, tavada pişer; etsiz, görüntüsü benzer, tadı mantar.",
+          "Ortak noktaları — kekik, pul biber ve sıcak ekmek. Kokorecin tadının bir kısmı zaten buradan gelir."
+        ]
+      },
+      {
+        tip: "baslik",
+        metin: "Kokoreç yemiyorsanız bizde ne var?"
+      },
+      {
+        tip: "paragraf",
+        metin: "Bizim ocakta yalnızca klasik kuzu kokoreç dönüyor; tavuk ya da mantar kokoreç yapmıyoruz. Ama sofraya kokoreç yemeyen biri de geliyorsa menüde köfte, sucuk ekmek, midye dolma ve tavuklu pilav var. Kokoreci merak edip çekinenler için de en doğru başlangıç çeyrek porsiyon: küçük bir ekmek arası, karar vermeye yeter."
+      },
+      {
+        tip: "alinti",
+        metin: "Baharatı taklit etmek kolay; ateşi taklit etmek zor."
+      }
+    ],
+    ilgili: [
+      {
+        href: "/blog/ilk-kez-kokorec-yiyeceklere-rehber",
+        label: "İlk kez kokoreç yiyeceklere rehber"
+      },
+      {
+        href: "/blog/kokorec-mi-kofte-mi-sucuk-mu",
+        label: "Kokoreç mi, köfte mi, sucuk mu?"
+      },
+      {
+        href: "/menu",
+        label: "Tüm menü ve fiyatlar"
+      }
+    ]
+  },
+
+  {
+    slug: "midye-dolma-neyden-yapilir-zararli-mi",
+    title: "Midye Dolma Neyden Yapılır, Zararlı mı? | Kokology Bursa",
+    description: "Midye dolma neyden yapılır, zararlı mı, hangi aylarda yenir? Taze midyeyi bayatından ayırmanın yolları ve kimlerin dikkat etmesi gerektiği.",
+    h1: "Midye dolma neyden yapılır, zararlı mı?",
+    ozet: "İçinde ne var, ne zaman risklidir, taze midye nasıl anlaşılır ve aylarla ilgili o meşhur kural gerçekten doğru mu.",
+    tarih: "2026-10-05",
+    etiket: "Merak edilenler",
+    okumaDakika: 5,
+    image: "/images/urun/kokology-midye-dolma-bursa-nilufer-04.jpg",
+    alt: "Kokology midye dolma tabağı, limon dilimleri ile — Bursa Nilüfer Ataevler",
+    bloklar: [
+      {
+        tip: "paragraf",
+        metin: "Midye dolma, kokorecin yanında en çok anılan sokak lezzeti. Sevenler tanesini saymadan yer, sevmeyenlerin aklında ise hep aynı soru vardır: güvenli mi? Cevap midyenin kendisinde değil, nereden geldiğinde ve nasıl saklandığında."
+      },
+      {
+        tip: "baslik",
+        metin: "Midye dolma neyden yapılır?"
+      },
+      {
+        tip: "paragraf",
+        metin: "Temeli kara midyedir. Midye kabuğundan ayrılmadan temizlenir, kabuğu aralanır ve içi baharatlı pirinç harcıyla doldurulur. Harçta genellikle şunlar bulunur:"
+      },
+      {
+        tip: "liste",
+        ogeler: [
+          "Pirinç ve kavrulmuş soğan",
+          "Zeytinyağı ya da sıvı yağ",
+          "Yenibahar, tarçın, karabiber; bazı tariflerde biraz salça",
+          "Bazı ustalarda kuş üzümü ve çam fıstığı"
+        ]
+      },
+      {
+        tip: "paragraf",
+        metin: "Doldurulan midyeler sıkıca dizilip buharda ya da az suyla pişirilir. Pirinç midyenin suyunu çekerek pişer; midye dolmanın kendine has tadı da buradan gelir. Servis limonla yapılır, limon tadı keskinleştirir."
+      },
+      {
+        tip: "baslik",
+        metin: "Midye zararlı mı?"
+      },
+      {
+        tip: "paragraf",
+        metin: "Midye kendi başına besleyici bir deniz ürünüdür; protein, B12 vitamini ve demir açısından zengin olduğu genel olarak bilinir. Riski yaratan şey besin değeri değil, kaynak ve saklama koşullarıdır."
+      },
+      {
+        tip: "liste",
+        ogeler: [
+          "Kaynak: Midye suyu süzerek beslenir; kirli sulardan toplanan midye o sudaki mikropları da taşıyabilir. Bu yüzden denetimli, kayıtlı üretimden gelen midye tercih edilmeli.",
+          "Bekleme: Pişmiş midye dolma uzun süre sıcakta kalmamalı. Tezgâhta saatlerce açıkta duran midye, ne kadar iyi yapılmış olursa olsun risklidir.",
+          "Alerji: Kabuklu deniz ürünü alerjisi olanlar midye dolmadan tamamen uzak durmalı; az miktar da tepki verebilir.",
+          "Hassas gruplar: Hamileler, bağışıklığı zayıf olanlar ve küçük çocuklar için deniz ürünleri konusunda doktor görüşü almak doğru olur."
+        ]
+      },
+      {
+        tip: "not",
+        metin: "Bu yazı genel bilgi içindir, tıbbi tavsiye değildir. Sağlık durumunuzla ilgili bir soru varsa doktorunuza danışın."
+      },
+      {
+        tip: "baslik",
+        metin: "Taze midye dolma nasıl anlaşılır?"
+      },
+      {
+        tip: "liste",
+        ogeler: [
+          "Kokusu deniz kokar, ekşi ya da keskin değildir.",
+          "Midye dolgun ve parlaktır; büzüşmüş, kurumuş görünmez.",
+          "Pirinç tane tanedir; sulanmış ya da hamurlaşmış değildir.",
+          "Kabuk içi nemlidir, kenarları kurumamıştır.",
+          "Tadında en ufak bir ekşilik hissederseniz yemeye devam etmeyin."
+        ]
+      },
+      {
+        tip: "baslik",
+        metin: "\"İçinde r harfi olmayan aylarda midye yenmez\" doğru mu?"
+      },
+      {
+        tip: "paragraf",
+        metin: "Eski bir halk kuralı: mayıs, haziran, temmuz ve ağustosta midye yenmez. Kuralın bir mantığı var: sıcak aylarda deniz suyu ısınır, bazı dönemlerde alg patlamaları görülür ve pişmiş midyenin sıcakta bozulma hızı artar. Ama bugün belirleyici olan takvim değil, üretimin denetimi ve soğuk zincir. Yazın da güvenilir yerden, bekletilmeden satılan midye yenebilir; kışın bile tezgâhta saatlerce bekleyen midye yenmemelidir."
+      },
+      {
+        tip: "baslik",
+        metin: "Kokoreçle midye dolma birlikte gider mi?"
+      },
+      {
+        tip: "paragraf",
+        metin: "Gece sofrasının klasik ikilisi. Kokoreç yağlı ve baharatlı, midye dolma ise limonla hafif ve ferah; biri diğerinin ağırlığını dengeliyor. Bizde midye dolma limonla geliyor: tanesi 25 ₺, 10'lu tabak 250 ₺, kalabalık sofralar için 50'lik kova 1150 ₺. Güncel fiyatlar her zaman menü sayfamızda."
+      },
+      {
+        tip: "alinti",
+        metin: "İyi midyeyi limon güzelleştirir; kötü midyeyi limon kurtarmaz."
+      }
+    ],
+    ilgili: [
+      {
+        href: "/menu/midye",
+        label: "Midye dolma fiyatları"
+      },
+      {
+        href: "/blog/nilufer-ataevler-gece-acik-kokorec",
+        label: "Ataevler'de gece açık kokoreç"
+      },
+      {
+        href: "/menu",
+        label: "Tüm menü ve fiyatlar"
+      }
+    ]
+  }
 ];
 
 export const blogSayfa = {
