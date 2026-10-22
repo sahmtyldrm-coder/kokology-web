@@ -1135,6 +1135,381 @@ export const yazilar: Yazi[] = [
         label: "Tüm menü ve fiyatlar"
       }
     ]
+  },
+
+  {
+    slug: "uykuluk-nedir-uykuluklu-kokorec",
+    title: "Uykuluk Nedir? Uykuluklu Kokoreç Neden Pahalı? | Kokology Bursa",
+    description: "Uykuluk nedir, hayvanın neresidir, tadı nasıldır? Uykuluklu kokorecin normal kokoreçten farkı ve neden daha pahalı olduğu, kısa ve net.",
+    h1: "Uykuluk nedir? Uykuluklu kokoreç neden ayrı bir kalem?",
+    ozet: "Uykuluk hayvanın neresi, tadı neye benzer, kokorece girince ne değişir? Menüde neden ayrı ve neden pahalı durduğunun cevabı.",
+    tarih: "2026-10-22",
+    etiket: "Merak edilenler",
+    okumaDakika: 4,
+    image: "/images/urun/kokology-kokorec-ekmek-arasi-bursa-nilufer-03.jpg",
+    alt: "Kokology uykuluklu kokoreç ekmek arası, kekik ve pul biberle — Bursa Nilüfer Ataevler",
+    bloklar: [
+      {
+        tip: "paragraf",
+        metin: "Uykuluk, genç hayvanların boğaz ve göğüs bölgesinde bulunan timus bezidir. Kuzuda da danada da vardır ama yalnızca hayvan gençken belirgindir; hayvan büyüdükçe küçülür ve neredeyse kaybolur. Kasapta az bulunması, yağlı ve yumuşak dokusu, kokorecin içine girdiğinde tadı belirgin biçimde değiştirmesi onu menülerde ayrı bir kalem yapar."
+      },
+      {
+        tip: "baslik",
+        metin: "Uykuluk hayvanın neresi?"
+      },
+      {
+        tip: "paragraf",
+        metin: "Timus bezi, genç hayvanın bağışıklık sisteminin gelişiminde görev alan bir organdır. Sofraya gelen kısmı açık renkli, yumuşak ve hafif lobludur. İngilizcede \"sweetbread\" diye geçer ve dünya mutfaklarında da değerli bir sakatat sayılır. Bazı yörelerde pankreasa da uykuluk denir; ama kokoreççide ve kasapta uykuluk dendiğinde kastedilen çoğunlukla timus bezidir."
+      },
+      {
+        tip: "baslik",
+        metin: "Tadı nasıldır?"
+      },
+      {
+        tip: "paragraf",
+        metin: "Uykuluğun kendine has keskin bir tadı yok; asıl farkı dokusunda. Pişince içi kremamsı ve yumuşak kalır, dışı ise ateşte hafif kabuk bağlar. Ciğer gibi sert ya da böbrek gibi kokulu değildir. Sakatata mesafeli olan birçok kişinin \"bu neymiş\" dediği şey genelde uykuluktur."
+      },
+      {
+        tip: "baslik",
+        metin: "Uykuluklu kokoreç nedir?"
+      },
+      {
+        tip: "paragraf",
+        metin: "Klasik kokoreçte kuzu bağırsağı, kuzu iç organlarının etrafına sarılır. Uykuluklu kokoreçte bu iç kısma uykuluk da eklenir. Sonuç daha zengin, daha yağlı ve daha yumuşak bir kokoreçtir. Doğrandığında bağırsağın çıtır kenarlarının arasında uykuluğun yumuşak parçaları hissedilir."
+      },
+      {
+        tip: "liste",
+        ogeler: [
+          "Normal kokoreç: çıtır kenarlı, baharatlı, daha hafif.",
+          "Uykuluklu kokoreç: daha yumuşak, daha ağır ve daha doyurucu; tat daha yuvarlak.",
+          "İkisi de aynı ocakta, aynı ateşte döner. Fark şişe sarılırken içine ne konduğunda."
+        ]
+      },
+      {
+        tip: "baslik",
+        metin: "Uykuluk neden pahalı?"
+      },
+      {
+        tip: "paragraf",
+        metin: "Çünkü az. Her hayvanda tek bir timus bezi vardır, o da yalnızca hayvan gençken işe yarar büyüklüktedir. Bir şiş uykuluklu kokoreç için gereken uykuluğu toplamak, aynı şişi normal kokoreçle sarmaktan çok daha fazla hayvan demektir. Temizlenmesi de emek ister. Fiyatı belirleyen porsiyonun büyüklüğü değil, içine giren malzemedir."
+      },
+      {
+        tip: "not",
+        metin: "Uykuluk da kokoreç gibi sakatattır. Kolesterol ve yağ konusunda dikkat etmesi gerekenler için genel bilgileri \"Kokoreç sağlıklı mı?\" yazımızda topladık; özel bir sağlık durumunuz varsa doktorunuzun önerisi her zaman önce gelir."
+      },
+      {
+        tip: "baslik",
+        metin: "Kokology'de uykuluklu kokoreç"
+      },
+      {
+        tip: "paragraf",
+        metin: "Menümüzde uykuluklu kokoreç iki boyda var: Special Atom ve onun yarım boyu Yarım Atom. Odun ateşinde dönen şişten siparişte kesilir, tezgâhta doğranır, kekik ve pul biber o an eklenir. Uykuluğu ilk kez deneyecekseniz Yarım Atom iyi bir başlangıç; standart kokoreçle yan yana yerseniz farkı en net o zaman anlarsınız."
+      },
+      {
+        tip: "alinti",
+        metin: "Uykuluklu kokoreci bilerek isteyen bilir; bir kez deneyen de bir daha unutmaz."
+      }
+    ],
+    ilgili: [
+      {
+        href: "/menu/kokorec",
+        label: "Special Atom ve güncel kokoreç fiyatları"
+      },
+      {
+        href: "/blog/kokorec-nedir-nasil-yapilir",
+        label: "Kokoreç nedir, neyden yapılır?"
+      },
+      {
+        href: "/blog/kokorec-saglikli-mi",
+        label: "Kokoreç sağlıklı mı?"
+      }
+    ]
+  },
+
+  {
+    slug: "kokorec-hangi-hayvandan-yapilir",
+    title: "Kokoreç Hangi Hayvandan Yapılır? Kuzu mu Dana mı? | Kokology Bursa",
+    description: "Kokoreç hangi hayvanın neresinden yapılır, kuzu mu dana mı? Kokorecin içinde ne var, besin değeri ve Balkanlardan Anadolu'ya kısa tarihi.",
+    h1: "Kokoreç hangi hayvandan yapılır?",
+    ozet: "Kuzu mu dana mı, bağırsağın içinde ne var, proteini yüksek mi ve kokoreç nereden geliyor? En çok sorulan sorulara kısa cevaplar.",
+    tarih: "2026-10-22",
+    etiket: "Temel bilgi",
+    okumaDakika: 4,
+    image: "/images/mekan/kokology-kokorec-ocagi-mangal-bursa-nilufer.jpg",
+    alt: "Kokology kokoreç ocağı, odun ateşinde dönen kuzu kokoreç şişleri — Bursa Nilüfer",
+    bloklar: [
+      {
+        tip: "paragraf",
+        metin: "Kısa cevap: kokoreç kuzudan yapılır. Geleneksel kokoreç, kuzu bağırsağının kuzu iç organlarının etrafına sıkıca sarılıp şişte, ateşin üstünde saatlerce çevrilmesiyle hazırlanır. Dana ya da başka bir hayvandan kokoreç yapılmaz demek doğru olmaz ama Türkiye'de kokoreç dendiğinde beklenen şey kuzudur."
+      },
+      {
+        tip: "baslik",
+        metin: "Kuzu mu dana mı?"
+      },
+      {
+        tip: "paragraf",
+        metin: "Kuzu. Kuzu bağırsağı ince ve yumuşaktır; şişe sarılmaya, uzun süre ateşte dönüp hem kızarıp hem de kurumamaya uygundur. Dana bağırsağı daha kalın ve serttir, kokorecin bilinen çıtır kenarlı, yumuşak içli dokusunu vermez. Bu yüzden kokoreççiler kuzu ile çalışır."
+      },
+      {
+        tip: "baslik",
+        metin: "Kokorecin içinde ne var?"
+      },
+      {
+        tip: "liste",
+        ogeler: [
+          "Dış kat: temizlenmiş kuzu bağırsağı. Kokorece adını ve dokusunu veren kısım budur.",
+          "İç kısım: genellikle kuzu iç organları; böbrek, yürek, akciğer gibi parçalar. Usta bunların etrafına bağırsağı sararak şişi kurar.",
+          "Uykuluklu kokoreçte iç kısma bir de uykuluk (timus bezi) eklenir; tat daha zengin, doku daha yumuşak olur."
+        ]
+      },
+      {
+        tip: "paragraf",
+        metin: "Bağırsağın temizliği kokorecin her şeyidir. Kokoreç hakkındaki ön yargıların neredeyse tamamı kötü temizlenmiş bağırsaktan gelir. İyi temizlenmiş kuzu bağırsağı ateşte koku yapmaz; ekmeğe kekik ve odun ateşinin kokusuyla girer."
+      },
+      {
+        tip: "baslik",
+        metin: "Kokoreçte protein var mı?"
+      },
+      {
+        tip: "paragraf",
+        metin: "Var. Kokoreç sakatattan yapıldığı için hem protein hem yağ açısından yoğun bir yiyecektir. Kesin değer; bağırsak ile iç organların oranına, şişin ne kadar yağ bıraktığına ve porsiyona göre değişir. Biz kendi ürünümüzün laboratuvar ölçümünü yaptırmadık; genel kalori ve besin değeri aralıklarını \"Kokoreç kaç kalori?\" yazımızda topladık."
+      },
+      {
+        tip: "baslik",
+        metin: "Kokorecin kısa tarihi"
+      },
+      {
+        tip: "paragraf",
+        metin: "Kokoreç Balkanlar ile Anadolu'nun ortak sofrasından gelir. Benzerleri Yunanistan'da kokoretsi, Arnavutluk ve Balkanlarda kukurec adıyla bilinir; kelimenin kökü de büyük olasılıkla bu Balkan adlarına dayanır. Hayvanın hiçbir parçasını israf etmeyen bir mutfağın ürünüdür: kesimden geriye kalan bağırsak ve iç organlar ustanın elinde şişe sarılıp ateşle yemeğe dönüşmüş."
+      },
+      {
+        tip: "paragraf",
+        metin: "2000'lerde Avrupa Birliği uyum süreci sırasında kokorecin yasaklanacağı uzun süre konuşuldu. Türkiye'de kokoreç yasaklanmadı; bugün sakatat, veteriner denetimli kesimhanelerden ve gıda mevzuatına uygun şekilde tedarik edilerek satılıyor. Tartışmanın kokorece kalan en iyi yanı, temizlik ve tedarik konusunda çıtayı yükseltmesi oldu."
+      },
+      {
+        tip: "baslik",
+        metin: "Bizde nasıl?"
+      },
+      {
+        tip: "paragraf",
+        metin: "Ocağımızda yalnızca kuzu kokoreç döner. Şiş odun ateşinde çevrilir, sipariş geldiğinde kesilip tezgâhta doğranır, kekik ve pul biber o an eklenir. Uykuluklu versiyonu isteyenler için menüde Special Atom ve Yarım Atom var."
+      },
+      {
+        tip: "alinti",
+        metin: "Kokoreci kokoreç yapan hayvan değil, temizlik ve ateştir; ama hayvan her zaman kuzudur."
+      }
+    ],
+    ilgili: [
+      {
+        href: "/blog/kokorec-nedir-nasil-yapilir",
+        label: "Kokoreç nasıl pişirilir?"
+      },
+      {
+        href: "/blog/uykuluk-nedir-uykuluklu-kokorec",
+        label: "Uykuluk nedir?"
+      },
+      {
+        href: "/blog/kokorec-kac-kalori",
+        label: "Kokoreç kaç kalori?"
+      }
+    ]
+  },
+
+  {
+    slug: "bursada-ne-yenir-sokak-lezzetleri",
+    title: "Bursa'da Ne Yenir? Bursa'nın Meşhur Yemekleri ve Sokak Lezzetleri | Kokology",
+    description: "Bursa'da ne yenir? İskender, pideli köfte, İnegöl köfte, cantık, kestane şekeri ve gece sokak lezzetleri: Bursa'ya gelen birinin tatması gerekenler.",
+    h1: "Bursa'da ne yenir?",
+    ozet: "İskender'den kestane şekerine, cantıktan gece kokorecine: Bursa'ya yolu düşenin listesine yazması gereken lezzetler.",
+    tarih: "2026-10-22",
+    etiket: "Bursa rehberi",
+    okumaDakika: 5,
+    image: "/images/mekan/kokology-kokorec-bursa-nilufer-cadde-ataevler-dis-cephe.jpg",
+    alt: "Kokology kokoreççi dış cephe, Cadde Ataevler — Nilüfer Bursa",
+    bloklar: [
+      {
+        tip: "paragraf",
+        metin: "Bursa yemek konusunda iddialı bir şehir. Türkiye'nin dört bir yanına adını veren İskender buradan çıktı, köfte kültürü burada ayrı bir dal oldu, tatlıda da kestane şekeriyle tanınıyor. Şehre bir günlüğüne gelen biri için bile sofrada atlanmaması gerekenler var. Aşağıdaki liste bunları gündüzden geceye doğru sıralıyor."
+      },
+      {
+        tip: "baslik",
+        metin: "İskender kebap"
+      },
+      {
+        tip: "paragraf",
+        metin: "Bursa denince ilk akla gelen. İnce kesilmiş döner, tırnaklı pide küpleri, üstüne domates sosu ve sofrada dökülen kızgın tereyağı; yanında yoğurt. Bursa'da İskender bir öğle yemeğinden çok bir ritüeldir. Tarihi kebapçıların yanı sıra şehrin her semtinde iyi İskender bulmak mümkün."
+      },
+      {
+        tip: "baslik",
+        metin: "Pideli köfte ve İnegöl köfte"
+      },
+      {
+        tip: "paragraf",
+        metin: "Pideli köfte, İskender'in köfteli kardeşi gibidir: pide üzerinde ızgara köfte, domates sosu ve tereyağı. İnegöl köfte ise Bursa'nın ilçesi İnegöl'den adını alır; kıyma, soğan ve az baharatla yapılan, iri parçalı, sade bir köftedir. İkisi de şehirde çok sevilir ve ikisi de ateşin doğru kullanılmasına bağlıdır."
+      },
+      {
+        tip: "baslik",
+        metin: "Cantık ve pide"
+      },
+      {
+        tip: "paragraf",
+        metin: "Cantık, Bursa'ya Balkan göçüyle gelmiş, üzeri açık, kıymalı küçük bir pidedir; özellikle kahvaltıda ve öğleden önce yenir. Balkan mutfağının Bursa'daki izi cantıkla bitmez: börekler, pideler ve kokoreç de bu ortak sofradan gelir."
+      },
+      {
+        tip: "baslik",
+        metin: "Kestane şekeri ve Kemalpaşa tatlısı"
+      },
+      {
+        tip: "paragraf",
+        metin: "Bursa'dan eli boş dönülmez; en çok alınan hediye kestane şekeridir. Yerinde yenecek tatlı arıyorsanız peynirli hamurun şerbetle buluştuğu Kemalpaşa tatlısı da Bursa'nın kendi ilçesinden çıkmıştır. Yanına Bursa'nın meşhur Uludağ gazozu yakışır."
+      },
+      {
+        tip: "baslik",
+        metin: "Gece: Bursa'nın sokak lezzetleri"
+      },
+      {
+        tip: "paragraf",
+        metin: "Bursa'nın sofrası akşam yemeğiyle kapanmaz. Gece geç saatlerde aranan şeyler bellidir: kokoreç, köfte ekmek, sucuk ekmek, midye dolma. Ayaküstü ya da oturarak, yanında ayran veya şalgamla yenen bu lezzetler özellikle Nilüfer gibi gençlerin ve ailelerin yoğun olduğu semtlerde gecenin son durağıdır."
+      },
+      {
+        tip: "liste",
+        ogeler: [
+          "Kokoreç — odun ateşinde dönen kuzu kokoreç, kekik ve pul biberle sıcak ekmek arası.",
+          "Köfte ekmek — mangalda pişen köfte, közlenmiş biberle.",
+          "Sucuk ekmek — kalın kesim sucuk, kızarmış ekmek.",
+          "Midye dolma — baharatlı iç pilav, bol limon."
+        ]
+      },
+      {
+        tip: "baslik",
+        metin: "Kokology: Nilüfer'de gece durağı"
+      },
+      {
+        tip: "paragraf",
+        metin: "Kokology, Nilüfer'de Ataevler'de, Cadde Ataevler'deki kokoreççimiz. Listenin son başlığındaki sokak lezzetlerinin hepsi menümüzde var: odun ateşinde dönen kuzu kokoreç, köfte, sucuk ekmek, midye dolma ve pilavlar. Her gün gece 03.00'e kadar açığız; Bursa'da gezip günü bir kokoreçle kapatmak isteyenler için adres burası."
+      },
+      {
+        tip: "alinti",
+        metin: "Bursa'da gündüz İskender yenir; gece ise kokoreç."
+      }
+    ],
+    ilgili: [
+      {
+        href: "/blog/nilufer-ataevlerde-ne-yenir",
+        label: "Nilüfer ve Ataevler'de ne yenir?"
+      },
+      {
+        href: "/blog/bursada-kokorec-nerede-yenir",
+        label: "Bursa'da kokoreç nerede yenir?"
+      },
+      {
+        href: "/menu",
+        label: "Tüm menü ve fiyatlar"
+      }
+    ]
+  },
+
+  {
+    slug: "kokorec-baharati-ve-ekmegi",
+    title: "Kokoreç Baharatı Nedir? Kokoreç Ekmeği Nasıl Olmalı? | Kokology Bursa",
+    description: "Kokoreç baharatında neler var, ne zaman eklenir? Kokoreç ekmeği nasıl olmalı? Kekik, pul biber ve sıcak ekmeğin kokorecin tadındaki payı.",
+    h1: "Kokoreç baharatı ve kokoreç ekmeği",
+    ozet: "Kokoreç baharatında ne var, neden servis anında eklenir, ekmek neden sıcak olmalı? Kokorecin tadının yarısını yapan iki ayrıntı.",
+    tarih: "2026-10-22",
+    etiket: "Merak edilenler",
+    okumaDakika: 4,
+    image: "/images/urun/kokology-kokorec-ekmek-arasi-bursa-nilufer-06.jpg",
+    alt: "Kokology kokoreç ekmek arası, kekik ve pul biberle baharatlanmış — Bursa Nilüfer Ataevler",
+    bloklar: [
+      {
+        tip: "paragraf",
+        metin: "Kokorecin tadı yalnızca şişte, ateşin başında oluşmaz. Son birkaç saniyede tezgâhta olan iki şey, baharat ve ekmek, tadın neredeyse yarısını belirler. İyi pişmiş bir kokoreç yanlış baharat ya da soğuk ekmekle sıradanlaşır; ortalama bir kokoreç bile doğru baharat ve sıcak ekmekle toparlanır."
+      },
+      {
+        tip: "baslik",
+        metin: "Kokoreç baharatında ne var?"
+      },
+      {
+        tip: "paragraf",
+        metin: "Kokoreç baharatının iki temel taşı kekik ve pul biberdir. Kokorecin kendine ait güçlü tadını bastırmadan tamamlayan ikili budur. Üzerine tuz ve karabiber eklenir; bazı ustalar çok az kimyon da kullanır. Hazır \"kokoreç baharatı\" adıyla satılan karışımlar da büyük ölçüde bu baharatlardan oluşur."
+      },
+      {
+        tip: "liste",
+        ogeler: [
+          "Kekik — kokorecin kokusunu veren baharat. Kurutulmuş kekik kullanılır.",
+          "Pul biber — renk ve hafif acı verir. Acılı isteyen daha fazlasını ister.",
+          "Tuz ve karabiber — temel tat.",
+          "Kimyon — isteğe bağlı ve çok az; fazlası kokorecin tadını örter."
+        ]
+      },
+      {
+        tip: "baslik",
+        metin: "Baharat ne zaman eklenir?"
+      },
+      {
+        tip: "paragraf",
+        metin: "Püf noktası zamanlamadır. Kekik ve pul biber uzun süre ateş gördüğünde kokusunu kaybeder, hatta acılaşır. Bu yüzden baharat şişe sürülmez; kokoreç siparişte şişten kesilip tezgâhta doğranırken eklenir. Önceden karıştırılıp bekletilen baharatın da kokusu uçar. Kokoreç ekmeğe girerken taze kekik kokmalıdır."
+      },
+      {
+        tip: "baslik",
+        metin: "Domates ve biber"
+      },
+      {
+        tip: "paragraf",
+        metin: "Bazı kokoreççiler doğrama sırasında domates ve sivri biber de ekler. Sebze taze bir tat katar ama suyu kokorecin çıtır kenarlarını yumuşatır. Sebzeli ya da sade istemek tamamen damak meselesidir; doğru ya da yanlışı yoktur."
+      },
+      {
+        tip: "baslik",
+        metin: "Kokoreç ekmeği nasıl olmalı?"
+      },
+      {
+        tip: "paragraf",
+        metin: "Kokoreç ekmeği iki şey ister: sıcak olacak ve kokorecin yağını emecek. Soğuk ekmek yağı tutmaz, lokma dağılır ve kokoreç ekmekten ayrı bir şey gibi kalır. Ekmeğin içi ateşte ya da kokorecin pişirildiği sacda kısa süre ısıtıldığında hem ılır hem yağı alır; kokoreç ile ekmek tek bir lokmaya dönüşür."
+      },
+      {
+        tip: "liste",
+        ogeler: [
+          "Sıcak olsun — ılık değil, sıcak.",
+          "İçi yumuşak, dışı hafif kıtır olsun; kokorecin yağını emebilsin.",
+          "Fazla kalın olmasın; kokoreci bastırmasın, taşısın.",
+          "Çeyrek, yarım, tam: ekmeğin boyu porsiyonun boyunu belirler."
+        ]
+      },
+      {
+        tip: "baslik",
+        metin: "Evde kokoreç yapanlar için"
+      },
+      {
+        tip: "paragraf",
+        metin: "Evde hazır kokoreç pişiriyorsanız aynı kural geçerli: baharatı tavadan alırken ekleyin, ekmeğin iç yüzünü kokorecin kaldığı tavaya birkaç saniye bastırın. Adım adım tarif için \"Evde kokoreç nasıl pişirilir?\" yazımıza bakabilirsiniz."
+      },
+      {
+        tip: "baslik",
+        metin: "Bizde nasıl?"
+      },
+      {
+        tip: "paragraf",
+        metin: "Kokology'de kokoreç odun ateşinde döner, sipariş verildiğinde şişten kesilip tezgâhta doğranır. Kekik ve pul biber o an eklenir; önceden karıştırılmış baharat kullanmayız. Ekmek de sıcak gider."
+      },
+      {
+        tip: "alinti",
+        metin: "Kokorecin yarısı ateşte, yarısı tezgâhta pişer."
+      }
+    ],
+    ilgili: [
+      {
+        href: "/menu/kokorec",
+        label: "Güncel kokoreç fiyatları"
+      },
+      {
+        href: "/blog/evde-kokorec-nasil-pisirilir",
+        label: "Evde kokoreç nasıl pişirilir?"
+      },
+      {
+        href: "/blog/ceyrek-yarim-tam-kokorec-ne-demek",
+        label: "Çeyrek, yarım, tam kokoreç ne demek?"
+      }
+    ]
   }
 ];
 
