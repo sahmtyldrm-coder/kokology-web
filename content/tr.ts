@@ -574,9 +574,9 @@ export const culture = {
    */
   rating: {
     value: 4.9,
-    count: 210,
+    count: 236,
     source: "Google",
-    label: "Google'da 210 yorum", // 2026-10-17 Google İşletme Profili
+    label: "Google'da 236 yorum", // 2026-10-25 Google İşletme Profili
   },
   instagram: {
     label: "Instagram'da takip et",
