@@ -1526,7 +1526,7 @@ export const yazilar: Yazi[] = [
       {tip: "paragraf", metin: "Kokoreç çoğu zaman gece canı çekilen bir şey. Dışarı çıkmak istemediğiniz akşamlarda, maç izlerken ya da geç saatte işten dönerken kapıya gelmesi en pratik yol. Kokology'den kokoreç almanın üç yolu var: yemek uygulamaları, telefonla gel-al ve doğrudan dükkân."},
       {tip: "baslik", metin: "Trendyol Yemek ve Yemeksepeti'nden sipariş"},
       {tip: "paragraf", metin: "Kokology, Trendyol Yemek ve Yemeksepeti'nde yer alıyor. Uygulamayı açıp \"Kokology\" diye aratmanız yeterli. Teslimat yapılan bölge ve o anki teslimat süresi adresinize göre uygulamada görünür; adresiniz kapsama alanındaysa menünün tamamı karşınıza çıkar."},
-      {tip: "liste", ogeler: ["Uygulamada \"Kokology\" diye aratın.", "Adresinizi girin; teslimat bölgesi ve tahmini süre görünür.", "Kokoreci çeyrek, yarım, tam ya da porsiyon olarak seçin.", "Notlar kısmına acılı, az baharatlı ya da sebzesiz gibi isteklerinizi yazabilirsiniz."]},
+      {tip: "liste", ogeler: ["Uygulamada \"Kokology\" diye aratın.", "Adresinizi girin; teslimat bölgesi ve tahmini süre görünür.", "Kokoreci çeyrek, yarım, tam ya da porsiyon olarak seçin.", "Acılı ya da az baharatlı gibi isteklerinizi notlar kısmına yazabilirsiniz."]},
       {tip: "baslik", metin: "Telefonla gel-al sipariş"},
       {tip: "paragraf", metin: "Yolunuz Ataevler'den geçiyorsa en hızlısı telefonla önceden sipariş verip gelip almak. 0531 715 11 95'i arayın, siparişinizi söyleyin; geldiğinizde paketiniz hazır olsun. Otopark ücretsiz, bekleme yok."},
       {tip: "baslik", metin: "Pakette hangi porsiyon iyi gider?"},
@@ -1639,7 +1639,7 @@ export const yazilar: Yazi[] = [
       {tip: "baslik", metin: "Diğer kokoreç çeşitleri"},
       {tip: "liste", ogeler: ["Uykuluklu kokoreç: İçine uykuluk (timüs bezi) eklenen, daha zengin tatlı kokoreç.", "Porsiyon kokoreç: Ekmeksiz, tabakta servis edilen kokoreç.", "Pilav üstü kokoreç: Tereyağlı pilavın üstüne doğranmış kokoreç.", "Tavuk ve mantar kokoreç: Kuzu bağırsağı yerine tavuk ya da mantarla yapılan, kokoreç tadını taklit eden yemekler.", "Kokoretsi: Yunanistan ve Balkanlar'da, özellikle Paskalya'da yapılan, iç organların bağırsakla sarıldığı akraba bir yemek."]},
       {tip: "baslik", metin: "Bursa'da kokoreç"},
-      {tip: "paragraf", metin: "Bursa'nın kendine ait bir kokoreç tarzı yok; şehirde hem Ege hem İstanbul alışkanlıkları bir arada. Kokology'de kokoreç odun ateşinde döner, sipariş geldiğinde şişten kesilip tezgâhta doğranır, kekik ve pul biber o an eklenir. Sebzeli ya da sade istemek size kalmış."},
+      {tip: "paragraf", metin: "Bursa'nın kendine ait bir kokoreç tarzı yok; şehirde hem Ege hem İstanbul alışkanlıkları bir arada. Kokology'de kokoreç odun ateşinde döner, sipariş geldiğinde şişten kesilip tezgâhta doğranır, kekik ve pul biber o an eklenir; yanına közlenmiş domates ve biber gider."},
       {tip: "liste", ogeler: ["Çeyrek kokoreç: 230 ₺", "Yarım kokoreç: 380 ₺", "Üç çeyrek: 580 ₺ · Tam: 740 ₺", "Porsiyon kokoreç: 800 ₺", "Yarım Atom (uykuluklu): 650 ₺ · Special Atom: 1200 ₺", "Kokoreçli pilav: 470 ₺"]},
       {tip: "paragraf", metin: "Ekmek ölçüsü şehirden şehre değiştiği için porsiyonlarımızı ve fiyatlarımızı menüde açıkça yazıyoruz; ne alacağınızı bilerek sipariş verin."},
       {tip: "alinti", metin: "Kokorecin memleketi yok; iyi pişeni kazanır."}
