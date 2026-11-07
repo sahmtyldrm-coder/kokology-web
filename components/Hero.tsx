@@ -109,11 +109,7 @@ export function Hero() {
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <a
             href={action.href}
-            {...(action.label === "order" && {
-              target: "_blank",
-              rel: "noopener noreferrer",
-            })}
-            data-olcum={action.label === "order" ? "siparis" : "ara"}
+            data-olcum={action.label === "order" ? undefined : "ara"}
             className="group inline-flex min-h-[52px] items-center gap-2.5 rounded-full bg-red px-8 font-sans text-base font-semibold text-bone transition-all duration-300 hover:bg-brass hover:text-charcoal hover:shadow-[0_0_28px_-4px_var(--color-brass)]"
           >
             {action.label === "order" ? nav.cta.order : nav.cta.call}

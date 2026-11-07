@@ -133,11 +133,7 @@ export default async function QrMenuPage() {
         <div className="mt-10 flex flex-col gap-3">
           <a
             href={action.href}
-            data-olcum={action.label === "order" ? "siparis" : "ara"}
-            {...(action.label === "order" && {
-              target: "_blank",
-              rel: "noopener noreferrer",
-            })}
+            data-olcum={action.label === "order" ? undefined : "ara"}
             className="inline-flex min-h-[56px] items-center justify-center rounded-full bg-red px-8 font-sans text-base font-semibold text-bone"
           >
             {findUs.callCta}

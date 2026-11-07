@@ -442,13 +442,18 @@ export const isletmeGetir = unstable_cache(isletmeOku, ["isletme"], {
   revalidate: 3600,
 });
 
-/** Kırmızı CTA'nın hedefi: sipariş linki varsa oraya, yoksa telefona. */
+/**
+ * Kırmızı CTA'nın hedefi: en az bir sipariş linki varsa /siparis sayfasına,
+ * yoksa telefona. Birden fazla platform olduğu için CTA tek bir platforma değil,
+ * platformların listelendiği sayfaya gider. "siparis" dönüşümü YALNIZCA o
+ * sayfadaki platform butonlarında sayılır; CTA tıklaması ara adımdır.
+ */
 export function anaAksiyon(isletme: Isletme): {
   href: string;
   label: "order" | "call";
 } {
   const order = Object.values(isletme.ordering).find((v) => v && v.trim());
   return order
-    ? { href: order, label: "order" }
+    ? { href: "/siparis", label: "order" }
     : { href: `tel:${isletme.phone.e164}`, label: "call" };
 }

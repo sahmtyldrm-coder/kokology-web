@@ -163,10 +163,7 @@ export function FindUs({
                 </a>
                 {action.label === "order" && (
                   <a
-                    href={action.href}
-                    data-olcum="siparis"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/siparis"
                     className="inline-flex min-h-[56px] flex-1 items-center justify-center gap-2 rounded-full border border-bone/25 px-8 font-sans text-base font-medium text-bone transition-colors duration-200 hover:border-brass hover:text-brass sm:flex-initial"
                   >
                     {nav.cta.order}

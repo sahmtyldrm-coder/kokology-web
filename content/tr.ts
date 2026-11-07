@@ -114,11 +114,11 @@ export const business = {
    * kalır — olmayan bir yere götüren buton koymamak için.
    */
   ordering: {
-    yemeksepeti: "",
+    yemeksepeti: "https://www.yemeksepeti.com/restaurant/sslf/kokology-sslf",
     getir: "",
     uberEats: "",
     migrosYemek: "",
-    trendyolYemek: "",
+    trendyolYemek: "https://tgoyemek.com/restoranlar/472213",
   },
 
   /** Sipariş alınan platformların görünen adları — S.S.S. metninde kullanılır */
@@ -211,6 +211,7 @@ export const nav = {
    */
   links: [
     { href: "/menu", label: "Menü" },
+    { href: "/siparis", label: "Sipariş" },
     { href: "/blog", label: "Blog" },
     { href: "/hakkimizda", label: "Hakkımızda" },
     { href: "#mekan", label: "Mekân" },

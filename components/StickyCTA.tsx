@@ -39,11 +39,7 @@ export function StickyCTA() {
           <div className="flex gap-2 px-3 py-3">
             <a
               href={action.href}
-              {...(action.label === "order" && {
-                target: "_blank",
-                rel: "noopener noreferrer",
-              })}
-              data-olcum={action.label === "order" ? "siparis" : "ara"}
+              data-olcum={action.label === "order" ? undefined : "ara"}
             className="inline-flex min-h-[52px] flex-1 items-center justify-center rounded-full bg-red px-3 font-sans text-[0.95rem] font-semibold text-bone"
             >
               {action.label === "order" ? nav.cta.order : nav.cta.call}

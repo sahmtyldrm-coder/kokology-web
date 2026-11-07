@@ -72,3 +72,26 @@ export const bulBiziSayfa = {
     "Otopark hem açık hem kapalı, kullanımı ücretsiz. Toplu taşımayla gelenler için Ataevler durakları yürüme mesafesinde.",
   ],
 };
+
+export const siparisSayfa = {
+  title: "Paket Sipariş — Trendyol Go ve Yemeksepeti | Kokology Bursa Nilüfer",
+  description:
+    "Kokology'den paket kokoreç siparişi: Trendyol Go ve Yemeksepeti'nde Kokology Ataevler. Telefonla gel-al sipariş de var. Her gün 11.00–03.00, Nilüfer / Bursa.",
+  breadcrumb: "Paket Sipariş",
+  eyebrow: "Paket",
+  h1: "Kokoreç kapına gelsin",
+  lead: "Kokology Ataevler, Trendyol Go ve Yemeksepeti'nde. Platformu seç, siparişini ver; kokoreç siparişte şişten kesilip sıcak ekmekle paketlenir.",
+  platformsHeading: "Uygulamadan sipariş ver",
+  platformNote:
+    "Teslimat bölgesi, süre ve fiyatlar adresinize göre uygulamada görünür. Platform fiyatları dükkân menüsünden farklı olabilir.",
+  gelAlHeading: "Telefonla gel-al",
+  gelAl:
+    "Yolunuz Ataevler'den geçiyorsa arayıp siparişinizi verin, geldiğinizde paketiniz hazır olsun. Otopark ücretsiz.",
+  ipuclariHeading: "Paket kokoreç için",
+  ipuclari: [
+    "Tek kişi, hafif: çeyrek kokoreç. Doyurucu: yarım ya da uykuluklu Yarım Atom.",
+    "İki kişi paylaşacaksa tam kokoreç; ekmeksiz isteyenlere porsiyon.",
+    "Yanına 10'lu midye dolma ve ayran ya da şalgam.",
+    "Paket gelince hemen açın; kapalı kalırsa buhar ekmeği yumuşatır.",
+  ],
+};

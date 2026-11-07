@@ -87,11 +87,7 @@ export default async function KategoriPage({
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a
                     href={action.href}
-                    data-olcum={action.label === "order" ? "siparis" : "ara"}
-                    {...(action.label === "order" && {
-                      target: "_blank",
-                      rel: "noopener noreferrer",
-                    })}
+                    data-olcum={action.label === "order" ? undefined : "ara"}
                     className="inline-flex min-h-[52px] items-center gap-2 rounded-full bg-red px-7 font-sans text-base font-semibold text-bone transition-all duration-300 hover:bg-brass hover:text-charcoal hover:shadow-[0_0_28px_-4px_var(--color-brass)]"
                   >
                     {action.label === "order" ? nav.cta.order : nav.cta.call}
