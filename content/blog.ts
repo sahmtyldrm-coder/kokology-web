@@ -1510,6 +1510,176 @@ export const yazilar: Yazi[] = [
         label: "Çeyrek, yarım, tam kokoreç ne demek?"
       }
     ]
+  },
+  {
+    slug: "bursa-kokorec-siparis-paket-kokorec",
+    title: "Bursa'da Kokoreç Siparişi: Paket Kokoreç, Trendyol ve Yemeksepeti | Kokology Bursa",
+    description: "Bursa'da gece kokoreç siparişi nasıl verilir? Trendyol Yemek ve Yemeksepeti'nden paket kokoreç, telefonla gel-al sipariş ve pakette sıcak kalması için ipuçları.",
+    h1: "Bursa'da kokoreç siparişi: paket kokoreç nasıl verilir?",
+    ozet: "Trendyol Yemek ve Yemeksepeti'nden sipariş, telefonla gel-al, hangi porsiyon pakette iyi gider ve kokoreç eve gelince ne yapılır.",
+    tarih: "2026-11-07",
+    etiket: "Sipariş rehberi",
+    okumaDakika: 4,
+    image: "/images/urun/kokology-kokorec-ekmek-arasi-bursa-nilufer-10.jpg",
+    alt: "Kokology paket kokoreç, sıcak ekmek arası — Bursa Nilüfer Ataevler",
+    bloklar: [
+      {tip: "paragraf", metin: "Kokoreç çoğu zaman gece canı çekilen bir şey. Dışarı çıkmak istemediğiniz akşamlarda, maç izlerken ya da geç saatte işten dönerken kapıya gelmesi en pratik yol. Kokology'den kokoreç almanın üç yolu var: yemek uygulamaları, telefonla gel-al ve doğrudan dükkân."},
+      {tip: "baslik", metin: "Trendyol Yemek ve Yemeksepeti'nden sipariş"},
+      {tip: "paragraf", metin: "Kokology, Trendyol Yemek ve Yemeksepeti'nde yer alıyor. Uygulamayı açıp \"Kokology\" diye aratmanız yeterli. Teslimat yapılan bölge ve o anki teslimat süresi adresinize göre uygulamada görünür; adresiniz kapsama alanındaysa menünün tamamı karşınıza çıkar."},
+      {tip: "liste", ogeler: ["Uygulamada \"Kokology\" diye aratın.", "Adresinizi girin; teslimat bölgesi ve tahmini süre görünür.", "Kokoreci çeyrek, yarım, tam ya da porsiyon olarak seçin.", "Notlar kısmına acılı, az baharatlı ya da sebzesiz gibi isteklerinizi yazabilirsiniz."]},
+      {tip: "baslik", metin: "Telefonla gel-al sipariş"},
+      {tip: "paragraf", metin: "Yolunuz Ataevler'den geçiyorsa en hızlısı telefonla önceden sipariş verip gelip almak. 0531 715 11 95'i arayın, siparişinizi söyleyin; geldiğinizde paketiniz hazır olsun. Otopark ücretsiz, bekleme yok."},
+      {tip: "baslik", metin: "Pakette hangi porsiyon iyi gider?"},
+      {tip: "paragraf", metin: "Kokoreç sipariş anında şişten kesilip doğrandığı için pakette de taze çıkar. Porsiyon seçerken kaç kişi yiyeceğinizi düşünün:"},
+      {tip: "liste", ogeler: ["Tek kişi, hafif bir şey: çeyrek kokoreç (230 ₺)", "Tek kişi, doyurucu: yarım kokoreç (380 ₺) ya da uykuluklu Yarım Atom (650 ₺)", "İki kişi paylaşacaksa: tam kokoreç (740 ₺)", "Ekmeksiz, tabakta isteyenler: porsiyon kokoreç (800 ₺)", "Yanına: 10'lu midye dolma (250 ₺) ve ayran"]},
+      {tip: "paragraf", metin: "Fiyatlar dükkân menüsüne göredir; uygulamalardaki fiyatlar platform koşullarına göre farklı olabilir. Güncel dükkân fiyatları her zaman menü sayfamızda."},
+      {tip: "baslik", metin: "Paket kokoreç eve gelince"},
+      {tip: "paragraf", metin: "Kokoreç en iyi sıcakken yenir. Paketi gelir gelmez açın; kapalı kalırsa buhar ekmeği yumuşatır. Biraz soğuduysa ekmeği açıp kokoreci tavada bir iki dakika çevirmek ve ekmeğin iç yüzünü aynı tavaya kısa süre bastırmak tadını büyük ölçüde geri getirir. Mikrodalga ekmeği lastikleştirir, önermiyoruz."},
+      {tip: "baslik", metin: "Kaça kadar sipariş verilir?"},
+      {tip: "paragraf", metin: "Dükkân her gün 11.00 ile 03.00 arasında açık. Uygulamalarda sipariş alabildiğimiz saatler o günkü yoğunluğa göre değişebilir; uygulamada Kokology \"açık\" görünüyorsa siparişiniz alınıyor demektir."},
+      {tip: "alinti", metin: "Kokoreç beklemeyi sevmez; paketi kapıda açın."}
+    ],
+    ilgili: [
+      { href: "/menu/kokorec", label: "Güncel kokoreç fiyatları" },
+      { href: "/blog/ceyrek-yarim-tam-kokorec-ne-demek", label: "Çeyrek, yarım, tam kokoreç ne demek?" },
+      { href: "/blog/nilufer-ataevler-gece-acik-kokorec", label: "Nilüfer ve Ataevler'de gece açık kokoreç" }
+    ]
+  },
+  {
+    slug: "midye-zehirlenmesi-belirtileri-ne-yapmali",
+    title: "Midye Zehirlenmesi Belirtileri Nelerdir, Ne Yapmalı? | Kokology Bursa",
+    description: "Midye zehirlenmesi neden olur, belirtileri nelerdir, kaç saatte başlar ve ne zaman doktora gidilir? Midye dolmayı güvenle yemek için bilmeniz gerekenler.",
+    h1: "Midye zehirlenmesi: belirtileri nelerdir, ne yapmalı?",
+    ozet: "Midye zehirlenmesinin nedenleri, belirtileri, ne zaman acile gidilmesi gerektiği ve midye dolmayı güvenle yemenin yolları.",
+    tarih: "2026-11-07",
+    etiket: "Merak edilenler",
+    okumaDakika: 4,
+    image: "/images/urun/kokology-midye-dolma-bursa-nilufer-04.jpg",
+    alt: "Kokology midye dolma tabağı, limon dilimleriyle — Bursa Nilüfer Ataevler",
+    bloklar: [
+      {tip: "paragraf", metin: "Midye dolma sevilen bir sokak lezzeti ama \"ya dokunursa\" sorusu hep akıldadır. Bu yazıda midye zehirlenmesinin neden olduğunu, belirtilerini ve ne zaman doktora gidilmesi gerektiğini genel hatlarıyla anlatıyoruz. Kısa cevap: risk midyenin kendisinden çok, nereden geldiğinden ve nasıl saklandığından doğar."},
+      {tip: "not", metin: "Bu yazı genel bilgi içindir, tıbbi tavsiye değildir. Belirtileriniz varsa bir sağlık kuruluşuna başvurun. Acil durumlarda 112'yi arayın."},
+      {tip: "baslik", metin: "Midye zehirlenmesi neden olur?"},
+      {tip: "liste", ogeler: ["Kirli sudan toplanan midye: Midye suyu süzerek beslenir; kirli sulardaki bakteri ve virüsler midyede birikebilir.", "Uzun süre bekletme: Pişmiş midye dolma sıcakta uzun süre açıkta kalırsa bakteri hızla çoğalır.", "Deniz kaynaklı toksinler: Bazı dönemlerde denizdeki alg patlamaları midyede toksin birikmesine yol açabilir; bu toksinler pişirmeyle yok olmaz.", "Alerji: Kabuklu deniz ürünü alerjisi zehirlenme değildir ama midye sonrası en ciddi tepkilerden birini verebilir."]},
+      {tip: "baslik", metin: "Belirtileri nelerdir?"},
+      {tip: "paragraf", metin: "Mide-bağırsak kaynaklı zehirlenmelerde belirtiler genellikle yedikten birkaç saat ile bir iki gün sonra başlar:"},
+      {tip: "liste", ogeler: ["Bulantı ve kusma", "İshal", "Karın ağrısı ve kramp", "Halsizlik, bazen ateş"]},
+      {tip: "paragraf", metin: "Alerjik tepki ise genellikle çok daha hızlı, dakikalar içinde ortaya çıkar: kaşıntı, ciltte kızarıklık, dudak ya da dilde şişlik, nefes darlığı."},
+      {tip: "baslik", metin: "Ne zaman acile gidilmeli?"},
+      {tip: "liste", ogeler: ["Nefes darlığı, yüzde, dudakta ya da dilde şişlik varsa (alerji olabilir, beklemeden 112)", "Ağızda, yüzde ya da ellerde uyuşma, karıncalanma, görme bozukluğu varsa", "Kusma nedeniyle sıvı tutulamıyorsa ya da susuzluk belirtileri varsa", "Yüksek ateş veya kanlı ishal varsa", "Hamile, yaşlı, küçük çocuk ya da bağışıklığı zayıf biriyse"]},
+      {tip: "paragraf", metin: "Hafif belirtilerde en önemli şey bol sıvı almak ve dinlenmektir. Belirtiler geçmiyor ya da ağırlaşıyorsa doktora başvurun; ilaç kullanımına kendi başınıza karar vermeyin."},
+      {tip: "baslik", metin: "Midye dolmayı güvenle yemek için"},
+      {tip: "liste", ogeler: ["Kalabalık, sürümü yüksek, midyenin bekletilmeden satıldığı yerleri seçin.", "Güneş altında ya da açıkta saatlerce duran midyeden uzak durun.", "Kokusu deniz kokmalı; ekşi ya da keskin bir koku varsa yemeyin.", "İlk lokmada en ufak bir ekşilik hissederseniz devam etmeyin.", "Kabuklu deniz ürünü alerjiniz varsa az miktarı bile denemeyin."]},
+      {tip: "paragraf", metin: "Taze midye dolmanın görünüşü, kokusu ve pirinci nasıl olur, ayrıntılarıyla \"Midye dolma neyden yapılır, zararlı mı?\" yazımızda anlattık."},
+      {tip: "baslik", metin: "Bizde midye dolma"},
+      {tip: "paragraf", metin: "Kokology'de midye dolma kapalı mekânda, limonla servis edilir: tanesi 25 ₺, 10'lu tabak 250 ₺, 50'lik kova 1150 ₺. Midyeyle ilgili bir sorunuz olursa tezgâhtaki ekibe sormaktan çekinmeyin."},
+      {tip: "alinti", metin: "İyi midyeyi limon güzelleştirir; kötü midyeyi limon kurtarmaz."}
+    ],
+    ilgili: [
+      { href: "/blog/midye-dolma-neyden-yapilir-zararli-mi", label: "Midye dolma neyden yapılır, zararlı mı?" },
+      { href: "/menu/midye", label: "Midye dolma fiyatları" },
+      { href: "/blog/midye-dolma-kac-kalori-kac-tane-yenir-fiyatlari", label: "Midye dolma kaç kalori, kaç tane yenir?" }
+    ]
+  },
+  {
+    slug: "midye-dolma-kac-kalori-kac-tane-yenir-fiyatlari",
+    title: "Midye Dolma Kaç Kalori, Kaç Tane Yenir? Bursa Midye Dolma Fiyatları | Kokology Bursa",
+    description: "Midye dolma kaç kalori, bir öğünde kaç tane yenir, nasıl yenir? Bursa Nilüfer'de midye dolma fiyatları: adet, 10'lu tabak ve 50'lik kova.",
+    h1: "Midye dolma kaç kalori, kaç tane yenir?",
+    ozet: "Bir tane midye dolmanın yaklaşık kalorisi, bir öğünde kaç tane yenir, doğru yeme şekli ve Bursa'da midye dolma fiyatları.",
+    tarih: "2026-11-07",
+    etiket: "Merak edilenler",
+    okumaDakika: 4,
+    image: "/images/urun/kokology-midye-dolma-bursa-nilufer-04.jpg",
+    alt: "Limonlu midye dolma tabağı — Kokology Bursa Nilüfer Ataevler",
+    bloklar: [
+      {tip: "paragraf", metin: "Midye dolma \"bir tane daha\" diye diye yenen bir şey; sayı kaçınca kalori de merak edilir. Aşağıdaki değerler yaygın olarak kabul gören genel aralıklardır, Kokology'nin laboratuvar ölçümü değildir. Midyenin büyüklüğü ve içindeki pilavın miktarı sonucu değiştirir."},
+      {tip: "baslik", metin: "Bir midye dolma kaç kalori?"},
+      {tip: "paragraf", metin: "Orta boy bir midye dolma genel olarak yaklaşık 35 ile 50 kalori arasında hesaplanır. Kalorinin büyük kısmı midyeden değil, içindeki pirinçten ve yağdan gelir; midyenin kendisi düşük kalorili, proteinli bir deniz ürünüdür."},
+      {tip: "liste", ogeler: ["1 adet: yaklaşık 35–50 kcal", "10 adet: yaklaşık 350–500 kcal", "20 adet: yaklaşık 700–1000 kcal"]},
+      {tip: "paragraf", metin: "Kıyas için: 10'lu bir tabak midye dolma, kabaca yarım ekmek arası bir sokak lezzetiyle aynı kalori aralığına düşer."},
+      {tip: "baslik", metin: "Bir öğünde kaç tane yenir?"},
+      {tip: "paragraf", metin: "Bunun kuralı yok ama alışkanlıklar belli:"},
+      {tip: "liste", ogeler: ["Atıştırmalık olarak: 5–10 tane", "Kokoreç ya da köftenin yanında: 10'lu bir tabak iki kişiye yeter", "Tek başına öğün olarak: 15–20 tane"]},
+      {tip: "paragraf", metin: "Midye ilk kez yiyenler ya da uzun süredir yemeyenler için az başlamak en doğrusu; mideye ağır gelip gelmediğini görürsünüz."},
+      {tip: "baslik", metin: "Midye dolma nasıl yenir?"},
+      {tip: "liste", ogeler: ["Kabuğun üst yarısını ayırın.", "Limonu her tanede ayrı sıkın; önceden sıkılırsa pilav sulanır.", "Ayırdığınız kabuğu kaşık gibi kullanıp midyeyi pilavıyla birlikte tek seferde alın."]},
+      {tip: "baslik", metin: "Bursa'da midye dolma fiyatları"},
+      {tip: "paragraf", metin: "Midye dolma fiyatı büyüklüğe, satış yerine ve servis şekline göre değişir; seyyar tezgâhla oturmalı bir mekân aynı fiyatı vermez. Kokology'de güncel fiyatlar şöyle:"},
+      {tip: "liste", ogeler: ["1 adet: 25 ₺", "10 adet: 250 ₺", "50 adetlik kova: 1150 ₺"]},
+      {tip: "paragraf", metin: "Kalabalık gelenler için kova daha avantajlı. Fiyatlar değişirse ilk menü sayfamızda güncellenir."},
+      {tip: "baslik", metin: "Kokoreçle birlikte"},
+      {tip: "paragraf", metin: "Gece sofrasının klasik ikilisi: kokoreç yağlı ve baharatlı, midye dolma limonla ferah. Bir tam kokoreç ve 10'lu midye iki üç kişilik bir masayı rahat doyurur."},
+      {tip: "alinti", metin: "Midye saymakla bitmez; limonu sıkmayı unutmayın."}
+    ],
+    ilgili: [
+      { href: "/menu/midye", label: "Midye dolma: adet, 10'lu, kova" },
+      { href: "/blog/midye-dolma-neyden-yapilir-zararli-mi", label: "Midye dolma neyden yapılır, zararlı mı?" },
+      { href: "/blog/kokorec-kac-kalori", label: "Kokoreç kaç kalori?" }
+    ]
+  },
+  {
+    slug: "kokorec-cesitleri-izmir-istanbul-kokoreci-farki",
+    title: "Kokoreç Çeşitleri: İzmir Kokoreci ile İstanbul Kokoreci Farkı | Kokology Bursa",
+    description: "Kokoreç çeşitleri nelerdir? İzmir kokoreci ile İstanbul kokoreci arasındaki farklar, uykuluklu, porsiyon ve pilav üstü kokoreç. Bursa'da kokoreç nasıl yenir?",
+    h1: "Kokoreç çeşitleri: İzmir, İstanbul ve Bursa kokoreci",
+    ozet: "İzmir ile İstanbul kokoreci neden farklı anlatılır, uykuluklu, porsiyon ve pilav üstü kokoreç nedir, Bursa'da nasıl yenir?",
+    tarih: "2026-11-07",
+    etiket: "Temel bilgi",
+    okumaDakika: 5,
+    image: "/images/urun/kokology-kokorec-porsiyon-bursa-nilufer-06.jpg",
+    alt: "Tabakta porsiyon kokoreç — Kokology Bursa Nilüfer Ataevler",
+    bloklar: [
+      {tip: "paragraf", metin: "Kokorecin hammaddesi her yerde aynı: kuzu bağırsağı, şişe sarılıp ateşte pişirilir. Ama \"İzmir kokoreci başka\" diyen de çok, \"asıl kokoreç İstanbul'da\" diyen de. Farkı yaratan şehirden çok alışkanlıklar: nasıl doğrandığı, içine ne katıldığı, hangi ekmekle ve ne kadar verildiği."},
+      {tip: "baslik", metin: "İzmir kokoreci nasıl anlatılır?"},
+      {tip: "paragraf", metin: "Ege'de kokoreç güçlü bir gece kültürü. İzmir kokoreci denince genellikle ince doğranmış, bol kekik ve pul biberle baharatlanmış, sıcak ekmeğe basılan bir kokoreç anlatılır. Pek çok yerde kokoreç sade verilir, domates ve biber eklenmez. Ekmek ölçüsü ve porsiyon da yerden yere değişir; İzmir'e alışkın biri başka şehirde ekmek boyunu farklı bulabilir."},
+      {tip: "baslik", metin: "İstanbul kokoreci nasıl anlatılır?"},
+      {tip: "paragraf", metin: "İstanbul'da kokoreççi sayısı çok olduğu için tek bir tarzdan söz etmek zor. Yaygın anlatıma göre burada doğrama sırasında domates ve sivri biber eklemek daha sık görülür; kokoreç biraz daha iri doğranabilir. Yarım ekmek ve çeyrek ekmek en bilinen ölçülerdir."},
+      {tip: "paragraf", metin: "Bu farklar kesin kurallar değil; aynı şehirde iki kokoreççi birbirinden çok farklı kokoreç yapabilir. En doğru ölçü, kokorecin ateşte iyi pişmiş, sipariş anında doğranmış ve sıcak ekmekle gelmiş olması."},
+      {tip: "baslik", metin: "Diğer kokoreç çeşitleri"},
+      {tip: "liste", ogeler: ["Uykuluklu kokoreç: İçine uykuluk (timüs bezi) eklenen, daha zengin tatlı kokoreç.", "Porsiyon kokoreç: Ekmeksiz, tabakta servis edilen kokoreç.", "Pilav üstü kokoreç: Tereyağlı pilavın üstüne doğranmış kokoreç.", "Tavuk ve mantar kokoreç: Kuzu bağırsağı yerine tavuk ya da mantarla yapılan, kokoreç tadını taklit eden yemekler.", "Kokoretsi: Yunanistan ve Balkanlar'da, özellikle Paskalya'da yapılan, iç organların bağırsakla sarıldığı akraba bir yemek."]},
+      {tip: "baslik", metin: "Bursa'da kokoreç"},
+      {tip: "paragraf", metin: "Bursa'nın kendine ait bir kokoreç tarzı yok; şehirde hem Ege hem İstanbul alışkanlıkları bir arada. Kokology'de kokoreç odun ateşinde döner, sipariş geldiğinde şişten kesilip tezgâhta doğranır, kekik ve pul biber o an eklenir. Sebzeli ya da sade istemek size kalmış."},
+      {tip: "liste", ogeler: ["Çeyrek kokoreç: 230 ₺", "Yarım kokoreç: 380 ₺", "Üç çeyrek: 580 ₺ · Tam: 740 ₺", "Porsiyon kokoreç: 800 ₺", "Yarım Atom (uykuluklu): 650 ₺ · Special Atom: 1200 ₺", "Kokoreçli pilav: 470 ₺"]},
+      {tip: "paragraf", metin: "Ekmek ölçüsü şehirden şehre değiştiği için porsiyonlarımızı ve fiyatlarımızı menüde açıkça yazıyoruz; ne alacağınızı bilerek sipariş verin."},
+      {tip: "alinti", metin: "Kokorecin memleketi yok; iyi pişeni kazanır."}
+    ],
+    ilgili: [
+      { href: "/blog/uykuluk-nedir-uykuluklu-kokorec", label: "Uykuluk nedir, uykuluklu kokoreç nasıl olur?" },
+      { href: "/blog/tavuk-kokorec-mantar-kokorec-nedir", label: "Tavuk kokoreç ve mantar kokoreç nedir?" },
+      { href: "/menu/kokorec", label: "Güncel kokoreç fiyatları" }
+    ]
+  },
+  {
+    slug: "bursa-gece-acik-yemek-yerleri",
+    title: "Bursa'da Gece Açık Yemek Yerleri: Gece 03.00'e Kadar Ne Yenir? | Kokology Bursa",
+    description: "Bursa'da gece açık yemek yerleri arıyorsanız: gece geç saatte ne yenir, açık yer seçerken nelere bakılır, Nilüfer Ataevler'de 03.00'e kadar açık kokoreç.",
+    h1: "Bursa'da gece açık yemek yerleri: gece ne yenir?",
+    ozet: "Bursa'da gece geç saatte acıkınca ne yenir, açık bir yer seçerken nelere bakmalı ve Nilüfer'de 03.00'e kadar açık seçenek.",
+    tarih: "2026-11-07",
+    etiket: "Bursa rehberi",
+    okumaDakika: 4,
+    image: "/images/mekan/kokology-kokorec-bursa-nilufer-cadde-ataevler-dis-cephe.jpg",
+    alt: "Kokology dış cephe, Ataevler cadde — Bursa Nilüfer gece açık kokoreç",
+    bloklar: [
+      {tip: "paragraf", metin: "Gece yarısından sonra acıkmak Bursa'da da sık yaşanan bir durum: maç çıkışı, gece vardiyası, uzun bir yolculuk ya da sadece geç saatte canın bir şey çekmesi. Şehrin büyük kısmı erken kapansa da gece açık kalan yerler var. Bu rehber, gece ne yenir ve açık bir yer seçerken nelere bakılır sorularına cevap veriyor."},
+      {tip: "baslik", metin: "Bursa'da gece ne yenir?"},
+      {tip: "paragraf", metin: "Gece geç saatte açık kalan yerler genellikle hızlı hazırlanan, sıcak ve doyurucu yemekler sunar:"},
+      {tip: "liste", ogeler: ["Kokoreç: Gece yemeğinin klasiği; sipariş anında doğranır, sıcak ekmekle gelir.", "Çorba ve işkembe: Özellikle kış gecelerinde ve sabaha karşı tercih edilir.", "Köfte, sucuk ve dürüm gibi ekmek arası seçenekler", "Midye dolma: Kokorecin yanında hafif bir eşlikçi."]},
+      {tip: "baslik", metin: "Gece açık yer seçerken nelere bakmalı?"},
+      {tip: "liste", ogeler: ["Gerçekten açık mı? Google'daki çalışma saatlerine bakın; şüpheniz varsa gitmeden arayın.", "Mutfak açık mı? Bazı yerler açık görünür ama mutfak erken kapanır.", "Otopark: Gece cadde kenarında yer bulmak zor olabilir.", "Oturacak yer: Ayaküstü mü, oturmalı mı?", "Paket seçeneği: Eve götürmek ya da uygulamadan sipariş vermek mümkün mü?"]},
+      {tip: "baslik", metin: "Nilüfer ve Ataevler'de gece"},
+      {tip: "paragraf", metin: "Kokology her gün 11.00'den 03.00'e kadar açık; hafta sonu da aynı saatlerde. Kokoreç gece de odun ateşinde döner, sipariş geldiğinde şişten kesilir. Menüde kokorecin yanında köfte, sucuk ekmek, midye dolma ve pilav da var; sofrada kokoreç yemeyen biri olsa da sorun çıkmaz."},
+      {tip: "liste", ogeler: ["Adres: Ataevler, Yılmaz Akkılıç Cd. No:18/A, Nilüfer / Bursa", "Otopark ücretsiz", "İç mekân ve açık hava bölümü", "Telefonla gel-al sipariş: 0531 715 11 95", "Trendyol Yemek ve Yemeksepeti'nde \"Kokology\""]},
+      {tip: "baslik", metin: "Gece kokoreç için kısa öneri"},
+      {tip: "paragraf", metin: "Gece geç saatte ağır gelmesin istiyorsanız çeyrek ya da yarım kokoreç yeterli; yanına ayran ya da şalgam iyi gider. Kalabalıksanız tam kokoreci ortaya alıp yanına 10'lu midye eklemek en pratik çözüm."},
+      {tip: "alinti", metin: "Şehir uyusa da ocak 03.00'e kadar yanıyor."}
+    ],
+    ilgili: [
+      { href: "/blog/nilufer-ataevler-gece-acik-kokorec", label: "Nilüfer ve Ataevler'de gece açık kokoreç" },
+      { href: "/blog/bursa-kokorec-siparis-paket-kokorec", label: "Bursa'da kokoreç siparişi" },
+      { href: "/blog/bursada-ne-yenir-sokak-lezzetleri", label: "Bursa'da ne yenir? Sokak lezzetleri" }
+    ]
   }
 ];
 
