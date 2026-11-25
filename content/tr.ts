@@ -259,7 +259,7 @@ export const hero = {
 
   /** Güven satırı — karar veren bilgiler tek bakışta (CRO) */
   trust: [
-    { icon: "star", text: "4,9 Google puanı" },
+    { icon: "star", text: "4,8 Google puanı" },
     { icon: "pin", text: "Ataevler / Nilüfer" },
     { icon: "parking", text: "Ücretsiz otopark" },
   ],
@@ -574,10 +574,10 @@ export const culture = {
    * diye sunmak yanlış olurdu.
    */
   rating: {
-    value: 4.9,
-    count: 299,
+    value: 4.8,
+    count: 308,
     source: "Google",
-    label: "Google'da 299 yorum", // 2026-11-09 Google İşletme Profili
+    label: "Google'da 308 yorum", // 2026-11-25 Google İşletme Profili (Haritalar: 4,8 / 308)
   },
   instagram: {
     label: "Instagram'da takip et",
